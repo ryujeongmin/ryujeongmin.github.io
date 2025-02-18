@@ -727,12 +727,18 @@
     background-size: 2.4rem
 }
 
+
 .see-more {
-    margin-left: 1rem;
-    color: #fff;
-    cursor: pointer;
-    font-weight: bold
+  margin-left: 1rem;             /* 제목과의 간격 */
+  color: #fff;                   /* 글자색 */
+  background: rgba(50, 50, 50, 0.6); /* 반투명 회색 배경 */
+  padding: 0.5rem 1rem;          /* 여백 */
+  border-radius: 0.4rem;         /* 모서리 둥글게 */
+  cursor: pointer;
+  font-weight: bold;             /* 글자 두껍게 */
 }
+
+
 
 @media (max-width: 992px) {
     .basic-N33 {
