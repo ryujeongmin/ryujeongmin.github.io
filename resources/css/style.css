@@ -1,3 +1,17 @@
+.contents-container {
+    width: 100%;
+    max-width: 1200px;  /* 컨테이너 최대 너비 설정 */
+    margin: 0 auto;  /* 가운데 정렬 */
+    padding: 2rem;  /* 내부 여백 */
+}
+
+.container-md {
+    width: 100%;
+    max-width: 960px;  /* 중간 크기의 컨테이너 */
+    margin: 0 auto;
+}
+
+
 
 .inputset-input, .inputset-textarea {
     width: 100%;
