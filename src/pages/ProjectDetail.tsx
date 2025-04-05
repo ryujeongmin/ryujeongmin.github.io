@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom';
-import { Container, Typography, Box, Grid, Card, CardContent, CardMedia } from '@mui/material';
+import { Box, Typography, Container, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
+import { useParams } from 'react-router-dom';
 
 const projects = [
   {
@@ -76,27 +76,31 @@ const ProjectDetail = () => {
 
         <Grid container spacing={4}>
           {project.images.map((image, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Box
+              key={index}
+              sx={{
+                width: { xs: '100%', sm: '50%', md: '33.33%' },
+                p: 2,
+              }}
+            >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card>
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={`/src/assets/images/${image.src}`}
-                    alt={image.title}
-                  />
-                  <CardContent>
-                    <Typography variant="h6" component="h3">
-                      {image.title}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                <Box
+                  component="img"
+                  src={`/src/assets/images/${image.src}`}
+                  alt={`${project.title} - Image ${index + 1}`}
+                  sx={{
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '12px',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  }}
+                />
               </motion.div>
-            </Grid>
+            </Box>
           ))}
         </Grid>
       </motion.div>
