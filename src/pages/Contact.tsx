@@ -37,7 +37,7 @@ const Contact = () => {
             </Typography>
             <Typography variant="body1" sx={{ color: '#86868b' }}>
               <a
-                href="mailto:ryujeongmin0224@gmail.com"
+                href="mailto:r10010jm@gmail.com"
                 style={{ 
                   color: 'inherit', 
                   textDecoration: 'none',
