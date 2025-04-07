@@ -74,7 +74,7 @@ const Footer = () => {
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
             <Typography variant="body2" color="inherit">
               <MuiLink
-                href="mailto:ryujeongmin0224@gmail.com"
+                href="mailto:r10010jm@gmail.com"
                 color="inherit"
                 sx={{ 
                   textDecoration: 'none',
@@ -84,7 +84,7 @@ const Footer = () => {
                   },
                 }}
               >
-                ryujeongmin0224@gmail.com
+                r10010jm@gmail.com
               </MuiLink>
             </Typography>
 
