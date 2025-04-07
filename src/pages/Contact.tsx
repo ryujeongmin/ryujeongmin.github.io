@@ -46,7 +46,7 @@ const Contact = () => {
                 onMouseEnter={(e) => e.currentTarget.style.color = '#2563eb'}
                 onMouseLeave={(e) => e.currentTarget.style.color = '#86868b'}
               >
-                ryujeongmin0224@gmail.com
+                r10010jm@gmail.com
               </a>
             </Typography>
           </Box>
