@@ -15,8 +15,7 @@
 
 <body>
 
-
-    <header class="th-layout-header">
+   <header class="th-layout-header">
     <div class="basic-N2" id="ljm768H1yG">
       <div class="header-container container-lg">
         <div class="header-left">
@@ -44,7 +43,8 @@
                   <span>PROJECTs by AI</span>
                 </a>
               </li>
-              <li class="header-gnbitem">
+
+                 <li class="header-gnbitem">
   <a class="p1 header-gnblink" href="https://ryujeongmin.github.io/contact.html">
     <span>CONTACT</span>
   </a>
@@ -86,12 +86,12 @@
                 <span>PROJECTs by AI</span>
               </a>
             </li>
-            <li class="fullmenu-gnbitem">
+
+                  <li class="fullmenu-gnbitem">
   <a class="h5 fullmenu-gnblink" href="https://ryujeongmin.github.io/contact.html">
     <span>CONTACT</span>
   </a>
 </li>
-
           </ul>
         </div>
         <button class="fullmenu-close">
@@ -100,160 +100,101 @@
       </div>
     </div>
   </header>
-    
   <main class="th-layout-main">
     <div class="th-layout-content">
-      <div class="basic-N29" id="ofm75YP075">
+      <div class="basic-N34" id="nvM768h227">
         <div class="contents-container container-md">
           <div class="contents-inner">
             <div class="textset">
-              <h3 class="h2 textset-subtit">Hello, my name is Jeongmin Ryu.</h3>
-              <p class="p1 textset-desc">I create interactive experiences</p>
-            </div>
-            <div class="down-arrow" data-aos="slide-down">
-              <a href="#PkM75YP0Bf">
-                <img src="./resources/images/v.png" alt="아래 화살표" data-aos-easing="ease-in-out" data-aos-duration="600" />
-              </a>
+              <div class="contents-container container-md">
+                <div class="contents-inner">
+                  <div class="textset">
+                    <h2 class="h1 textset-tit">API를 활용한 변동성 기반 자동매매 시스템</h2>
+                    <p class="h6 textset-desc">한국투자증권 API를 활용하여 변동성을 고려한 자동매매 시스템을 구현합니다.</p>
+                  </div>
+                  <h2>📌 용어 정리</h2>
+                  <ul>
+                    <li><b>변동폭 (ΔP)</b>: 주가가 오르내리는 기준 범위.</li>
+                    <li><b>변동폭 상한 매도가격 (P_upper)</b>: 변동폭의 상한에 도달하면 매도.</li>
+                    <li><b>변동폭 하한 매수가격 (P_lower)</b>: 변동폭의 하한에 도달하면 매수.</li>
+                    <li><b>변동폭 이탈 매매 기준 (ΔO)</b>: 변동폭을 벗어났을 때 추가 매매 실행 기준.</li>
+                  </ul>
+                  <h2>📌 코드 설명</h2>
+                  <p>이 프로그램은 한국투자증권 API를 활용하여 자동으로 주식을 사고파는 시스템입니다.</p>
+                  <ul>
+                    <li><b>API 인증</b>: ACCESS_TOKEN을 발급받아 요청을 수행합니다.</li>
+                    <li><b>현재 주가 조회</b>: API를 통해 실시간 주가를 가져옵니다.</li>
+                    <li><b>자동매매</b>: 사용자가 설정한 매수/매도 가격을 기준으로 자동 거래를 수행합니다.</li>
+                  </ul>
+                  <h2>📌 자동매매 프로그램 (Python 코드)</h2>
+                  <pre><code>
+import requests
+import time
+import json
+# API 키 설정
+APP_KEY = "YOUR_APP_KEY"
+APP_SECRET = "YOUR_APP_SECRET"
+CANO = "YOUR_ACCOUNT_NUMBER"
+ACNT_PRDT_CD = "01"
+# API 엔드포인트
+ACCESS_TOKEN_URL = "https://openapi.koreainvestment.com:9443/oauth2/tokenP"
+TRADE_URL = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/trading/order-cash"
+PRICE_URL = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-price"
+# API 인증 (토큰 발급)
+def get_access_token():
+    headers = {"content-type": "application/json"}
+    payload = {"grant_type": "client_credentials", "appkey": APP_KEY, "appsecret": APP_SECRET}
+    response = requests.post(ACCESS_TOKEN_URL, headers=headers, data=json.dumps(payload))
+    return response.json().get("access_token")
+ACCESS_TOKEN = get_access_token()
+# 현재 주가 조회 함수
+def get_stock_price(stock_code):
+    headers = {"authorization": f"Bearer {ACCESS_TOKEN}", "appKey": APP_KEY, "appSecret": APP_SECRET, "content-type": "application/json"}
+    params = {"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": stock_code}
+    response = requests.get(PRICE_URL, headers=headers, params=params)
+    return float(response.json()["output"]["stck_prpr"])
+# 매수/매도 주문 함수
+def place_order(stock_code, quantity, price, buy=True):
+    headers = {"authorization": f"Bearer {ACCESS_TOKEN}", "appKey": APP_KEY, "appSecret": APP_SECRET, "content-type": "application/json"}
+    order_type = "01" if buy else "02"
+    payload = {"CANO": CANO, "ACNT_PRDT_CD": ACNT_PRDT_CD, "PDNO": stock_code, "ORD_DVSN": "00", "ORD_QTY": str(quantity), "ORD_UNPR": str(price), "ORD_DVSN": order_type}
+    response = requests.post(TRADE_URL, headers=headers, data=json.dumps(payload))
+    return response.json()
+# 자동매매 실행 함수
+def auto_trade(stock_code, buy_price, sell_price, outside_margin, quantity):
+    P_upper_outside = sell_price + outside_margin
+    P_lower_outside = buy_price - outside_margin
+while True:
+        current_price = get_stock_price(stock_code)
+        print(f"현재 주가: {current_price}원")
+if current_price &lt;= buy_price:
+            print(f"📉 {buy_price}원 이하 → 매수 실행")
+            place_order(stock_code, quantity, buy_price, buy=True)
+        elif current_price &lt;= P_lower_outside:
+            print(f"📉📉 {P_lower_outside}원 이하 → 추가 매수 실행")
+            place_order(stock_code, quantity, P_lower_outside, buy=True)
+        elif current_price &gt;= sell_price:
+            print(f"📈 {sell_price}원 이상 → 매도 실행")
+            place_order(stock_code, quantity, sell_price, buy=False)
+        elif current_price &gt;= P_upper_outside:
+            print(f"📈📈 {P_upper_outside}원 이상 → 추가 매도 실행")
+            place_order(stock_code, quantity, P_upper_outside, buy=False)
+time.sleep(10)
+            </code></pre>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="click">
-          <p class="click" data-aos="slide-up">* Click the project to get more info</p>
         </div>
       </div>
-      <div class="basic-N33" id="PkM75YP0Bf">
-        <div class="contents-container container-md">
-          <div class="contents-inner">
-            <div class="row row-md-cols-1 gutter-5 contents-group">
-              <!-- 1. FoldiFolda -->
-              <div class="col col-12 cardset">
-                <a href="./page_m775eiga.html" class="cardset-inner">
-        
-                  <figure class="cardset-figure">
-                    <img class="cardset-img" src="./resources/images/Group 890.png" alt="카드 이미지" />
-                  </figure>
-                  <div class="cardset-body">
-                    <h2 class="h2 cardset-tit">FoldiFolda</h2>
-                    <span class="see-more" style="color: var(--black);">See More →</span>
-                  </div>
-                </a>
-              </div>
-              <!-- 2. Image Perfume -->
-              <div class="col col-6 cardset">
-                <a href="image_perfume.html" class="cardset-inner">
-            
-                  <figure class="cardset-figure">
-                    <img class="cardset-img" src="./resources/images/Frame 397.png" alt="PC 카드 이미지" />
-                  </figure>
-                  <div class="cardset-body">
-                    <h2 class="h2 cardset-tit">Image Perfume</h2>
-                    <span class="see-more">See More →</span>
-                  </div>
-                </a>
-              </div>
-              <!-- 3. Diary-Writing Washing Machine -->
-              <div class="col col-6 cardset">
-                <a href="./page_m77avbtf.html" class="cardset-inner">
-          
-                  <figure class="cardset-figure">
-                    <img class="cardset-img" src="./resources/images/Frame 399.png" alt="PC 카드 이미지" />
-                  </figure>
-                  <div class="cardset-body">
-                    <h2 class="h2 cardset-tit">Diary-Writing Washing Machine</h2>
-                    <span class="see-more">See More →</span>
-                  </div>
-                </a>
-              </div>
-              <!-- 4. Umbrellatic -->
-              <div class="col col-6 cardset">
-                <a href="./page_m77avkwr.html" class="cardset-inner">
-            
-                  <figure class="cardset-figure">
-                    <img class="cardset-img" src="./resources/images/Frame 398.png" alt="PC 카드 이미지" />
-                  </figure>
-                  <div class="cardset-body">
-                    <h2 class="h2 cardset-tit">Umbrellatic</h2>
-                    <span class="see-more">See More →</span>
-                  </div>
-                </a>
-              </div>
-              <!-- 5. Page Turner -->
-              <div class="col col-6 cardset">
-                <a href="./page_m77avu8k.html" class="cardset-inner">
-             
-                  <figure class="cardset-figure">
-                    <img class="cardset-img" src="./resources/images/Frame 395.png" alt="PC 카드 이미지" />
-                  </figure>
-                  <div class="cardset-body">
-                    <h2 class="h2 cardset-tit">Page Turner</h2>
-                    <span class="see-more">See More →</span>
-                  </div>
-                </a>
-              </div>
-              <!-- 6. Self-Driving Mobility with Robot Arm -->
-              <div class="col col-6 cardset">
-                <a href="./page_m77cfzdp.html" class="cardset-inner">
-               
-                  
-                  <figure class="cardset-figure">
-                    <img class="cardset-img" src="./resources/images/Frame 393.png" alt="PC 카드 이미지" />
-                  </figure>
-                  <div class="cardset-body">
-                    <h2 class="h2 cardset-tit">Self-Driving Mobility with Robot Arm</h2>
-                    <span class="see-more">See More →</span>
-                  </div>
-                </a>
-              </div>
-              <!-- 7. Smart Pet Farm -->
-              <div class="col col-6 cardset">
-                <a href="./page_m77bx1f4.html" class="cardset-inner">
-              
-                  
-                  <figure class="cardset-figure">
-                    <img class="cardset-img" src="./resources/images/Frame 396.png" alt="PC 카드 이미지" />
-                  </figure>
-                  <div class="cardset-body">
-                    <h2 class="h2 cardset-tit">Smart Pet Farm</h2>
-                    <span class="see-more">See More →</span>
-                  </div>
-                </a>
-              </div>
-              <!-- 8. ECO&CO Living House -->
-              <div class="col col-6 cardset">
-                <a href="./page_m77c9fs1.html" class="cardset-inner">
-              
-                  
-                  <figure class="cardset-figure">
-                    <img class="cardset-img" src="./resources/images/Frame 394.png" alt="PC 카드 이미지" />
-                  </figure>
-                  <div class="cardset-body">
-                    <h2 class="h2 cardset-tit">ECO&amp;CO Living House</h2>
-                    <span class="see-more">See More →</span>
-                  </div>
-                </a>
-              </div>
-              <!-- 9. Jason-Leg Self Driving Robot -->
-              <div class="col col-6 cardset">
-                <a href="./page_m77cp3ft.html" class="cardset-inner">
-                
-                  
-                  <figure class="cardset-figure">
-                    <img class="cardset-img" src="./resources/images/Frame 392.png" alt="PC 카드 이미지" />
-                  </figure>
-                  <div class="cardset-body">
-                    <h2 class="h2 cardset-tit">Jason-Leg <br />Self Driving Robot</h2>
-                    <span class="see-more">See More →</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="basic-N35" id="PjM768h25s">
+      </div>
+      <div class="basic-N36" id="bSm768h29f">
       </div>
     </div>
   </main>
   <footer class="th-layout-footer">
-    <div class="basic-N4" id="KPM75YP0fM">
+    <div class="basic-N4" id="Tim768h2cv">
       <div class="footer-container container-md">
         <div class="footer-top">
           <h2 class="footer-logo">
