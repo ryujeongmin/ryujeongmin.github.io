@@ -1,853 +1,140 @@
-/* basic-N2 [lXM75Yp01Y] */
-(function() {
-  $(function() {
-    $(".basic-N2[id='lXM75Yp01Y']").each(function() {
-      const $block = $(this);
-      // 모바일 메뉴 버튼 클릭 시 메뉴 토글
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      // 모바일 닫기 버튼
-      $(document).on("click", ".btn-moclose", function() {
-        $(".basic-N2").removeClass("block-active");
-      });
-      // 모바일 GNB 메뉴 클릭 이벤트 (이벤트 위임)
-      $(document).on("click", ".header-gnblink", function(e) {
-        if (window.innerWidth < 992) {
-          e.preventDefault(); // 기본 링크 이동 방지
-          const $clickedItem = $(this).parents(".header-gnbitem");
-          const $sublist = $clickedItem.find(".header-sublist");
-          if (!$clickedItem.hasClass("item-active")) {
-            $(".header-gnbitem").removeClass("item-active");
-            $(".header-sublist").stop().slideUp(300);
-          }
-          $clickedItem.toggleClass("item-active");
-          $sublist.stop().slideToggle(300);
+
+// Wait for DOM to load
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Scroll Animations (AOS replacement)
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('aos-animate');
+        observer.unobserve(entry.target); // Only animate once
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-aos]').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Header Scroll Effect
+  const header = document.querySelector('.th-layout-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Typing Effect
+  const text = "Jeongmin Ryu.";
+  const typingElement = document.getElementById("typing-text");
+  const typeSpeed = 100; // ms
+  let charIndex = 0;
+
+  function type() {
+    if (charIndex < text.length) {
+      typingElement.textContent += text.charAt(charIndex);
+      charIndex++;
+      setTimeout(type, typeSpeed);
+    }
+  }
+
+  // Start typing after a short delay
+  if (typingElement) {
+    setTimeout(type, 500);
+  }
+
+  // Native Smooth Scroll for Anchor Links (fixes jumping)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Mobile Menu Toggle logic
+  const menuBtn = document.querySelector('.btn-momenu');
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      let fullMenu = document.querySelector('.header-fullmenu');
+
+      // Dynamic injection if not present (since we refactored pages without it)
+      if (!fullMenu) {
+        fullMenu = document.createElement('div');
+        fullMenu.className = 'header-fullmenu';
+        fullMenu.innerHTML = `
+          <div class="fullmenu-wrapper">
+            <ul class="fullmenu-gnblist">
+              <li class="fullmenu-gnbitem">
+                <a class="fullmenu-gnblink" href="https://docs.google.com/document/d/1THJXUJQiZ22WHPw7G3FWacK-ZLLbnJ77/edit?usp=sharing" target="_blank">ABOUT</a>
+              </li>
+              <li class="fullmenu-gnbitem">
+                <a class="fullmenu-gnblink" href="./index.html#PkM75YP0Bf">PROJECTs</a>
+              </li>
+              <li class="fullmenu-gnbitem">
+                <a class="fullmenu-gnblink" href="./page_m77dg3im.html">PROJECTs by AI</a>
+              </li>
+            </ul>
+          </div>
+          <button class="fullmenu-close" aria-label="Close Menu"></button>
+        `;
+        document.body.appendChild(fullMenu);
+
+        // Add close event listener to the newly created button
+        const closeBtn = fullMenu.querySelector('.fullmenu-close');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            fullMenu.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+          });
         }
-      });
-      // 화면 크기 변경 시 메뉴 초기화
-      $(window).on("resize", function() {
-        if (window.innerWidth >= 992) {
-          $(".header-sublist").removeAttr("style");
-          $(".header-gnbitem").removeClass("item-active");
-          $(".basic-N2").removeClass("block-active");
-        }
-      });
-      // 풀스크린 GNB 메뉴 열기/닫기
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // 풀스크린 메뉴 hover 효과
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
+
+        // Close on link click
+        const links = fullMenu.querySelectorAll('.fullmenu-gnblink');
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            fullMenu.classList.remove('active');
+            document.body.style.overflow = '';
+          });
         });
       }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
+
+      // Toggle active state
+      // Small delay to allow DOM paint if just created
+      requestAnimationFrame(() => {
+        fullMenu.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
       });
     });
+  }
+
+  // Generate Blurred Backgrounds for Feature Images (Zig-Zag Layout)
+  const featureImages = document.querySelectorAll('.feature-media img');
+  featureImages.forEach(img => {
+    // Create the blur background element
+    const blurBg = document.createElement('div');
+    blurBg.className = 'media-bg-blur';
+    blurBg.style.backgroundImage = `url('${img.src}')`;
+
+    // Insert it before the image (z-index in CSS handles stacking)
+    const parent = img.parentElement;
+    if (parent) {
+      parent.insertBefore(blurBg, img);
+    }
   });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [lXM75Yp01Y] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'lXM75Yp01Y\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
-/* basic-N2 [ljm768H1yG] */
-(function() {
-  $(function() {
-    $(".basic-N2[id=\'ljm768H1yG\']").each(function() {
-      const $block = $(this);
-      // Mobile Top
-      $block.find(".btn-momenu").on("click", function() {
-        $block.toggleClass("block-active");
-        $block.find(".header-gnbitem").removeClass("item-active");
-        $block.find(".header-sublist").removeAttr("style");
-      });
-      $block.find(".btn-moclose").on("click", function() {
-        $block.removeClass("block-active");
-      });
-      // Mobile Gnb
-      function handleGnbEvents() {
-        $block.find(".header-gnbitem").each(function() {
-          const $this = $(this);
-          const $thislink = $this.find(".header-gnblink");
-          const $sublist = $this.find(".header-sublist");
-          $thislink.off("click");
-          if (window.innerWidth < 992) {
-            $thislink.on("click", function() {
-              const $clickedItem = $(this).parents(".header-gnbitem");
-              if (!$clickedItem.hasClass("item-active")) {
-                $(".header-gnbitem").removeClass("item-active");
-                $(".header-sublist").stop().slideUp(300);
-              }
-              $clickedItem.toggleClass("item-active");
-              $sublist.stop().slideToggle(300);
-            });
-          } else {
-            $sublist.removeAttr("style");
-            $block.removeClass("block-active");
-            $(".header-gnbitem").removeClass("item-active");
-          }
-        });
-      }
-      handleGnbEvents();
-      $(window).on("resize", function() {
-        handleGnbEvents();
-      });
-      // Full Gnb
-      $block.find(".btn-allmenu").on("click", function() {
-        $block.find(".header-fullmenu").addClass("fullmenu-active");
-      });
-      $block.find(".fullmenu-close").on("click", function() {
-        $block.find(".header-fullmenu").removeClass("fullmenu-active");
-      });
-      // Full Gnb DecoLine
-      $block.find(".fullmenu-gnbitem").each(function() {
-        const $this = $(this);
-        $this.on("mouseover", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").addClass("on");
-          }
-        });
-        $this.on("mouseout", function() {
-          if (window.innerWidth > 992) {
-            $this.find(".fullmenu-gnblink").removeClass("on");
-          }
-        });
-      });
-    });
-  });
-})();
+
+});
