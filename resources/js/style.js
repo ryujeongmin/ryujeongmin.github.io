@@ -85,9 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <li class="fullmenu-gnbitem">
                 <a class="fullmenu-gnblink" href="./index.html#PkM75YP0Bf">PROJECTs</a>
               </li>
-              <li class="fullmenu-gnbitem">
-                <a class="fullmenu-gnblink" href="./page_m77dg3im.html">PROJECTs by AI</a>
-              </li>
+
             </ul>
           </div>
           <button class="fullmenu-close" aria-label="Close Menu"></button>

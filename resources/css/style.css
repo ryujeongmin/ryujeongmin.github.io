@@ -44,12 +44,30 @@
 
 /* Reset & Base */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
 html {
+    font-family: 'Inter', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     font-size: 62.5%;
     /* 1rem = 10px */
     scroll-behavior: smooth;
@@ -62,6 +80,8 @@ body {
     font-size: 1.6rem;
     line-height: 1.6;
     overflow-x: hidden;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 a {
