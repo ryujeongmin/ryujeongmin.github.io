@@ -607,30 +607,32 @@ h6 {
         left: auto;
         width: 100%;
         background: var(--bg-secondary);
-        padding: var(--spacing-md);
+        padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-lg);
+        /* More left padding */
     }
+}
 
-    .cardset-tit {
-        font-size: 2rem;
-    }
+.cardset-tit {
+    font-size: 2rem;
+}
 
-    .see-more {
-        opacity: 1;
-        transform: none;
-        display: block;
-        /* Ensure it takes space */
-        margin-top: var(--spacing-sm);
-    }
+.see-more {
+    opacity: 1;
+    transform: none;
+    display: block;
+    /* Ensure it takes space */
+    margin-top: var(--spacing-sm);
+}
 
-    /* Force AOS items to be visible on mobile */
-    [data-aos] {
-        opacity: 1 !important;
-        transform: none !important;
-    }
+/* Force AOS items to be visible on mobile */
+[data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+}
 
-    .cardset-inner:hover .cardset-img {
-        transform: none;
-    }
+.cardset-inner:hover .cardset-img {
+    transform: none;
+}
 }
 
 /* Animations */
