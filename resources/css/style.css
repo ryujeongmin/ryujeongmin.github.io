@@ -572,28 +572,57 @@ h6 {
         display: block;
     }
 
-    .row {
-        grid-template-columns: 1fr;
-    }
-
     .basic-N29 {
         padding: var(--spacing-xl) var(--spacing-sm);
     }
 
-    /* Mobile: Show card details by default */
+    /* Mobile: Stack items and ensure visibility */
+    .row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .cardset-inner {
+        height: auto;
+        /* flexible height */
+    }
+
+    .cardset-figure {
+        aspect-ratio: 16 / 9;
+        /* standard video ratio */
+    }
+
     .cardset-body {
-        transform: translateY(0);
-        background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+        position: relative;
+        /* Stack below image */
+        transform: none;
+        bottom: auto;
+        left: auto;
+        width: 100%;
+        background: var(--bg-secondary);
+        padding: var(--spacing-md);
+    }
+
+    .cardset-tit {
+        font-size: 2rem;
     }
 
     .see-more {
         opacity: 1;
-        transform: translateX(0);
+        transform: none;
+        display: block;
+        /* Ensure it takes space */
+        margin-top: var(--spacing-sm);
+    }
+
+    /* Force AOS items to be visible on mobile */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
     }
 
     .cardset-inner:hover .cardset-img {
         transform: none;
-        /* Disable zoom on touch if needed, or keep it */
     }
 }
 
