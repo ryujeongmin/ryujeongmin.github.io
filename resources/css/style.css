@@ -578,61 +578,22 @@ h6 {
 
     /* Move menu button further right (reduce container padding) */
     .header-container {
-        padding-right: 5px !important;
-        /* Move closer to edge */
-        padding-left: var(--spacing-sm);
+        padding-right: 15px !important;
+        /* Adjusted to 15px */
+        padding-left: 5px !important;
+        /* Move logo left */
     }
 
-    /* Mobile: Stack items and ensure visibility */
+    /* Mobile: Revert to Overlay (Touch to hover) */
     .row {
         grid-template-columns: 1fr;
-        gap: var(--spacing-md);
     }
 
-    .cardset-inner {
-        height: auto;
-        /* flexible height */
+    /* Force AOS items to be visible on mobile */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
     }
-
-    .cardset-figure {
-        aspect-ratio: 16 / 9;
-        /* standard video ratio */
-    }
-
-    .cardset-body {
-        position: relative;
-        /* Stack below image */
-        transform: none;
-        bottom: auto;
-        left: auto;
-        width: 100%;
-        background: var(--bg-secondary);
-        padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-lg);
-        /* More left padding */
-    }
-}
-
-.cardset-tit {
-    font-size: 2rem;
-}
-
-.see-more {
-    opacity: 1;
-    transform: none;
-    display: block;
-    /* Ensure it takes space */
-    margin-top: var(--spacing-sm);
-}
-
-/* Force AOS items to be visible on mobile */
-[data-aos] {
-    opacity: 1 !important;
-    transform: none !important;
-}
-
-.cardset-inner:hover .cardset-img {
-    transform: none;
-}
 }
 
 /* Animations */
