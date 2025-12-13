@@ -572,27 +572,12 @@ h6 {
         display: block;
     }
 
-    .basic-N29 {
-        padding: var(--spacing-xl) var(--spacing-sm);
-    }
-
-    /* Move menu button further right (reduce container padding) */
-    .header-container {
-        padding-right: 15px !important;
-        /* Adjusted to 15px */
-        padding-left: 5px !important;
-        /* Move logo left */
-    }
-
-    /* Mobile: Revert to Overlay (Touch to hover) */
     .row {
         grid-template-columns: 1fr;
     }
 
-    /* Force AOS items to be visible on mobile */
-    [data-aos] {
-        opacity: 1 !important;
-        transform: none !important;
+    .basic-N29 {
+        padding: var(--spacing-xl) var(--spacing-sm);
     }
 }
 
