@@ -563,17 +563,52 @@ h6 {
         font-size: 3.2rem;
     }
 
+    .header-container {
+        justify-content: flex-start;
+        /* Menu bar (Logo + Icon) to the left */
+        gap: var(--spacing-md);
+    }
+
     .header-gnb {
         display: none;
-        /* Add mobile menu logic later if needed */
     }
 
     .btn-momenu {
         display: block;
+        order: -1;
+        /* Move burger to the left of logo if desired, or keep logic. 
+                      User said "Menu bar to the left". 
+                      If I put button first? let's just align them start.
+                   */
     }
 
+    /* Swap Order: Burger Left, Logo Right? 
+       Or just both Left: Logo, Burger. 
+       "Menu bar to the left" usually implies the navigation control.
+       I will try to keep Logo first, then Burger? 
+       Actually, standard is Button Left, Logo Center/Right often.
+       Let's stick to: Flex-Start (Logo, Button)
+    */
+
     .basic-N29 {
-        padding: var(--spacing-xl) var(--spacing-sm);
+        min-height: 100dvh;
+        /* Use dynamic viewport height */
+        padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-xxl) var(--spacing-sm);
+        /* Added extra bottom padding to push projects down if needed */
+    }
+
+    /* Expand Interactive Background (Blobs) */
+    .basic-N29::before {
+        width: 800px;
+        height: 800px;
+        left: -200px;
+        /* shift to ensure coverage */
+    }
+
+    .basic-N29::after {
+        width: 600px;
+        height: 600px;
+        right: -100px;
     }
 
     /* Mobile: Stack items and ensure visibility */
