@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Pot-able - Jeongmin Ryu</title>
+    <link rel="stylesheet" href="./resources/css/setting.css" />
+    <link rel="stylesheet" href="./resources/css/plugin.css" />
+    <link rel="stylesheet" href="./resources/css/templatehouse.css" />
+    <link rel="stylesheet" href="./resources/css/style.css" />
+</head>
+
+<body>
+    <header class="th-layout-header header-divider-line">
+        <div class="header-container container-lg">
+            <h1 class="header-title">
+                <a href="./index.html">
+                    <img src="./resources/icons/Jeongmin Ryu.svg" alt="Jeongmin Ryu" />
+                </a>
+            </h1>
+            <div class="header-right">
+                <div class="header-gnb">
+                    <ul class="header-gnblist">
+                        <li class="header-gnbitem">
+                            <a class="header-gnblink"
+                                href="https://docs.google.com/document/d/1THJXUJQiZ22WHPw7G3FWacK-ZLLbnJ77/edit?usp=sharing"
+                                target="_blank">ABOUT</a>
+                        </li>
+                        <li class="header-gnbitem">
+                            <a class="header-gnblink" href="./index.html#PkM75YP0Bf">PROJECTs</a>
+                        </li>
+                        <li class="header-gnbitem">
+                            <a class="header-gnblink" href="./page_m77dg3im.html">PROJECTs by AI</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-utils">
+                    <button class="btn-momenu">
+                        <i class="ico-hamburger"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="th-layout-main">
+        <div class="th-layout-content">
+
+            <!-- Hero Section -->
+            <div class="basic-N34 spacer-top-lg" id="PotableHero">
+                <div class="contents-container container-md">
+                    <div class="contents-inner">
+                        <div class="textset">
+                            <span class="project-label">PROJECT</span>
+                            <h2 class="textset-tit-sm">Pot-able</h2>
+                            <img src="./resources/images/potable.jpg" alt="Pot-able"
+                                style="width: 100%; max-width: 800px; margin: 2rem 0; border-radius: var(--radius-md);" />
+                            <p class="h6 textset-desc">
+                                Many US consumers own at least one Foliage plant.<br />
+                                One of the things we found in common that all plant owners are trying to keep
+                                theirs<br />
+                                the healthiest plant possible.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Content -->
+            <div class="basic-N35" id="PotableContent">
+                <div class="contents-container container-md">
+                    <div class="contents-inner">
+
+                        <div class="detail-section">
+
+                            <!-- Feature 1 -->
+                            <div class="feature-item">
+                                <div class="feature-text">
+                                    <h3 class="feature-tit">Vision & Process</h3>
+                                    <p class="feature-desc">
+                                        Potable aims to promote the plant growth process by creating encouraging
+                                        pots.<br /><br />
+                                        <strong>Porting process:</strong> The seedling transplanting process is
+                                        important for plant
+                                        lifespan.<br /><br />
+                                        <strong>Additional Features:</strong> LCD shows the humidity and the temperature
+                                        of soil.
+
+                                    </p>
+                                </div>
+                                <div class="feature-media">
+                                    <img src="./resources/images/potable_process.png" alt="Pot-able Vision" />
+                                </div>
+                            </div>
+
+                            <!-- Feature 2: Modeling -->
+                            <div class="feature-item" style="display: block;">
+                                <div class="feature-text" style="margin-bottom: 2rem;">
+                                    <h3 class="feature-tit">Modeling</h3>
+                                </div>
+                                <div class="feature-media" style="width: 100%; max-width: 100%; aspect-ratio: auto;">
+                                    <img src="./resources/images/potable_modeling.png" alt="Pot-able Modeling"
+                                        style="width: 100%; height: auto;" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Feature 3: Prototyping -->
+                        <div class="feature-item" style="display: block;">
+                            <div class="feature-text" style="margin-bottom: 2rem;">
+                                <h3 class="feature-tit">Prototyping</h3>
+                            </div>
+
+                            <h4
+                                style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 500; color: #666;">
+                                1st version</h4>
+                            <div class="feature-media" style="width: 100%; max-width: 100%; aspect-ratio: auto;">
+                                <img id="proto1" src="./resources/images/potable_proto_1.png" alt="1st Version"
+                                    style="width: 100%; height: auto;" />
+                            </div>
+
+                            <h4
+                                style="margin-top: 3rem; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 500; color: #666;">
+                                2nd version</h4>
+                            <div class="feature-media"
+                                style="width: auto; max-width: 100%; aspect-ratio: auto; display: inline-block; background: transparent; border: none; box-shadow: none;">
+                                <img id="proto2" src="./resources/images/potable_proto_2.png" alt="2nd Version"
+                                    style="height: auto; display: block;" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Sync height of proto2 to matches proto1
+        function syncHeights() {
+            const img1 = document.getElementById('proto1');
+            const img2 = document.getElementById('proto2');
+
+            if (img1 && img2 && img1.complete) {
+                img2.style.height = img1.clientHeight + 'px';
+            }
+        }
+
+        window.addEventListener('load', syncHeights);
+        window.addEventListener('resize', syncHeights);
+        // Also try immediately in case already loaded
+        setTimeout(syncHeights, 100);
+        setTimeout(syncHeights, 500);
+        setTimeout(syncHeights, 1000); // multiple checks for image load safety
+    </script>
+
+    <footer class="th-layout-footer">
+        <div class="footer-container container-md">
+            <div class="footer-top">
+                <ul class="footer-snslist">
+                    <li class="footer-snsitem">
+                        <a class="footer-snslink" href="https://www.instagram.com/ryujeongmin3812" target="_blank">
+                            <img src="./resources/images/instagram_new.png" alt="Instagram" />
+                        </a>
+                    </li>
+                    <li class="footer-snsitem">
+                        <a class="footer-snslink"
+                            href="https://www.linkedin.com/in/%EC%A0%95%EB%AF%BC-%EB%A5%98-4656252a9/" target="_blank">
+                            <img src="./resources/images/linkedin.png" alt="LinkedIn" />
+                        </a>
+                    </li>
+                    <li class="footer-snsitem">
+                        <a class="footer-snslink" href="https://github.com/ryujeongmin" target="_blank">
+                            <img src="./resources/images/git.png" alt="GitHub" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <address class="footer-txt">
+                    <p>r10010jm@gmail.com</p>
+                </address>
+                <div class="footer-txt">
+                    <p>Dec 2025 Jeongmin Ryu</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./resources/js/setting.js"></script>
+    <script src="./resources/js/plugin.js"></script>
+    <script src="./resources/js/templatehouse.js"></script>
+    <script src="./resources/js/style.js"></script>
+</body>
+
+</html>
