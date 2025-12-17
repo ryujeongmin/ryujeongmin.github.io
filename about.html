@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Jeongmin Ryu</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./resources/css/setting.css" />
+    <link rel="stylesheet" href="./resources/css/plugin.css" />
+    <link rel="stylesheet" href="./resources/css/templatehouse.css" />
+    <link rel="stylesheet" href="./resources/css/style.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .about-section {
+            padding: 8rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .resume-header {
+            margin-bottom: 4rem;
+        }
+
+        .resume-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .resume-contact {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color-light);
+            line-height: 1.6;
+        }
+
+        .resume-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .resume-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .item-location {
+            font-size: 0.9rem;
+            color: var(--text-color-light);
+        }
+
+        .item-subtitle {
+            font-style: italic;
+            color: var(--text-color-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .item-date {
+            font-size: 0.9rem;
+            color: var(--text-color-light);
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .item-desc ul {
+            list-style-type: disc;
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .item-desc li {
+            margin-bottom: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 4rem 1rem;
+            }
+
+            .item-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="th-layout-header glass-panel"
+        style="background: rgba(15, 23, 42, 0.6); border: none; border-radius: 0;">
+        <div class="header-container container-lg">
+            <h1 class="header-title">
+                <a href="./index.html">
+                    <img src="./resources/icons/Jeongmin Ryu.svg" alt="Jeongmin Ryu Logo" />
+                </a>
+            </h1>
+
+            <nav class="header-gnb">
+                <ul class="header-gnblist">
+                    <li>
+                        <a class="header-gnblink" href="./about.html">ABOUT</a>
+                    </li>
+                    <li>
+                        <a class="header-gnblink" href="./index.html#PkM75YP0Bf">PROJECTS</a>
+                    </li>
+                    <li>
+                        <a class="header-gnblink" href="./ai_projects.html">PROJECT WITH AI</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="btn-momenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="container-md">
+
+                <!-- Header -->
+                <div class="resume-header">
+                    <h1 class="resume-name">Jeongmin Ryu</h1>
+                    <div class="resume-contact">
+                        <p>+82 1027497643 | Seoul, Korea | r10010jm@gmail.com</p>
+                        <p>Portfolio: <a href="https://ryujeongmin.github.io/" target="_blank"
+                                style="text-decoration: underline;">https://ryujeongmin.github.io/</a></p>
+                    </div>
+                </div>
+
+                <!-- EDUCATION -->
+                <div class="resume-category">
+                    <h2 class="category-title">EDUCATION</h2>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Korea Advanced Institution of Science and Technology (KAIST) /
+                                Master of Engineering</div>
+                            <div class="item-location">Daejeon, Korea</div>
+                        </div>
+                        <div class="item-row">
+                            <div class="item-subtitle">Industrial Design, Codesign Interaction Design Research Lab,
+                                Professor Tek-Jin Nam</div>
+                            <div class="item-date">Mar 2023 - Feb 2025</div>
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Yonsei University / Bachelor of Engineering</div>
+                            <div class="item-location">Seoul, Korea</div>
+                        </div>
+                        <div class="item-row">
+                            <div class="item-subtitle">Mechanical Engineering</div>
+                            <div class="item-date">Mar 2018 - Feb 2023</div>
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">University of California, Berkeley / Exchange Student</div>
+                            <div class="item-location">Berkeley, U.S.A</div>
+                        </div>
+                        <div class="item-row">
+                            <div class="item-subtitle">Mechanical Engineering</div>
+                            <div class="item-date">Jan 2022 - June 2022</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXPERIENCE -->
+                <div class="resume-category">
+                    <h2 class="category-title">EXPERIENCE</h2>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Samsung Electronics, Engineer</div>
+                            <div class="item-location">Suwon, Korea</div>
+                        </div>
+                        <div class="item-row">
+                            <div class="item-subtitle">Next Product Team (Ballie)</div>
+                            <div class="item-date">March 2025 - Present</div>
+                        </div>
+                        <div class="item-desc">
+                            Working as a mechanical designer, developing a home robot named ‘Ballie’.
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Korea Advanced Institution of Science and Technology (KAIST), Intern
+                            </div>
+                            <div class="item-location">Daejeon, Korea</div>
+                        </div>
+                        <div class="item-row">
+                            <div class="item-subtitle">Affective Systems & Cognition Lab, Professor Chang Hee Lee</div>
+                            <div class="item-date">Jun 2022 - Aug 2022</div>
+                        </div>
+                        <div class="item-desc">
+                            Developed prototypes using Arduino, 3D printing, and laser cutting.
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">DAIER, Intern</div>
+                            <div class="item-location">Seoul, Korea</div>
+                        </div>
+                        <div class="item-row">
+                            <div class="item-subtitle">Design Team</div>
+                            <div class="item-date">Dec 2020 - June 2021</div>
+                        </div>
+                        <div class="item-desc">
+                            Worked as a Concept Designer and Embedded System Developer.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PUBLICATIONS -->
+                <div class="resume-category">
+                    <h2 class="category-title">PUBLICATIONS</h2>
+
+                    <div class="resume-item">
+                        <div class="item-desc">
+                            Ryu, J., Kim, T., & Kim, C. (2024). <strong>Chair-mounted avatar robot for enhancing
+                                interaction between remote and on-site students in a hybrid learning
+                                environment.</strong> In Proceedings of the Korean HCI Society Conference (pp. 190-195).
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-desc">
+                            Ryu, J., Kim, C., & Nam, T. (2024). <strong>A Robot Avatar and Controller System to Support
+                                Remote Conversations Between Elderly Parents and Their Children.</strong> Proceedings of
+                            the Korean Society of Design Science Conference, 130-131.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECTS & AWARDS -->
+                <div class="resume-category">
+                    <h2 class="category-title">PROJECTS & AWARDS</h2>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Interaction Design for AI Diary Appliance Communication (Samsung
+                                Electronics)</div>
+                            <div class="item-date">Nov 2023 - Mar 2024</div>
+                        </div>
+                        <div class="item-desc">Developed an LLM-based Diary-Writing Home Appliance</div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Deep Tech Support Program (KAIST)</div>
+                            <div class="item-date">Jul 2023 - Feb 2024</div>
+                        </div>
+                        <div class="item-desc">Launched IoT device start-up named ‘Sweet Home’ (Supported 20 million
+                            won)</div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Asia-Oceania Top University League on Engineering Conference
+                                (University of Moratuwa)</div>
+                            <div class="item-date">Nov 2023</div>
+                        </div>
+                        <div class="item-desc">
+                            <strong>Awarded: 2nd Runner Up</strong><br>
+                            Developed a Product for Developed Countries
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">HACKAIST (KAIST)</div>
+                            <div class="item-date">Jun 2022</div>
+                        </div>
+                        <div class="item-desc">
+                            <strong>Awarded: Honorable Mention</strong><br>
+                            Developed a Synesthesia-themed Product
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Enabletech (University of California, Berkeley)</div>
+                            <div class="item-date">Jan 2022 - May 2022</div>
+                        </div>
+                        <div class="item-desc">Developed a product for a student with a leg impairment</div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Makerthon (YONSEI UNIV)</div>
+                            <div class="item-date">Nov 2021</div>
+                        </div>
+                        <div class="item-desc">
+                            <strong>Awarded: Grand prize</strong><br>
+                            Prototyped an auto-nurturing system for planting
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">AIM project (YONSEI UNIV)</div>
+                            <div class="item-date">Jul 2021 - Dec 2021</div>
+                        </div>
+                        <div class="item-desc">
+                            <strong>Awarded: Encouragement award</strong><br>
+                            Developed a system that combines an object-recognition robot arm and a self-driving robot.
+                        </div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Design Thinking Summer Program (National University of Singapore)
+                            </div>
+                            <div class="item-date">Jul 2021</div>
+                        </div>
+                        <div class="item-desc">Designed a system concept for hearing-impaired people.</div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Design Thinking Camp (Korea Institute of Design Promotion)</div>
+                            <div class="item-date">Jul 2021</div>
+                        </div>
+                        <div class="item-desc">Designed a system concept for 'Single House & Eco-Friendly Living'</div>
+                    </div>
+                </div>
+
+                <!-- LEADERSHIP & VOLUNTEER -->
+                <div class="resume-category">
+                    <h2 class="category-title">LEADERSHIP & VOLUNTEER</h2>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Interaction Prototyping Teaching Assistant (KAIST)</div>
+                            <div class="item-date">Sep 2023 - Dec 2023</div>
+                        </div>
+                        <div class="item-desc">Assisted in Raspberry Pi prototyping class for university sophomores.
+                            Daejeon, Korea</div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Mentoring League (YONSEI UNIV)</div>
+                            <div class="item-date">Mar 2021 - Dec 2021</div>
+                        </div>
+                        <div class="item-desc">Taught English to middle school students. Incheon, Korea</div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Residential Assistant (YONSEI UNIV)</div>
+                            <div class="item-date">Aug 2020 - Dec 2021</div>
+                        </div>
+                        <div class="item-desc">Developed and led various programs for first-year students. Incheon,
+                            Korea</div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Servant Leadership (YONSEI UNIV)</div>
+                            <div class="item-date">Sep 2020 - Dec 2020</div>
+                        </div>
+                        <div class="item-desc">Taught science to 4 elementary students from multicultural families.
+                            Seoul, Korea</div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Dream Class (SAMSUNG)</div>
+                            <div class="item-date">Jan 2020</div>
+                        </div>
+                        <div class="item-desc">Mentored and taught English during a 3-week middle school camp program.
+                            Suwon, Korea</div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Korea University Shinhan Card Mentoring Camp (Shinhan Card, KOREA
+                                UNIV)</div>
+                            <div class="item-date">Jul 2019 - Aug 2019</div>
+                        </div>
+                        <div class="item-desc">Mentored middle school students at Shinhan Card Camp. Sejong, Korea</div>
+                    </div>
+
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Korea Electric Power Corporation (KEPCO) Camp</div>
+                            <div class="item-date">Jul 2018</div>
+                        </div>
+                        <div class="item-desc">Mentored middle school students at a school science camp. Yong-in, Korea
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CERTIFICATES -->
+                <div class="resume-category">
+                    <h2 class="category-title">CERTIFICATES</h2>
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Photoshop (CS6)</div>
+                            <div class="item-date">Nov 2019</div>
+                        </div>
+                        <div class="item-desc">Adobe Certified Associate Visual Communication Using Adobe Photoshop
+                        </div>
+                    </div>
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">ITQ(PPT)</div>
+                            <div class="item-date">Dec 2011</div>
+                        </div>
+                        <div class="item-desc">Information Technology Qualification: PPT_Grade A</div>
+                    </div>
+                    <div class="resume-item">
+                        <div class="item-row">
+                            <div class="item-title">Driver's License</div>
+                            <div class="item-date">Feb 2018</div>
+                        </div>
+                        <div class="item-desc">Commissioner of Daejeon Metropolitan Police Agency</div>
+                    </div>
+                </div>
+
+                <!-- SKILLS -->
+                <div class="resume-category">
+                    <h2 class="category-title">SKILLS</h2>
+                    <div class="resume-item">
+                        <div class="item-desc">
+                            <strong>Modeling:</strong> NX, Creo, Fusion360<br>
+                            <strong>Designs:</strong> Adobe Photoshop, Illustrator<br>
+                            <strong>Software:</strong> Arduino, C, Node.js<br>
+                            <strong>Making:</strong> 3D prints, Laser cutting<br>
+                            <strong>Languages:</strong> Korean (Native), English (Fluent), Chinese (Basic)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="th-layout-footer">
+        <div class="container-md">
+            <div class="footer-top">
+                <h2 class="footer-logo" style="margin: 0 auto;">
+                    <a href="https://ryujeongmin.github.io/">
+                        <img src="./resources/images/white.png" alt="Logo" style="height: 30px;" />
+                    </a>
+                </h2>
+                <ul class="footer-snslist">
+                    <li class="footer-snsitem">
+                        <a href="https://www.instagram.com/ryujeongmin3812?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw=="
+                            target="_blank">
+                            <img src="./resources/images/instagram_new.png" alt="Instagram" />
+                        </a>
+                    </li>
+                    <li class="footer-snsitem">
+                        <a href="https://www.linkedin.com/in/%EC%A0%95%EB%AF%BC-%EB%A5%98-4656252a9/" target="_blank">
+                            <img src="./resources/images/linkedin.png" alt="LinkedIn" />
+                        </a>
+                    </li>
+                    <li class="footer-snsitem">
+                        <a href="https://github.com/ryujeongmin" target="_blank">
+                            <img src="./resources/images/git.png" alt="GitHub" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <address class="footer-txt">
+                    <p class="p2">r10010jm@gmail.com</p>
+                </address>
+                <div class="footer-txt">
+                    <p class="p2">Dec 2025 Jeongmin Ryu</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./resources/js/style.js"></script>
+</body>
+
+</html>
