@@ -80,12 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="fullmenu-wrapper">
             <ul class="fullmenu-gnblist">
               <li class="fullmenu-gnbitem">
-                <a class="fullmenu-gnblink" href="https://docs.google.com/document/d/1THJXUJQiZ22WHPw7G3FWacK-ZLLbnJ77/edit?usp=sharing" target="_blank">ABOUT</a>
+                <a class="fullmenu-gnblink" href="./about.html">ABOUT</a>
               </li>
               <li class="fullmenu-gnbitem">
-                <a class="fullmenu-gnblink" href="./index.html#PkM75YP0Bf">PROJECTs</a>
+                <a class="fullmenu-gnblink" href="./index.html#PkM75YP0Bf">PROJECTS</a>
               </li>
-
+              <li class="fullmenu-gnbitem">
+                <a class="fullmenu-gnblink" href="./ai_projects.html">PROJECT WITH AI</a>
+              </li>
             </ul>
           </div>
           <button class="fullmenu-close" aria-label="Close Menu"></button>
