@@ -1,630 +1,281 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
+  <!-- CSS -->
+  <link rel="stylesheet" href="./resources/css/setting.css" />
+  <link rel="stylesheet" href="./resources/css/plugin.css" />
+  <link rel="stylesheet" href="./resources/css/templatehouse.css" />
+  <link rel="stylesheet" href="./resources/css/style.css" />
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jeongmin Ryu | Portfolio</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
-  <style>
-    /* ── Tokens ── */
-    :root {
-      --bg:   #f4f1ea;
-      --bg2:  #edeae1;
-      --bg3:  #e4e0d5;
-      --ink:  #0f0e0b;
-      --ink2: #48453e;
-      --ink3: #9a9690;
-      --red:  #b83428;
-      --line: rgba(15,14,11,0.12);
-      --nav-h: 54px;
-      --display: 'Playfair Display', Georgia, serif;
-      --ui: 'Outfit', -apple-system, sans-serif;
-      --mono: 'Space Mono', 'Courier New', monospace;
-    }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700&display=swap"
+    rel="stylesheet">
 
-    /* ── Reset ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--ink); font-family: var(--ui); overflow-x: hidden; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    img { display: block; }
 
-    /* ── Typography ── */
-    .t-label {
-      font-family: var(--mono); font-size: 9px; font-weight: 400;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--ink3); line-height: 1.4;
-    }
-    .t-label-inv { color: rgba(244,241,234,0.45); }
-    .t-label-red { color: var(--red); }
-
-    .t-display {
-      font-family: var(--display);
-      font-size: clamp(52px, 7vw, 100px);
-      font-weight: 900; line-height: 0.92;
-      letter-spacing: -0.02em; color: var(--ink);
-    }
-    .t-h1 {
-      font-family: var(--display);
-      font-size: clamp(22px, 2.5vw, 36px);
-      font-weight: 700; line-height: 1.15;
-      letter-spacing: -0.01em; color: var(--ink);
-    }
-    .t-h2 {
-      font-family: var(--display);
-      font-size: clamp(16px, 1.5vw, 22px);
-      font-weight: 700; line-height: 1.25;
-      letter-spacing: -0.01em; color: var(--ink);
-    }
-    .t-body {
-      font-family: var(--ui); font-size: 13px; font-weight: 300;
-      line-height: 1.8; color: var(--ink2);
-    }
-    .t-body-inv { color: rgba(244,241,234,0.65); }
-    .t-sm {
-      font-family: var(--ui); font-size: 11px; font-weight: 300;
-      line-height: 1.65; color: var(--ink3);
-    }
-
-    /* ── Nav ── */
-    nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-      height: var(--nav-h);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-logo {
-      font-family: var(--display); font-size: 15px; font-weight: 700;
-      color: var(--ink); letter-spacing: -0.01em;
-    }
-    .nav-tag {
-      font-family: var(--mono); font-size: 9px;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3);
-    }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--ink2);
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--ink); }
-
-    /* ── Grid System ── */
-    .row {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 0; row-gap: 0;
-      border-top: 1px solid var(--line);
-    }
-    .row > * {
-      background: var(--bg);
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .row > *:last-child { border-right: none; }
-
-    .c1  { grid-column: span 1; }  .c2  { grid-column: span 2; }
-    .c3  { grid-column: span 3; }  .c4  { grid-column: span 4; }
-    .c5  { grid-column: span 5; }  .c6  { grid-column: span 6; }
-    .c7  { grid-column: span 7; }  .c8  { grid-column: span 8; }
-    .c9  { grid-column: span 9; }  .c10 { grid-column: span 10; }
-    .c11 { grid-column: span 11; } .c12 { grid-column: span 12; }
-
-    /* ── Heights ── */
-    .h-hero  { height: calc(100vh - var(--nav-h)); min-height: 520px; }
-    .h-tall  { height: 500px; }
-    .h-mid   { height: 360px; }
-    .h-short { height: 240px; }
-    .h-label { height: 64px; }
-
-    /* ── Background Modifiers ── */
-    .on-dark { background: var(--ink) !important; }
-    .on-mid  { background: var(--bg2) !important; }
-    .on-dim  { background: var(--bg3) !important; }
-
-    /* ── Hero ── */
-    .hero-cell {
-      grid-column: span 12;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 3.5rem 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-tag {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--ink3);
-      margin-bottom: 1.25rem;
-    }
-    .hero-sub {
-      font-family: var(--ui); font-size: clamp(14px, 1.4vw, 17px);
-      font-weight: 300; color: var(--ink2); margin-top: 1.75rem;
-      max-width: 480px; line-height: 1.7;
-    }
-    .hero-scroll {
-      position: absolute; bottom: 3rem; right: 3rem;
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--ink3);
-      display: flex; align-items: center; gap: 1rem;
-    }
-    .hero-scroll::before {
-      content: ''; display: block;
-      width: 40px; height: 1px; background: var(--ink3);
-    }
-    .hero-index {
-      position: absolute; top: 2.5rem; right: 3rem;
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
-      color: var(--ink3); text-transform: uppercase;
-    }
-
-    /* ── Stat Strip ── */
-    .stat-strip {
-      grid-column: span 12;
-      display: flex; align-items: stretch;
-      background: var(--bg2) !important;
-    }
-    .stat-item {
-      flex: 1; padding: 1.5rem 2rem;
-      border-right: 1px solid var(--line);
-      display: flex; flex-direction: column; gap: 0.3rem;
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-num {
-      font-family: var(--display); font-size: clamp(22px, 2.2vw, 34px);
-      font-weight: 900; line-height: 1; color: var(--ink);
-    }
-    .stat-lbl {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--ink3);
-    }
-
-    /* ── Section Label ── */
-    .sec-label {
-      grid-column: span 12;
-      display: flex; align-items: center; gap: 2rem;
-      padding: 0 2rem; height: 52px;
-      background: var(--bg2) !important;
-      border-bottom: 1px solid var(--line);
-    }
-    .sec-num   { font-family: var(--mono); font-size: 9px; color: var(--ink3); letter-spacing: 0.2em; }
-    .sec-title { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--ink); }
-    .sec-rule  { flex: 1; height: 1px; background: var(--line); }
-
-    /* ── Image Cells ── */
-    .img-cell { position: relative; overflow: hidden; }
-    .img-cell img {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.7s cubic-bezier(.25,.46,.45,.94);
-    }
-    .img-cell:hover img { transform: scale(1.05); }
-
-    .overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(12,11,9,0.78) 0%, transparent 58%);
-      pointer-events: none; z-index: 1;
-    }
-    .overlay-info {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 1.5rem 2rem; z-index: 2;
-      transition: opacity 0.3s;
-    }
-    .img-cell:hover .overlay-info { opacity: 0; }
-
-    .hover-panel {
-      position: absolute; inset: 0;
-      background: rgba(12,11,9,0.90);
-      opacity: 0; transition: opacity 0.3s;
-      padding: 2rem; display: flex; flex-direction: column; justify-content: flex-end;
-      z-index: 3;
-    }
-    .img-cell:hover .hover-panel { opacity: 1; }
-
-    /* ── Marquee ── */
-    .marquee-wrap {
-      grid-column: span 12;
-      overflow: hidden; background: var(--bg2) !important;
-      padding: 0.9rem 0;
-    }
-    .marquee-inner {
-      display: flex; gap: 2.5rem; white-space: nowrap;
-      animation: marquee 28s linear infinite; width: max-content;
-    }
-    .m-item { font-family: var(--ui); font-size: 12px; font-weight: 400; color: var(--ink2); }
-    .m-sep  { color: var(--red); }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ── Scroll Reveal ── */
-    .rev { opacity: 0; transform: translateY(12px); transition: opacity 0.55s ease, transform 0.55s ease; }
-    .rev.on { opacity: 1; transform: none; }
-
-    /* ── Button ── */
-    .btn-outline {
-      display: inline-block;
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-      padding: 0.65rem 1.4rem; border: 1px solid var(--line); color: var(--ink2);
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .btn-outline:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-    .btn-inv { border-color: rgba(244,241,234,0.25); color: rgba(244,241,234,0.7); }
-    .btn-inv:hover { background: rgba(244,241,234,0.1); color: var(--bg); }
-
-    /* ── Footer ── */
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      border-top: 1px solid var(--line);
-      background: var(--ink);
-    }
-    .footer-grid > * {
-      border-right: 1px solid rgba(244,241,234,0.08);
-      border-bottom: 1px solid rgba(244,241,234,0.08);
-    }
-    .footer-grid > *:last-child { border-right: none; }
-
-    .footer-main {
-      grid-column: span 8;
-      padding: 3.5rem 3rem;
-      display: flex; flex-direction: column; justify-content: space-between;
-      min-height: 220px;
-    }
-    .footer-side {
-      grid-column: span 4;
-      padding: 3.5rem 3rem;
-      display: flex; flex-direction: column; justify-content: space-between;
-    }
-    .footer-logo {
-      font-family: var(--display); font-size: clamp(28px, 3vw, 42px);
-      font-weight: 900; color: var(--bg); letter-spacing: -0.02em; line-height: 1;
-    }
-    .footer-email {
-      font-family: var(--display); font-size: clamp(16px, 1.8vw, 26px);
-      font-weight: 700; color: var(--bg);
-      transition: opacity 0.2s;
-    }
-    .footer-email:hover { opacity: 0.7; }
-    .footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
-    .footer-links a {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
-      text-transform: uppercase; color: rgba(244,241,234,0.45);
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--bg); }
-    .footer-copy {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
-      color: rgba(244,241,234,0.2);
-    }
-
-    /* ── Mobile ── */
-    @media (max-width: 860px) {
-      .nav-tag { display: none; }
-      .nav-links { gap: 1.25rem; }
-
-      .c7, .c5 { grid-column: span 12; }
-      .c4 { grid-column: span 6; }
-      .h-tall { height: 320px; }
-      .h-mid  { height: 270px; }
-
-      .footer-main { grid-column: span 12; }
-      .footer-side {
-        grid-column: span 12;
-        border-left: none;
-        border-top: 1px solid rgba(244,241,234,0.08);
-      }
-    }
-
-    @media (max-width: 560px) {
-      .nav-links { display: none; }
-      .c4 { grid-column: span 12; }
-      .h-mid { height: 240px; }
-      .stat-item:nth-child(3),
-      .stat-item:nth-child(4) { display: none; }
-    }
-  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="./index.html" class="nav-logo">Jeongmin Ryu</a>
-  <span class="nav-tag">ME · HCI · Seoul · 2025</span>
-  <div class="nav-links">
-    <a href="./about.html">About</a>
-    <a href="#projects">Projects</a>
-    <a href="./ai_projects.html">AI Projects</a>
-  </div>
-</nav>
+  <!-- Header -->
+  <header class="th-layout-header glass-panel"
+    style="background: rgba(15, 23, 42, 0.6); border: none; border-radius: 0;">
+    <div class="header-container container-lg">
+      <h1 class="header-title">
+        <a href="./index.html">
+          <img src="./resources/icons/Jeongmin Ryu.svg" alt="Jeongmin Ryu Logo" />
+        </a>
+      </h1>
 
-<main style="padding-top: var(--nav-h);">
+      <nav class="header-gnb">
+        <ul class="header-gnblist">
+          <li>
+            <a class="header-gnblink" href="./about.html">ABOUT</a>
+          </li>
+          <li>
+            <a class="header-gnblink" href="./index.html#PkM75YP0Bf">PROJECTS</a>
+          </li>
+          <li>
+            <a class="header-gnblink" href="./ai_projects.html">PROJECT WITH AI</a>
+          </li>
 
-  <!-- ── HERO ── -->
-  <div class="row">
-    <div class="hero-cell h-hero c12 on-dim">
-      <span class="hero-index t-label">Portfolio · 2025</span>
-      <p class="hero-tag rev">Mechanical Designer · HCI Researcher</p>
-      <h1 class="t-display rev" style="transition-delay:.07s">Jeongmin<br>Ryu</h1>
-      <p class="hero-sub rev" style="transition-delay:.14s">Creating interactive experiences at the intersection of mechanical engineering and human-computer interaction.</p>
-      <span class="hero-scroll">Scroll</span>
+        </ul>
+      </nav>
+
+      <!-- Mobile Menu Button (Visible on mobile) -->
+      <button class="btn-momenu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
-  </div>
+  </header>
 
-  <!-- ── STAT STRIP ── -->
-  <div class="row">
-    <div class="stat-strip rev">
-      <div class="stat-item">
-        <div class="stat-num">11+</div>
-        <div class="stat-lbl">Projects</div>
+  <main>
+    <!-- Hero Section -->
+    <section class="basic-N29" id="ofm75YP075">
+      <div class="container-md">
+        <div class="textset" data-aos="fade-up">
+          <h2 class="h1 textset-subtit">Hello, my name is <br class="mobile-only" /><span class="text-gradient"
+              id="typing-text"></span><span class="typing-cursor">|</span></h2>
+          <p class="p1 textset-desc">I create interactive experiences</p>
+        </div>
+
+        <div class="down-arrow">
+          <a href="#PkM75YP0Bf">
+            <img src="./resources/images/v.png" alt="Scroll Down" />
+          </a>
+        </div>
+
+        <div class="click">
+          <p data-aos="fade-in" data-aos-delay="500">* Click the project to get more info</p>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">5+</div>
-        <div class="stat-lbl">Years</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">3</div>
-        <div class="stat-lbl">Awards</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">ME · HCI</div>
-        <div class="stat-lbl">Disciplines</div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- ── PROJECTS ── -->
-  <section id="projects">
+    <!-- Projects Grid -->
+    <section class="basic-N33" id="PkM75YP0Bf">
+      <div class="container-md">
+        <div class="row">
 
-    <!-- Section label -->
-    <div class="row">
-      <div class="sec-label rev">
-        <span class="sec-num">01</span>
-        <div class="sec-rule"></div>
-        <span class="sec-title">Projects</span>
-        <div class="sec-rule"></div>
-      </div>
-    </div>
 
-    <!-- Row A: Ballie (7) + FoldiFolda (5) -->
-    <div class="row">
-      <a href="./ballie.html" class="img-cell h-tall c7 rev">
-        <img src="./resources/images/ballie.jpg" alt="Ballie" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">Samsung Electronics · 2025</p>
-          <p class="t-h2" style="color:var(--bg)">Ballie</p>
-        </div>
-        <div class="hover-panel">
-          <p class="t-label t-label-red" style="margin-bottom:.5rem">Product Design</p>
-          <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">Ballie</p>
-          <p class="t-body t-body-inv">Spherical home robot product design for Samsung Electronics, focusing on intuitive human-robot interaction.</p>
-        </div>
-      </a>
-
-      <a href="./page_m775eiga.html" class="img-cell h-tall c5 rev" style="transition-delay:.07s">
-        <img src="./resources/images/Group 890.png" alt="FoldiFolda" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">KAIST · 2024</p>
-          <p class="t-h2" style="color:var(--bg)">FoldiFolda</p>
-        </div>
-        <div class="hover-panel">
-          <p class="t-label t-label-red" style="margin-bottom:.5rem">Foldable Design</p>
-          <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">FoldiFolda</p>
-          <p class="t-body t-body-inv">Modular foldable structure exploring new spatial configurations and interaction paradigms.</p>
-        </div>
-      </a>
-    </div>
-
-    <!-- Row B: Bubble Maker (4) + Image Perfume (4) + Umbrellatic (4) -->
-    <div class="row">
-      <a href="./bubble_maker.html" class="img-cell h-mid c4 rev">
-        <img src="./resources/images/bubble_maker.png" alt="Bubble Maker" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">KAIST · IoT · 2023</p>
-          <p class="t-h2" style="color:var(--bg)">Bubble Maker</p>
-        </div>
-        <div class="hover-panel">
-          <p class="t-label t-label-red" style="margin-bottom:.5rem">IoT · Interaction</p>
-          <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">Bubble Maker</p>
-          <p class="t-body t-body-inv">Interactive bubble-generating device bridging digital triggers and physical sensory experiences.</p>
-        </div>
-      </a>
-
-      <a href="./image_perfume.html" class="img-cell h-mid c4 rev" style="transition-delay:.07s">
-        <img src="./resources/images/Frame 397.png" alt="Image Perfume" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">KAIST · 2023</p>
-          <p class="t-h2" style="color:var(--bg)">Image Perfume</p>
-        </div>
-        <div class="hover-panel">
-          <p class="t-label t-label-red" style="margin-bottom:.5rem">Multisensory Design</p>
-          <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">Image Perfume</p>
-          <p class="t-body t-body-inv">Translating visual imagery into scent — a multisensory experience design project.</p>
-        </div>
-      </a>
-
-      <a href="./page_m77avkwr.html" class="img-cell h-mid c4 rev" style="transition-delay:.14s">
-        <img src="./resources/images/Frame 398.png" alt="Umbrellatic" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">Yonsei · 2022</p>
-          <p class="t-h2" style="color:var(--bg)">Umbrellatic</p>
-        </div>
-        <div class="hover-panel">
-          <p class="t-label t-label-red" style="margin-bottom:.5rem">Product Design</p>
-          <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">Umbrellatic</p>
-          <p class="t-body t-body-inv">Smart umbrella system with automatic sensing and compact storage mechanism.</p>
-        </div>
-      </a>
-    </div>
-
-    <!-- Row C: Page Turner (5) + Pot-able (7) -->
-    <div class="row">
-      <a href="./page_m77avu8k.html" class="img-cell h-tall c5 rev">
-        <img src="./resources/images/Frame 395.png" alt="Page Turner" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">KAIST · 2024</p>
-          <p class="t-h2" style="color:var(--bg)">Page Turner</p>
-        </div>
-        <div class="hover-panel">
-          <p class="t-label t-label-red" style="margin-bottom:.5rem">HCI · Accessibility</p>
-          <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">Page Turner</p>
-          <p class="t-body t-body-inv">Assistive device enabling hands-free book page turning for users with limited mobility.</p>
-        </div>
-      </a>
-
-      <a href="./potable.html" class="img-cell h-tall c7 rev" style="transition-delay:.07s">
-        <img src="./resources/images/potable.jpg" alt="Pot-able" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">KAIST · 2023</p>
-          <p class="t-h2" style="color:var(--bg)">Pot-able</p>
-        </div>
-        <div class="hover-panel">
-          <p class="t-label t-label-red" style="margin-bottom:.5rem">Product Design</p>
-          <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">Pot-able</p>
-          <p class="t-body t-body-inv">Portable smart plant pot with integrated monitoring system for urban gardeners.</p>
-        </div>
-      </a>
-    </div>
-
-    <!-- Row D: Self-Driving (4) + Smart Pet Farm (4) + ECO&CO (4) -->
-    <div class="row">
-      <a href="./page_m77cfzdp.html" class="img-cell h-mid c4 rev">
-        <img src="./resources/images/Frame 393.png" alt="Self-Driving Mobility" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">Yonsei · 2022</p>
-          <p class="t-h2" style="color:var(--bg)">Self-Driving Mobility</p>
-        </div>
-        <div class="hover-panel">
-          <p class="t-label t-label-red" style="margin-bottom:.5rem">Robotics · Design</p>
-          <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">Self-Driving Mobility</p>
-          <p class="t-body t-body-inv">Autonomous mobility platform with integrated robot arm for last-mile delivery scenarios.</p>
-        </div>
-      </a>
-
-      <a href="./page_m77bx1f4.html" class="img-cell h-mid c4 rev" style="transition-delay:.07s">
-        <img src="./resources/images/Frame 396.png" alt="Smart Pet Farm" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">Yonsei · 2021</p>
-          <p class="t-h2" style="color:var(--bg)">Smart Pet Farm</p>
-        </div>
-        <div class="hover-panel">
-          <p class="t-label t-label-red" style="margin-bottom:.5rem">IoT · Product</p>
-          <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">Smart Pet Farm</p>
-          <p class="t-body t-body-inv">Automated pet care system with smart feeding, monitoring, and environmental control.</p>
-        </div>
-      </a>
-
-      <a href="./page_m77c9fs1.html" class="img-cell h-mid c4 rev" style="transition-delay:.14s">
-        <img src="./resources/images/Frame 394.png" alt="ECO&amp;CO Living House" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">Yonsei · 2021</p>
-          <p class="t-h2" style="color:var(--bg)">ECO&amp;CO Living House</p>
-        </div>
-        <div class="hover-panel">
-          <p class="t-label t-label-red" style="margin-bottom:.5rem">Architecture · Sustainability</p>
-          <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">ECO&amp;CO Living House</p>
-          <p class="t-body t-body-inv">Eco-conscious co-living space design integrating sustainable materials and shared community zones.</p>
-        </div>
-      </a>
-    </div>
-
-    <!-- Row E: Jason-Leg (12) -->
-    <div class="row">
-      <a href="./page_m77cp3ft.html" class="img-cell h-short c12 rev">
-        <img src="./resources/images/Frame 392.png" alt="Jason-Leg Self Driving Robot" style="object-position:center 30%" />
-        <div class="overlay"></div>
-        <div class="overlay-info">
-          <p class="t-label t-label-inv" style="margin-bottom:.35rem">Yonsei · 2020</p>
-          <p class="t-h2" style="color:var(--bg)">Jason-Leg Self Driving Robot</p>
-        </div>
-        <div class="hover-panel" style="flex-direction:row;align-items:flex-end;justify-content:space-between;gap:2rem">
-          <div>
-            <p class="t-label t-label-red" style="margin-bottom:.5rem">Robotics · Mechanical</p>
-            <p class="t-h2" style="color:var(--bg);margin-bottom:.65rem">Jason-Leg Self Driving Robot</p>
-            <p class="t-body t-body-inv">Legged autonomous robot with dynamic balance control and terrain adaptation.</p>
+          <!-- 0. Ballie -->
+          <div class="col cardset" data-aos="fade-up">
+            <a href="./ballie.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/ballie.jpg" alt="Ballie" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">Ballie</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
           </div>
-          <span class="btn-outline btn-inv" style="white-space:nowrap;flex-shrink:0">View →</span>
+
+          <!-- 1. FoldiFolda -->
+          <div class="col cardset" data-aos="fade-up" data-aos-delay="100">
+            <a href="./page_m775eiga.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/Group 890.png" alt="FoldiFolda" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">FoldiFolda</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
+          </div>
+
+
+          <!-- Bubble Maker -->
+          <div class="col cardset" data-aos="fade-up">
+            <a href="./bubble_maker.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/bubble_maker.png" alt="Bubble Maker" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">Bubble Maker</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 2. Image Perfume -->
+          <div class="col cardset" data-aos="fade-up">
+            <a href="image_perfume.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/Frame 397.png" alt="Image Perfume" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">Image Perfume</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 4. Umbrellatic -->
+          <div class="col cardset" data-aos="fade-up" data-aos-delay="100">
+            <a href="./page_m77avkwr.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/Frame 398.png" alt="Umbrellatic" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">Umbrellatic</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 5. Page Turner -->
+          <div class="col cardset" data-aos="fade-up" data-aos-delay="200">
+            <a href="./page_m77avu8k.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/Frame 395.png" alt="Page Turner" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">Page Turner</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Pot-able -->
+          <div class="col cardset" data-aos="fade-up">
+            <a href="./potable.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/potable.jpg" alt="Pot-able" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">Pot-able</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 6. Self-Driving Mobility with Robot Arm -->
+          <div class="col cardset" data-aos="fade-up">
+            <a href="./page_m77cfzdp.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/Frame 393.png" alt="Self-Driving Mobility" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">Self-Driving Mobility</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 7. Smart Pet Farm -->
+          <div class="col cardset" data-aos="fade-up" data-aos-delay="100">
+            <a href="./page_m77bx1f4.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/Frame 396.png" alt="Smart Pet Farm" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">Smart Pet Farm</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 8. ECO&CO Living House -->
+          <div class="col cardset" data-aos="fade-up" data-aos-delay="200">
+            <a href="./page_m77c9fs1.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/Frame 394.png" alt="ECO&CO Living House" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">ECO&CO Living House</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 9. Jason-Leg Self Driving Robot -->
+          <div class="col cardset" data-aos="fade-up">
+            <a href="./page_m77cp3ft.html" class="cardset-inner">
+              <figure class="cardset-figure">
+                <img class="cardset-img" src="./resources/images/Frame 392.png" alt="Jason-Leg Robot" />
+              </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-tit">Jason-Leg <br />Self Driving Robot</h2>
+                <span class="see-more">See More →</span>
+              </div>
+            </a>
+          </div>
+
         </div>
-      </a>
-    </div>
-
-  </section>
-
-  <!-- ── MARQUEE ── -->
-  <div class="row">
-    <div class="marquee-wrap rev">
-      <div class="marquee-inner">
-        <span class="m-item">Mechanical Engineering</span><span class="m-sep"> · </span>
-        <span class="m-item">HCI Research</span><span class="m-sep"> · </span>
-        <span class="m-item">Product Design</span><span class="m-sep"> · </span>
-        <span class="m-item">Prototyping</span><span class="m-sep"> · </span>
-        <span class="m-item">Arduino</span><span class="m-sep"> · </span>
-        <span class="m-item">3D Printing</span><span class="m-sep"> · </span>
-        <span class="m-item">NX · Creo · Fusion360</span><span class="m-sep"> · </span>
-        <span class="m-item">Samsung Electronics</span><span class="m-sep"> · </span>
-        <span class="m-item">KAIST</span><span class="m-sep"> · </span>
-        <span class="m-item">Yonsei University</span><span class="m-sep"> · </span>
-        <span class="m-item">UC Berkeley</span><span class="m-sep"> · </span>
-        <!-- Repeated for seamless loop -->
-        <span class="m-item">Mechanical Engineering</span><span class="m-sep"> · </span>
-        <span class="m-item">HCI Research</span><span class="m-sep"> · </span>
-        <span class="m-item">Product Design</span><span class="m-sep"> · </span>
-        <span class="m-item">Prototyping</span><span class="m-sep"> · </span>
-        <span class="m-item">Arduino</span><span class="m-sep"> · </span>
-        <span class="m-item">3D Printing</span><span class="m-sep"> · </span>
-        <span class="m-item">NX · Creo · Fusion360</span><span class="m-sep"> · </span>
-        <span class="m-item">Samsung Electronics</span><span class="m-sep"> · </span>
-        <span class="m-item">KAIST</span><span class="m-sep"> · </span>
-        <span class="m-item">Yonsei University</span><span class="m-sep"> · </span>
-        <span class="m-item">UC Berkeley</span><span class="m-sep"> · </span>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-</main>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-main">
-      <div class="footer-logo rev">Jeongmin<br>Ryu</div>
-      <div>
-        <p class="t-label" style="color:rgba(244,241,234,0.3);margin-bottom:.6rem">Get in touch</p>
-        <a href="mailto:r10010jm@gmail.com" class="footer-email rev">r10010jm@gmail.com</a>
+  <!-- Footer -->
+  <footer class="th-layout-footer">
+    <div class="container-md">
+      <div class="footer-top">
+        <h2 class="footer-logo" style="margin: 0 auto;">
+          <a href="https://ryujeongmin.github.io/">
+            <img src="./resources/images/white.png" alt="Logo" style="height: 30px;" />
+          </a>
+        </h2>
+        <ul class="footer-snslist">
+          <li class="footer-snsitem">
+            <a href="https://www.instagram.com/ryujeongmin3812?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw=="
+              target="_blank">
+              <img src="./resources/images/instagram_new.png" alt="Instagram" />
+            </a>
+          </li>
+          <li class="footer-snsitem">
+            <a href="https://www.linkedin.com/in/%EC%A0%95%EB%AF%BC-%EB%A5%98-4656252a9/" target="_blank">
+              <img src="./resources/images/linkedin.png" alt="LinkedIn" />
+            </a>
+          </li>
+          <li class="footer-snsitem">
+            <a href="https://github.com/ryujeongmin" target="_blank">
+              <img src="./resources/images/git.png" alt="GitHub" />
+            </a>
+          </li>
+        </ul>
       </div>
-    </div>
-    <div class="footer-side">
-      <div>
-        <p class="t-label" style="color:rgba(244,241,234,0.3);margin-bottom:1rem">Links</p>
-        <div class="footer-links">
-          <a href="https://github.com/ryujeongmin" target="_blank">GitHub</a>
-          <a href="https://www.linkedin.com/in/%EC%A0%95%EB%AF%BC-%EB%A5%98-4656252a9/" target="_blank">LinkedIn</a>
-          <a href="https://www.instagram.com/ryujeongmin3812" target="_blank">Instagram</a>
+
+      <div class="footer-bottom">
+        <address class="footer-txt">
+          <p class="p2">r10010jm@gmail.com</p>
+        </address>
+        <div class="footer-txt">
+          <p class="p2">Dec 2025 Jeongmin Ryu</p>
         </div>
       </div>
-      <p class="footer-copy">© 2025 Jeongmin Ryu</p>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<script>
-  const obs = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
-    { threshold: 0.06 }
-  );
-  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
-</script>
+  <!-- Scripts -->
+  <script src="./resources/js/style.js"></script>
 
 </body>
-</html>

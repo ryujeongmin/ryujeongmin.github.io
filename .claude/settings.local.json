@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(findstr -i \"potable\\\\|white\\\\|v.png\")",
+      "PowerShell(ls \"C:\\\\Users\\\\JeongminRyu\\\\ryujeongmin.github.io\\\\resources\\\\images\\\\\" | Select-Object Name | Where-Object { $_.Name -match \"potable|white|v\\\\.png\" })"
+    ]
+  }
+}
