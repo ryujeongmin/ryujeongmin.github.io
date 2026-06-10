@@ -1,281 +1,560 @@
 <!DOCTYPE html>
-<html lang="ko">
-
+<html lang="en">
 <head>
-  <!-- CSS -->
-  <link rel="stylesheet" href="./resources/css/setting.css" />
-  <link rel="stylesheet" href="./resources/css/plugin.css" />
-  <link rel="stylesheet" href="./resources/css/templatehouse.css" />
-  <link rel="stylesheet" href="./resources/css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryu Jeongmin — Hardware Engineer × HCI Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F1EC;--bg2:#EAE8E2;--bg3:#E0DED8;
+  --ink:#1C1A18;--dim:#8A8880;--line:rgba(28,26,24,.10);
+  --acc:#C4511A;--acc2:#4A7066;
+  --mono:'IBM Plex Mono',monospace;--sans:'Space Grotesk',sans-serif;
+  --r:14px;
+  --sh-sm:0 1px 3px rgba(28,26,24,.07),0 4px 14px -6px rgba(28,26,24,.12);
+  --sh-md:0 2px 4px rgba(28,26,24,.05),0 12px 32px -10px rgba(28,26,24,.18);
+  --sh-lg:0 4px 6px rgba(28,26,24,.04),0 24px 48px -12px rgba(28,26,24,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);background:var(--bg);color:var(--ink);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.032'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jeongmin Ryu | Portfolio</title>
+/* cursor */
+.cur,.cur-ring{position:fixed;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%)}
+.cur{z-index:9999;width:8px;height:8px;background:var(--acc);mix-blend-mode:multiply;transition:width .18s,height .18s}
+.cur-ring{z-index:9998;width:36px;height:36px;border:1px solid rgba(196,81,26,.35);transition:width .22s,height .22s,border-color .22s}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700&display=swap"
-    rel="stylesheet">
+/* progress */
+#prog{position:fixed;top:0;left:0;z-index:200;height:2px;width:0%;background:var(--acc);transition:width .05s linear}
 
+/* nav */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;padding:16px 48px;
+  background:rgba(243,241,236,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-logo{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:1}50%{opacity:.35}}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
 
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 48px 64px;position:relative;overflow:hidden}
+#hero-cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-content{position:relative;z-index:2;max-width:1000px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";display:inline-block;width:28px;height:1px;background:var(--acc)}
+h1{font-size:clamp(52px,9.5vw,128px);font-weight:700;line-height:.94;letter-spacing:-.035em}
+h1 .soft{font-weight:300;color:var(--dim)}
+h1 .acc{color:var(--acc)}
+.hero-sub{margin-top:28px;max-width:480px;font-size:15px;line-height:1.8;color:var(--dim)}
+.hero-sub strong{color:var(--ink);font-weight:500}
+.hero-meta{margin-top:40px;display:flex;gap:32px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px}
+.meta-item{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.meta-item span{display:block;color:var(--acc);margin-bottom:4px;font-size:9px;letter-spacing:.22em}
+
+/* marquee */
+.marquee{overflow:hidden;padding:13px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.mq-track{display:flex;width:max-content;animation:scroll-x 28s linear infinite}
+.mq-track:hover{animation-play-state:paused}
+.mq-item{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap;padding:0 28px;color:var(--dim)}
+.mq-item i{font-style:normal;color:var(--acc)}
+@keyframes scroll-x{to{transform:translateX(-50%)}}
+
+/* layout */
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+section{padding:96px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;padding-bottom:16px;border-bottom:1px solid var(--line);gap:16px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(26px,4vw,44px);font-weight:700;letter-spacing:-.025em}
+.sec-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+
+/* project grid */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.proj-card{
+  background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:box-shadow .3s ease,transform .3s cubic-bezier(.2,.9,.2,1);
+  cursor:pointer;
+}
+.proj-card:hover{box-shadow:var(--sh-lg);transform:translateY(-4px)}
+.proj-card a{display:flex;flex-direction:column;height:100%;color:inherit}
+.proj-img{height:220px;overflow:hidden;background:var(--bg3);position:relative}
+.proj-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.9,.2,1)}
+.proj-card:hover .proj-img img{transform:scale(1.04)}
+.proj-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.proj-img-placeholder canvas{width:100%;height:100%}
+.proj-body{padding:24px 22px 20px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.proj-num{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.proj-name{font-size:20px;font-weight:700;letter-spacing:-.015em;margin-bottom:8px}
+.proj-desc{font-size:13px;line-height:1.7;color:var(--dim);flex:1}
+.proj-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:12px;border-top:1px dashed var(--line)}
+.proj-tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.proj-arrow{font-size:12px;color:var(--acc)}
+
+/* spec */
+.spec-wrap{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+.spec-row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--line)}
+.spec-row:last-child{border-bottom:none}
+.spec-key{padding:18px 24px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);background:rgba(28,26,24,.025);border-right:1px solid var(--line)}
+.spec-val{padding:18px 24px;font-size:14px;line-height:1.7}
+.spec-val.hl{color:var(--acc);font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);border-radius:4px;padding:4px 8px;background:var(--bg)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.c-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:box-shadow .25s,transform .25s}
+.c-card:hover{box-shadow:var(--sh-md);transform:translateY(-3px)}
+.c-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.c-card h4{font-size:16px;font-weight:500;margin-bottom:8px}
+.c-card p{font-size:13px;color:var(--dim);line-height:1.65}
+.cta{margin-top:48px;text-align:center;padding:60px 40px;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(196,81,26,.1),transparent 70%)}
+.cta .big{font-size:clamp(32px,6vw,68px);font-weight:700;letter-spacing:-.03em;line-height:1.1;position:relative;z-index:1}
+.cta .big span{color:var(--acc)}
+.cta p{margin-top:14px;font-size:14px;color:var(--dim);position:relative;z-index:1}
+
+/* footer */
+footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.f-txt{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.badges{display:flex;gap:8px;align-items:center}
+.badge{border:1px solid var(--line);border-radius:3px;padding:3px 7px;font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:var(--dim)}
+.sns-links{display:flex;gap:16px}
+.sns-links a{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);transition:color .2s}
+.sns-links a:hover{color:var(--acc)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.9,.2,1)}
+.reveal.vis{opacity:1;transform:none}
+
+/* responsive */
+@media(max-width:768px){
+  nav,footer{padding:14px 22px}
+  .hero{padding:120px 22px 52px}
+  .wrap{padding:0 22px}
+  .spec-row{grid-template-columns:1fr}
+  .spec-key{border-right:none;padding:10px 18px 4px}
+  .spec-val{padding:4px 18px 12px}
+  .nav-links{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .cur,.cur-ring{display:none}
+}
+</style>
 </head>
-
 <body>
 
-  <!-- Header -->
-  <header class="th-layout-header glass-panel"
-    style="background: rgba(15, 23, 42, 0.6); border: none; border-radius: 0;">
-    <div class="header-container container-lg">
-      <h1 class="header-title">
-        <a href="./index.html">
-          <img src="./resources/icons/Jeongmin Ryu.svg" alt="Jeongmin Ryu Logo" />
-        </a>
-      </h1>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="cur-ring"></div>
+<div id="prog"></div>
 
-      <nav class="header-gnb">
-        <ul class="header-gnblist">
-          <li>
-            <a class="header-gnblink" href="./about.html">ABOUT</a>
-          </li>
-          <li>
-            <a class="header-gnblink" href="./index.html#PkM75YP0Bf">PROJECTS</a>
-          </li>
-          <li>
-            <a class="header-gnblink" href="./ai_projects.html">PROJECT WITH AI</a>
-          </li>
+<nav>
+  <div class="nav-logo">
+    <div class="nav-dot"></div>
+    RYU JEONGMIN
+    <span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">· RJM 2026</span>
+  </div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#spec">Spec</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-        </ul>
-      </nav>
-
-      <!-- Mobile Menu Button (Visible on mobile) -->
-      <button class="btn-momenu">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<!-- HERO -->
+<section class="hero">
+  <canvas id="hero-cv"></canvas>
+  <div class="hero-content">
+    <div class="eyebrow">Hardware Engineer × HCI Researcher · Seoul, KR</div>
+    <h1>Physical<br><span class="soft">Intelligence</span><span class="acc">.</span></h1>
+    <p class="hero-sub">
+      I design and build machines that understand people — <strong>robots, tangible interfaces, and ambient systems</strong> where mechanical engineering meets human experience.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-item"><span>Education</span>Yonsei ME → KAIST MS</div>
+      <div class="meta-item"><span>Current</span>Samsung DX · Robot R&amp;D</div>
+      <div class="meta-item"><span>Research</span>Human-Centered Physical AI</div>
+      <div class="meta-item"><span>Next</span>Open to PhD 2027</div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="basic-N29" id="ofm75YP075">
-      <div class="container-md">
-        <div class="textset" data-aos="fade-up">
-          <h2 class="h1 textset-subtit">Hello, my name is <br class="mobile-only" /><span class="text-gradient"
-              id="typing-text"></span><span class="typing-cursor">|</span></h2>
-          <p class="p1 textset-desc">I create interactive experiences</p>
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="mq-track" id="mq">
+    <span class="mq-item">Mechanism Design <i>◆</i></span>
+    <span class="mq-item">Tangible Interaction <i>◆</i></span>
+    <span class="mq-item">Home Robotics <i>◆</i></span>
+    <span class="mq-item">Sensory Interfaces <i>◆</i></span>
+    <span class="mq-item">Physical AI <i>◆</i></span>
+    <span class="mq-item">Prototyping <i>◆</i></span>
+    <span class="mq-item">NX CAD <i>◆</i></span>
+    <span class="mq-item">Human-Centered Design <i>◆</i></span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- WORK -->
+<section id="work">
+  <div class="sec-head reveal">
+    <h2>Selected Work</h2>
+    <span class="sec-label">11 projects</span>
+  </div>
+  <div class="proj-grid">
+
+    <div class="proj-card reveal"><a href="./ballie.html">
+      <div class="proj-img"><img src="./resources/images/ballie.jpg" alt="Ballie" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">01 / Home Robot</div>
+          <div class="proj-name">Ballie</div>
+          <p class="proj-desc">Rolling AI home companion. Mechanical development — mechanism design, prototyping &amp; DFM — making movement itself the interface.</p>
         </div>
-
-        <div class="down-arrow">
-          <a href="#PkM75YP0Bf">
-            <img src="./resources/images/v.png" alt="Scroll Down" />
-          </a>
-        </div>
-
-        <div class="click">
-          <p data-aos="fade-in" data-aos-delay="500">* Click the project to get more info</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Grid -->
-    <section class="basic-N33" id="PkM75YP0Bf">
-      <div class="container-md">
-        <div class="row">
-
-
-          <!-- 0. Ballie -->
-          <div class="col cardset" data-aos="fade-up">
-            <a href="./ballie.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/ballie.jpg" alt="Ballie" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">Ballie</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
-          <!-- 1. FoldiFolda -->
-          <div class="col cardset" data-aos="fade-up" data-aos-delay="100">
-            <a href="./page_m775eiga.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/Group 890.png" alt="FoldiFolda" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">FoldiFolda</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
-
-          <!-- Bubble Maker -->
-          <div class="col cardset" data-aos="fade-up">
-            <a href="./bubble_maker.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/bubble_maker.png" alt="Bubble Maker" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">Bubble Maker</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
-          <!-- 2. Image Perfume -->
-          <div class="col cardset" data-aos="fade-up">
-            <a href="image_perfume.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/Frame 397.png" alt="Image Perfume" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">Image Perfume</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
-          <!-- 4. Umbrellatic -->
-          <div class="col cardset" data-aos="fade-up" data-aos-delay="100">
-            <a href="./page_m77avkwr.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/Frame 398.png" alt="Umbrellatic" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">Umbrellatic</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
-          <!-- 5. Page Turner -->
-          <div class="col cardset" data-aos="fade-up" data-aos-delay="200">
-            <a href="./page_m77avu8k.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/Frame 395.png" alt="Page Turner" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">Page Turner</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
-          <!-- Pot-able -->
-          <div class="col cardset" data-aos="fade-up">
-            <a href="./potable.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/potable.jpg" alt="Pot-able" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">Pot-able</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
-          <!-- 6. Self-Driving Mobility with Robot Arm -->
-          <div class="col cardset" data-aos="fade-up">
-            <a href="./page_m77cfzdp.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/Frame 393.png" alt="Self-Driving Mobility" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">Self-Driving Mobility</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
-          <!-- 7. Smart Pet Farm -->
-          <div class="col cardset" data-aos="fade-up" data-aos-delay="100">
-            <a href="./page_m77bx1f4.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/Frame 396.png" alt="Smart Pet Farm" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">Smart Pet Farm</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
-          <!-- 8. ECO&CO Living House -->
-          <div class="col cardset" data-aos="fade-up" data-aos-delay="200">
-            <a href="./page_m77c9fs1.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/Frame 394.png" alt="ECO&CO Living House" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">ECO&CO Living House</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
-          <!-- 9. Jason-Leg Self Driving Robot -->
-          <div class="col cardset" data-aos="fade-up">
-            <a href="./page_m77cp3ft.html" class="cardset-inner">
-              <figure class="cardset-figure">
-                <img class="cardset-img" src="./resources/images/Frame 392.png" alt="Jason-Leg Robot" />
-              </figure>
-              <div class="cardset-body">
-                <h2 class="cardset-tit">Jason-Leg <br />Self Driving Robot</h2>
-                <span class="see-more">See More →</span>
-              </div>
-            </a>
-          </div>
-
+        <div class="proj-foot">
+          <span class="proj-tag">Samsung Electronics</span>
+          <span class="proj-arrow">→</span>
         </div>
       </div>
-    </section>
-  </main>
+    </a></div>
 
-  <!-- Footer -->
-  <footer class="th-layout-footer">
-    <div class="container-md">
-      <div class="footer-top">
-        <h2 class="footer-logo" style="margin: 0 auto;">
-          <a href="https://ryujeongmin.github.io/">
-            <img src="./resources/images/white.png" alt="Logo" style="height: 30px;" />
-          </a>
-        </h2>
-        <ul class="footer-snslist">
-          <li class="footer-snsitem">
-            <a href="https://www.instagram.com/ryujeongmin3812?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw=="
-              target="_blank">
-              <img src="./resources/images/instagram_new.png" alt="Instagram" />
-            </a>
-          </li>
-          <li class="footer-snsitem">
-            <a href="https://www.linkedin.com/in/%EC%A0%95%EB%AF%BC-%EB%A5%98-4656252a9/" target="_blank">
-              <img src="./resources/images/linkedin.png" alt="LinkedIn" />
-            </a>
-          </li>
-          <li class="footer-snsitem">
-            <a href="https://github.com/ryujeongmin" target="_blank">
-              <img src="./resources/images/git.png" alt="GitHub" />
-            </a>
-          </li>
-        </ul>
+    <div class="proj-card reveal"><a href="./page_m775eiga.html">
+      <div class="proj-img"><img src="./resources/images/Group 890.png" alt="FoldiFolda" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">02 / Robotic Avatar</div>
+          <div class="proj-name">FoldiFolda</div>
+          <p class="proj-desc">Chair-mountable folding robot avatar for hybrid learning — remote students gain physical presence through kinetic gesture.</p>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-tag">IJD Submission</span>
+          <span class="proj-arrow">→</span>
+        </div>
       </div>
+    </a></div>
 
-      <div class="footer-bottom">
-        <address class="footer-txt">
-          <p class="p2">r10010jm@gmail.com</p>
-        </address>
-        <div class="footer-txt">
-          <p class="p2">Dec 2025 Jeongmin Ryu</p>
+    <div class="proj-card reveal"><a href="./bubble_maker.html">
+      <div class="proj-img"><img src="./resources/images/bubble_maker.png" alt="Bubble Maker" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">03 / Playful Device</div>
+          <div class="proj-name">Bubble Maker</div>
+          <p class="proj-desc">A playful physical device that turns an ordinary interaction into a joyful sensory experience.</p>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-tag">Concept</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+    </a></div>
+
+    <div class="proj-card reveal"><a href="./image_perfume.html">
+      <div class="proj-img"><img src="./resources/images/Frame 397.png" alt="Image Perfume" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">04 / Scent Interface</div>
+          <div class="proj-name">Image Perfume</div>
+          <p class="proj-desc">Translating photographs into fragrance. Cross-modal memory made physical — analyzing a photo's atmosphere and delivering the corresponding scent.</p>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-tag">KAIST</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+    </a></div>
+
+    <div class="proj-card reveal"><a href="./page_m77avkwr.html">
+      <div class="proj-img"><img src="./resources/images/Frame 398.png" alt="Umbrellatic" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">05 / Kinetic Object</div>
+          <div class="proj-name">Umbrellatic</div>
+          <p class="proj-desc">Weather-aware umbrella stand that physically extends before rain arrives. Ambient notification without a screen — the object speaks through posture.</p>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-tag">Yonsei</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+    </a></div>
+
+    <div class="proj-card reveal"><a href="./page_m77avu8k.html">
+      <div class="proj-img"><img src="./resources/images/Frame 395.png" alt="Page Turner" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">06 / Ambient Object</div>
+          <div class="proj-name">Page Turner</div>
+          <p class="proj-desc">A tangible interaction device that reimagines the act of turning pages — bringing physical gesture back to digital reading experiences.</p>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-tag">Concept</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+    </a></div>
+
+    <div class="proj-card reveal"><a href="./potable.html">
+      <div class="proj-img"><img src="./resources/images/potable.jpg" alt="Pot-able" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">07 / Smart Object</div>
+          <div class="proj-name">Pot-able</div>
+          <p class="proj-desc">A smart plant pot that senses and communicates its needs — merging living material with ambient interaction design.</p>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-tag">IoT</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+    </a></div>
+
+    <div class="proj-card reveal"><a href="./page_m77cfzdp.html">
+      <div class="proj-img"><img src="./resources/images/Frame 393.png" alt="Self-Driving Mobility" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">08 / Autonomous</div>
+          <div class="proj-name">Self-Driving Mobility</div>
+          <p class="proj-desc">A self-driving mobility platform with an integrated robot arm — exploring the intersection of autonomous movement and physical manipulation.</p>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-tag">Robotics</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+    </a></div>
+
+    <div class="proj-card reveal"><a href="./page_m77bx1f4.html">
+      <div class="proj-img"><img src="./resources/images/Frame 396.png" alt="Smart Pet Farm" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">09 / Smart System</div>
+          <div class="proj-name">Smart Pet Farm</div>
+          <p class="proj-desc">An automated care system for small pets — sensing, responding, and adapting to living creatures through intelligent hardware design.</p>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-tag">IoT · Sensing</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+    </a></div>
+
+    <div class="proj-card reveal"><a href="./page_m77c9fs1.html">
+      <div class="proj-img"><img src="./resources/images/Frame 394.png" alt="ECO&CO Living House" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">10 / Living System</div>
+          <div class="proj-name">ECO&amp;CO Living House</div>
+          <p class="proj-desc">A residential design concept that integrates ecological systems with everyday living — smart, sustainable, and human-centered architecture.</p>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-tag">Architecture · HCI</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+    </a></div>
+
+    <div class="proj-card reveal"><a href="./page_m77cp3ft.html">
+      <div class="proj-img"><img src="./resources/images/Frame 392.png" alt="Jason-Leg Robot" loading="lazy"></div>
+      <div class="proj-body">
+        <div>
+          <div class="proj-num">11 / Legged Robot</div>
+          <div class="proj-name">Jason-Leg Self-Driving Robot</div>
+          <p class="proj-desc">A legged self-driving robot exploring autonomous navigation through biomimetic mechanical design and intelligent locomotion control.</p>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-tag">Robotics · Mechanism</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+    </a></div>
+
+  </div>
+</section>
+
+<!-- SPEC -->
+<section id="spec">
+  <div class="sec-head reveal">
+    <h2>Spec Sheet</h2>
+    <span class="sec-label">Unit: designer</span>
+  </div>
+  <div class="spec-wrap reveal">
+    <div class="spec-row">
+      <div class="spec-key">Model</div>
+      <div class="spec-val">Ryu Jeongmin · b. 1999 · Seoul, Korea</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-key">Education</div>
+      <div class="spec-val">B.S. Mechanical Engineering, Yonsei University<br>M.S. Industrial Design (HCI), KAIST</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-key">Current</div>
+      <div class="spec-val">Mechanical R&amp;D Engineer, Samsung Electronics DX — robot vacuum &amp; home robot development</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-key">Core Stack</div>
+      <div class="spec-val">
+        <div class="chips">
+          <span class="chip">NX CAD</span><span class="chip">Prototyping</span><span class="chip">DFM</span>
+          <span class="chip">Mechanism Design</span><span class="chip">Wizard-of-Oz</span>
+          <span class="chip">LLM Pipelines</span><span class="chip">Arduino / RPi</span><span class="chip">3D Printing</span>
         </div>
       </div>
     </div>
-  </footer>
+    <div class="spec-row">
+      <div class="spec-key">Research Band</div>
+      <div class="spec-val hl">Human-Centered Physical AI — where hardware, sensing, and everyday life overlap.</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-key">Publications</div>
+      <div class="spec-val">FoldiFolda — IJD submission &nbsp;·&nbsp; Tanglemate — CHI 2027 LBW (in progress)</div>
+    </div>
+    <div class="spec-row">
+      <div class="spec-key">Next Iteration</div>
+      <div class="spec-val hl">Open to PhD programs — Fall 2027</div>
+    </div>
+  </div>
+</section>
 
-  <!-- Scripts -->
-  <script src="./resources/js/style.js"></script>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head reveal">
+    <h2>I/O Ports</h2>
+    <span class="sec-label">Open for connection</span>
+  </div>
+  <div class="contact-grid reveal">
+    <div class="c-card">
+      <div class="c-label">Mail</div>
+      <h4>r10010jm@gmail.com</h4>
+      <p>Research collaboration, PhD inquiries, or anything tangible.</p>
+    </div>
+    <div class="c-card">
+      <div class="c-label">GitHub</div>
+      <h4>github.com/ryujeongmin</h4>
+      <p>Code, hardware files, and works in progress.</p>
+    </div>
+    <div class="c-card">
+      <div class="c-label">LinkedIn</div>
+      <h4>류정민</h4>
+      <p>Professional network and career updates.</p>
+    </div>
+    <div class="c-card">
+      <div class="c-label">Instagram</div>
+      <h4>@ryujeongmin3812</h4>
+      <p>Process shots, prototypes, and design exploration.</p>
+    </div>
+  </div>
+  <div class="cta reveal">
+    <div class="big">Let's build<br>it <span>real.</span></div>
+    <p>Hardware engineer designing physical AI that lives in the world, not behind a screen.</p>
+  </div>
+</section>
 
+</div><!-- /wrap -->
+
+<footer>
+  <span class="f-txt">© 2026 Ryu Jeongmin · RJM-001 · Seoul, KR</span>
+  <div class="sns-links">
+    <a href="https://www.instagram.com/ryujeongmin3812" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/%EC%A0%95%EB%AF%BC-%EB%A5%98-4656252a9/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/ryujeongmin" target="_blank">GitHub</a>
+  </div>
+  <div class="badges">
+    <span class="badge">HCI ✓</span>
+    <span class="badge">HW ✓</span>
+    <span style="font-family:var(--mono);font-size:9px;color:var(--acc);letter-spacing:.14em">⏻ ON</span>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const reduced=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* cursor */
+const cur=document.getElementById("cur"),ring=document.getElementById("cur-ring");
+let mx=0,my=0,rx=0,ry=0;
+if(!reduced){
+  document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+"px";cur.style.top=my+"px"});
+  (function loop(){ring.style.left=(rx+=(mx-rx)*.12)+"px";ring.style.top=(ry+=(my-ry)*.12)+"px";requestAnimationFrame(loop)})();
+  document.querySelectorAll("a,.proj-card,.c-card").forEach(el=>{
+    el.addEventListener("mouseenter",()=>{ring.style.width="52px";ring.style.height="52px";ring.style.borderColor="rgba(196,81,26,.55)"});
+    el.addEventListener("mouseleave",()=>{ring.style.width="36px";ring.style.height="36px";ring.style.borderColor="rgba(196,81,26,.35)"});
+  });
+}
+
+/* progress */
+window.addEventListener("scroll",()=>{
+  const s=document.documentElement;
+  document.getElementById("prog").style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+"%";
+},{passive:true});
+
+/* marquee */
+const mq=document.getElementById("mq");mq.innerHTML+=mq.innerHTML;
+
+/* scroll reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("vis");io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+/* card 3D tilt */
+document.querySelectorAll(".proj-card").forEach(card=>{
+  card.addEventListener("mousemove",e=>{
+    const r=card.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`translateY(-4px) perspective(1100px) rotateX(${-py*4}deg) rotateY(${px*5}deg)`;
+  });
+  card.addEventListener("mouseleave",()=>{card.style.transform=""});
+});
+
+/* hero canvas — engineering dot grid */
+(()=>{
+  const cv=document.getElementById("hero-cv"),cx=cv.getContext("2d");
+  let W,H,pts=[],ph=0;
+  function init(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    W=cv.parentElement.offsetWidth;H=cv.parentElement.offsetHeight;
+    cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
+    pts=[];const gap=Math.max(38,W/20);
+    for(let y=gap;y<H;y+=gap)for(let x=gap*.5;x<W;x+=gap)
+      pts.push({x,y,ox:x,oy:y,vx:0,vy:0,r:.5+Math.random()*1.2,p:Math.random()*Math.PI*2});
+  }
+  init();addEventListener("resize",()=>{clearTimeout(init._t);init._t=setTimeout(init,80)});
+  let tx=-9e3,ty=-9e3;
+  cv.parentElement.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top},{passive:true});
+  cv.parentElement.addEventListener("pointerleave",()=>{tx=ty=-9e3});
+  function draw(){
+    cx.clearRect(0,0,W,H);ph+=.005;
+    const gap=Math.max(38,W/20);
+    cx.strokeStyle="rgba(28,26,24,.035)";cx.lineWidth=.5;
+    for(let y=gap;y<H;y+=gap){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
+    for(let x=gap*.5;x<W;x+=gap){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}
+    for(const p of pts){
+      const dx=p.x-tx,dy=p.y-ty,d2=dx*dx+dy*dy,R=120;
+      if(d2<R*R){const d=Math.sqrt(d2)||1,f=(1-d/R)*1.8;p.vx+=dx/d*f;p.vy+=dy/d*f}
+      p.vx+=(p.ox-p.x)*.022;p.vy+=(p.oy-p.y)*.022;p.vx*=.85;p.vy*=.85;
+      p.x+=p.vx;p.y+=p.vy;
+      const disp=Math.hypot(p.x-p.ox,p.y-p.oy);
+      cx.globalAlpha=.1+Math.min(.4,disp*.022)+Math.sin(ph+p.p)*.03;
+      cx.fillStyle=disp>5?"#C4511A":"#1C1A18";
+      cx.beginPath();cx.arc(p.x,p.y,p.r+Math.min(1.8,disp*.05),0,Math.PI*2);cx.fill();
+    }
+    cx.globalAlpha=1;
+    requestAnimationFrame(draw);
+  }
+  if(!reduced)draw();
+  else{for(const p of pts){cx.globalAlpha=.1;cx.fillStyle="#1C1A18";cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fill()}cx.globalAlpha=1}
+})();
+</script>
 </body>
+</html>
