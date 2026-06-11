@@ -61,16 +61,6 @@ a{color:inherit;text-decoration:none}
   transform:translate(-50%,-50%);mix-blend-mode:multiply;
   transition:width .15s,height .15s,background .15s,opacity .15s;
 }
-#cur-blob{
-  position:fixed;pointer-events:none;z-index:9998;
-  width:44px;height:44px;border-radius:50%;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(circle,rgba(196,81,26,.22) 30%,transparent 70%);
-  filter:url(#blob-filter);
-  will-change:transform;
-}
-#cur-blob.over{width:72px;height:72px}
-#cur-blob.press{width:28px;height:28px}
 .cur-label{
   position:fixed;pointer-events:none;z-index:10000;
   font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;
@@ -144,7 +134,7 @@ h1{font-size:clamp(52px,9.5vw,128px);font-weight:700;line-height:.94;letter-spac
 h1 .soft{font-weight:300;color:var(--dim)}
 h1 .acc-dot{color:var(--acc);opacity:0;animation:dot-pop .5s cubic-bezier(.34,1.56,.64,1) 1.3s forwards}
 @keyframes dot-pop{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
-.split-line{overflow:hidden;display:block}
+.split-line{overflow:visible;display:block;padding-bottom:0.12em}
 .split-char{
   display:inline-block;
   animation:char-in .85s cubic-bezier(.16,1,.3,1) both;
@@ -326,24 +316,12 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;justify-c
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   .proj-card{opacity:1;transform:none}
-  #cur-dot,#cur-blob{display:none}
+  #cur-dot{display:none}
   body{cursor:auto}
 }
 </style>
 </head>
 <body>
-
-<!-- SVG BLOB FILTER -->
-<svg class="svg-filters" style="position:fixed;width:0;height:0;overflow:hidden;pointer-events:none">
-  <defs>
-    <filter id="blob-filter" x="-50%" y="-50%" width="200%" height="200%">
-      <feTurbulence type="turbulence" baseFrequency="0.022 0.028" numOctaves="3" seed="7" result="noise">
-        <animate attributeName="baseFrequency" dur="9s" values="0.022 0.028;0.038 0.052;0.022 0.028" repeatCount="indefinite"/>
-      </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs>
-</svg>
 
 <!-- LOADER -->
 <div id="loader">
@@ -357,7 +335,6 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;justify-c
 
 <!-- CURSOR -->
 <div id="cur-dot"></div>
-<div id="cur-blob"></div>
 <div class="cur-label" id="cur-label">VIEW</div>
 
 <!-- PAGE TRANSITION -->
@@ -765,14 +742,13 @@ function splitAndAnimateH1() {
 }
 
 /* ═══════════════════════════════════════════
-   CURSOR — dot + blob + magnetic
+   CURSOR — dot + magnetic
 ═══════════════════════════════════════════ */
 (function initCursor() {
   if (reduced) return;
-  const dot  = document.getElementById('cur-dot');
-  const blob = document.getElementById('cur-blob');
-  const lbl  = document.getElementById('cur-label');
-  let mx = 0, my = 0, bx = 0, by = 0;
+  const dot = document.getElementById('cur-dot');
+  const lbl = document.getElementById('cur-label');
+  let mx = 0, my = 0;
   let magTarget = null, magStrength = 0;
 
   document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
@@ -782,13 +758,11 @@ function splitAndAnimateH1() {
     document.querySelectorAll('.proj-card, .c-card, .cta-btn, .chip, .nav-links a').forEach(el => {
       el.addEventListener('mouseenter', () => {
         if (el.classList.contains('proj-card')) {
-          blob.classList.add('over');
           lbl.classList.add('show');
         }
         magTarget = el; magStrength = 0.3;
       });
       el.addEventListener('mouseleave', () => {
-        blob.classList.remove('over');
         lbl.classList.remove('show');
         magTarget = null;
       });
@@ -798,25 +772,12 @@ function splitAndAnimateH1() {
   // Re-run after cards animate in
   setTimeout(setupMagnetic, 2000);
 
-  document.addEventListener('mousedown', () => { blob.classList.add('press'); dot.style.transform='translate(-50%,-50%) scale(.5)'; });
-  document.addEventListener('mouseup',   () => { blob.classList.remove('press'); dot.style.transform=''; });
+  document.addEventListener('mousedown', () => { dot.style.transform='translate(-50%,-50%) scale(.5)'; });
+  document.addEventListener('mouseup',   () => { dot.style.transform=''; });
 
   (function loop() {
-    // Blob spring to mouse (with magnetic offset)
-    let tx = mx, ty = my;
-    if (magTarget) {
-      const r = magTarget.getBoundingClientRect();
-      const cx = r.left + r.width  / 2;
-      const cy = r.top  + r.height / 2;
-      tx = mx + (cx - mx) * magStrength * 0.35;
-      ty = my + (cy - my) * magStrength * 0.35;
-    }
-    bx += (tx - bx) * 0.1;
-    by += (ty - by) * 0.1;
-
-    dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
-    blob.style.left = bx + 'px'; blob.style.top = by + 'px';
-    lbl.style.left  = mx + 'px'; lbl.style.top  = my + 'px';
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    lbl.style.left = mx + 'px'; lbl.style.top = my + 'px';
     requestAnimationFrame(loop);
   })();
 })();
