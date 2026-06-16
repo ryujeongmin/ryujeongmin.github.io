@@ -200,6 +200,7 @@ section{padding:96px 0}
 .proj-body{padding:24px 22px 20px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
 .proj-name{font-size:20px;font-weight:700;letter-spacing:-.015em;margin-bottom:8px}
 .proj-desc{font-size:13px;line-height:1.7;color:var(--dim);flex:1}
+
 /* SPEC */
 .spec-wrap{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
 .spec-row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--line)}
@@ -266,10 +267,6 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;justify-c
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.9,.2,1)}
 .reveal.vis{opacity:1;transform:none}
-
-
-  100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(0)}
-}
 
 /* RESPONSIVE */
 @media(max-width:1024px){
@@ -633,7 +630,6 @@ function splitAndAnimateH1() {
     });
   }
   setupMagnetic();
-  // Re-run after cards animate in
   setTimeout(setupMagnetic, 2000);
 
   document.addEventListener('mousedown', () => { dot.style.transform='translate(-50%,-50%) scale(.5)'; });
@@ -679,7 +675,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   }, { threshold: 0.05 });
   cards.forEach(c => cardIo.observe(c));
 
-  // Spring physics tilt
   cards.forEach(card => {
     let sx = 0, sy = 0;
     card.addEventListener('mousemove', e => {
@@ -691,7 +686,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       card.style.transform = `perspective(1000px) rotateX(${-sy * 7}deg) rotateY(${sx * 8}deg) translateZ(4px)`;
     });
     card.addEventListener('mouseleave', () => {
-      // Spring back
       const spring = () => {
         sx *= 0.82; sy *= 0.82;
         card.style.transform = `perspective(1000px) rotateX(${-sy * 7}deg) rotateY(${sx * 8}deg)`;
@@ -743,7 +737,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       setTimeout(() => { window.location.href = href; }, 680);
     });
   });
-  // Wipe out on back-navigation
   window.addEventListener('pageshow', () => {
     ov.className = 'out';
     setTimeout(() => { ov.className = ''; }, 700);
