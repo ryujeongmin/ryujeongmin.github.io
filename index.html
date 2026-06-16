@@ -6,15 +6,14 @@
 <title>Ryu Jeongmin — Hardware Engineer × HCI Researcher</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F3F1EC;--bg2:#EAE8E2;--bg3:#E0DED8;
   --ink:#1C1A18;--dim:#8A8880;--line:rgba(28,26,24,.10);
-  --acc:#C4511A;--acc2:#4A7066;
-  --mono:'IBM Plex Mono',monospace;--sans:'Space Grotesk',sans-serif;
-  --r:14px;
+  --acc:#1C1A18;--acc2:#4A7066;
+  --mono:'Inter',sans-serif;--sans:'Inter',sans-serif;
+  --r:4px;
   --sh-sm:0 1px 3px rgba(28,26,24,.07),0 4px 14px -6px rgba(28,26,24,.12);
   --sh-md:0 2px 4px rgba(28,26,24,.05),0 12px 32px -10px rgba(28,26,24,.18);
   --sh-lg:0 4px 6px rgba(28,26,24,.04),0 24px 48px -12px rgba(28,26,24,.22);
@@ -25,10 +24,7 @@ body{
   font-family:var(--sans);background:var(--bg);color:var(--ink);
   -webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none;
 }
-body::after{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:3;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.035'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+
 a{color:inherit;text-decoration:none}
 
 /* LOADER */
@@ -122,7 +118,7 @@ nav{
   justify-content:flex-end;padding:140px 48px 80px;
   position:relative;overflow:hidden;
 }
-#hero-gl{position:absolute;inset:0;width:100%;height:100%}
+
 .hero-content{position:relative;z-index:2;max-width:1080px}
 .eyebrow{
   font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;
@@ -169,16 +165,7 @@ h1 .acc-dot{color:var(--acc);opacity:0;animation:dot-pop .5s cubic-bezier(.34,1.
 }
 @keyframes line-scan{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
 
-/* MARQUEE */
-.marquee{
-  overflow:hidden;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:var(--bg2);position:relative;z-index:2;
 }
-.mq-track{display:flex;width:max-content;animation:scroll-x 30s linear infinite}
-.mq-track:hover{animation-play-state:paused}
-.mq-item{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap;padding:0 28px;color:var(--dim)}
-.mq-item i{font-style:normal;color:var(--acc)}
-@keyframes scroll-x{to{transform:translateX(-50%)}}
 
 /* LAYOUT */
 .wrap{max-width:1100px;margin:0 auto;padding:0 48px}
@@ -200,31 +187,21 @@ section{padding:96px 0}
   opacity:1;transform:translateY(0);
   transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.2,1),box-shadow .4s ease,border-color .3s;
 }
-.proj-card:hover{box-shadow:var(--sh-lg);border-color:rgba(196,81,26,.2)}
+.proj-card:hover{box-shadow:var(--sh-lg);border-color:rgba(28,26,24,.12)}
 .proj-card a{display:flex;flex-direction:column;height:100%;color:inherit}
 .proj-img{height:220px;overflow:hidden;background:var(--bg3);position:relative}
 .proj-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.9,.2,1)}
 .proj-card:hover .proj-img img{transform:scale(1.07)}
 .proj-img-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(196,81,26,.15),transparent 60%);
+  background:linear-gradient(135deg,rgba(28,26,24,.08),transparent 60%);
   opacity:0;transition:opacity .4s;
 }
 .proj-card:hover .proj-img-overlay{opacity:1}
 .proj-body{padding:24px 22px 20px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
-.proj-num{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
 .proj-name{font-size:20px;font-weight:700;letter-spacing:-.015em;margin-bottom:8px}
 .proj-desc{font-size:13px;line-height:1.7;color:var(--dim);flex:1}
-.proj-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:12px;border-top:1px dashed var(--line)}
-.proj-tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
-.proj-arrow{
-  width:30px;height:30px;border-radius:50%;border:1px solid rgba(196,81,26,.3);
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;color:var(--acc);
-  transition:background .25s,color .25s,transform .3s cubic-bezier(.34,1.56,.64,1),border-color .25s;
-}
-.proj-card:hover .proj-arrow{background:var(--acc);color:var(--bg);transform:rotate(45deg) scale(1.15);border-color:var(--acc)}
-
+.proj-card:hover 
 /* SPEC */
 .spec-wrap{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
 .spec-row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--line)}
@@ -246,7 +223,7 @@ section{padding:96px 0}
   background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:28px;
   cursor:none;will-change:transform;transition:box-shadow .3s,border-color .3s;
 }
-.c-card:hover{box-shadow:var(--sh-md);border-color:rgba(196,81,26,.18)}
+.c-card:hover{box-shadow:var(--sh-md);border-color:rgba(28,26,24,.10)}
 .c-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
 .c-card h4{font-size:16px;font-weight:500;margin-bottom:8px}
 .c-card p{font-size:13px;color:var(--dim);line-height:1.65}
@@ -261,7 +238,7 @@ section{padding:96px 0}
 }
 .cta-orb-1{
   width:500px;height:500px;top:-150px;right:-100px;
-  background:radial-gradient(circle,rgba(196,81,26,.3),transparent 70%);
+  background:radial-gradient(circle,rgba(28,26,24,.18),transparent 70%);
 }
 .cta-orb-2{
   width:350px;height:350px;bottom:-100px;left:-80px;
@@ -277,7 +254,7 @@ section{padding:96px 0}
   position:relative;z-index:1;cursor:none;will-change:transform;
   transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;
 }
-.cta-btn:hover{transform:scale(1.06);box-shadow:0 10px 40px rgba(196,81,26,.45)}
+.cta-btn:hover{transform:scale(1.06);box-shadow:0 10px 40px rgba(28,26,24,.25)}
 
 /* FOOTER */
 footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
@@ -292,14 +269,7 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;justify-c
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.9,.2,1)}
 .reveal.vis{opacity:1;transform:none}
 
-/* CLICK SPARKS */
-.spark{
-  position:fixed;pointer-events:none;z-index:9990;border-radius:50%;
-  transform:translate(-50%,-50%);background:var(--acc);
-  animation:spark-out .6s ease forwards;
-}
-@keyframes spark-out{
-  0%{transform:translate(-50%,-50%) scale(1);opacity:.9}
+
   100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(0)}
 }
 
@@ -358,9 +328,7 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;justify-c
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <canvas id="hero-gl"></canvas>
-  <div class="hero-content">
+<section class="hero">  <div class="hero-content">
     <div class="eyebrow">Hardware Engineer × HCI Researcher · Seoul, KR</div>
     <h1>
       <span class="split-line" id="h1-line1" style="font-size:.42em;font-weight:300;letter-spacing:.01em;opacity:.6;display:block"></span>
@@ -382,22 +350,6 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;justify-c
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="mq-track" id="mq">
-    <span class="mq-item">Mechanism Design <i>◆</i></span>
-    <span class="mq-item">Tangible Interaction <i>◆</i></span>
-    <span class="mq-item">Home Robotics <i>◆</i></span>
-    <span class="mq-item">Sensory Interfaces <i>◆</i></span>
-    <span class="mq-item">Physical AI <i>◆</i></span>
-    <span class="mq-item">Prototyping <i>◆</i></span>
-    <span class="mq-item">NX CAD <i>◆</i></span>
-    <span class="mq-item">Human-Centered Design <i>◆</i></span>
-    <span class="mq-item">DFM <i>◆</i></span>
-    <span class="mq-item">Arduino · RPi <i>◆</i></span>
-    <span class="mq-item">3D Printing <i>◆</i></span>
-    <span class="mq-item">Wizard-of-Oz <i>◆</i></span>
-  </div>
 </div>
 
 <div class="wrap">
@@ -413,166 +365,89 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;justify-c
     <div class="proj-card"><a href="./ballie.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/ballie.jpg" alt="Ballie" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">01 / Home Robot</div>
-          <div class="proj-name">Ballie</div>
+        <div>          <div class="proj-name">Ballie</div>
           <p class="proj-desc">Rolling AI home companion. Mechanical development — mechanism design, prototyping &amp; DFM — making movement itself the interface.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">Samsung Electronics</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
     <div class="proj-card"><a href="./page_m775eiga.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/Group 890.png" alt="FoldiFolda" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">02 / Robotic Avatar</div>
-          <div class="proj-name">FoldiFolda</div>
+        <div>          <div class="proj-name">FoldiFolda</div>
           <p class="proj-desc">Chair-mountable folding robot avatar for hybrid learning — remote students gain physical presence through kinetic gesture.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">IJD Submission</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
     <div class="proj-card"><a href="./bubble_maker.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/bubble_maker.png" alt="Bubble Maker" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">03 / Playful Device</div>
-          <div class="proj-name">Bubble Maker</div>
+        <div>          <div class="proj-name">Bubble Maker</div>
           <p class="proj-desc">A playful physical device that turns an ordinary interaction into a joyful sensory experience through mechanical ingenuity.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">Concept</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
     <div class="proj-card"><a href="./image_perfume.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/Frame 397.png" alt="Image Perfume" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">04 / Scent Interface</div>
-          <div class="proj-name">Image Perfume</div>
+        <div>          <div class="proj-name">Image Perfume</div>
           <p class="proj-desc">Translating photographs into fragrance. Cross-modal memory made physical — analyzing a photo's atmosphere and delivering the corresponding scent.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">KAIST</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
     <div class="proj-card"><a href="./page_m77avkwr.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/Frame 398.png" alt="Umbrellatic" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">05 / Kinetic Object</div>
-          <div class="proj-name">Umbrellatic</div>
+        <div>          <div class="proj-name">Umbrellatic</div>
           <p class="proj-desc">Weather-aware umbrella stand that physically extends before rain arrives. Ambient notification without a screen — the object speaks through posture.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">Yonsei</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
     <div class="proj-card"><a href="./page_m77avu8k.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/Frame 395.png" alt="Page Turner" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">06 / Ambient Object</div>
-          <div class="proj-name">Page Turner</div>
+        <div>          <div class="proj-name">Page Turner</div>
           <p class="proj-desc">A tangible interaction device that reimagines the act of turning pages — bringing physical gesture back to digital reading experiences.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">Concept</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
     <div class="proj-card"><a href="./potable.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/potable.jpg" alt="Pot-able" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">07 / Smart Object</div>
-          <div class="proj-name">Pot-able</div>
+        <div>          <div class="proj-name">Pot-able</div>
           <p class="proj-desc">A smart plant pot that senses and communicates its needs — merging living material with ambient interaction design.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">IoT</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
     <div class="proj-card"><a href="./page_m77cfzdp.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/Frame 393.png" alt="Self-Driving Mobility" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">08 / Autonomous</div>
-          <div class="proj-name">Self-Driving Mobility</div>
+        <div>          <div class="proj-name">Self-Driving Mobility</div>
           <p class="proj-desc">A self-driving mobility platform with an integrated robot arm — exploring the intersection of autonomous movement and physical manipulation.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">Robotics</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
     <div class="proj-card"><a href="./page_m77bx1f4.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/Frame 396.png" alt="Smart Pet Farm" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">09 / Smart System</div>
-          <div class="proj-name">Smart Pet Farm</div>
+        <div>          <div class="proj-name">Smart Pet Farm</div>
           <p class="proj-desc">An automated care system for small pets — sensing, responding, and adapting to living creatures through intelligent hardware design.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">IoT · Sensing</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
     <div class="proj-card"><a href="./page_m77c9fs1.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/Frame 394.png" alt="ECO&CO Living House" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">10 / Living System</div>
-          <div class="proj-name">ECO&amp;CO Living House</div>
+        <div>          <div class="proj-name">ECO&amp;CO Living House</div>
           <p class="proj-desc">A residential design concept that integrates ecological systems with everyday living — smart, sustainable, and human-centered architecture.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">Architecture · HCI</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
     <div class="proj-card"><a href="./page_m77cp3ft.html" class="proj-link">
       <div class="proj-img"><img src="./resources/images/Frame 392.png" alt="Jason-Leg Robot" loading="lazy"><div class="proj-img-overlay"></div></div>
       <div class="proj-body">
-        <div>
-          <div class="proj-num">11 / Legged Robot</div>
-          <div class="proj-name">Jason-Leg Self-Driving Robot</div>
+        <div>          <div class="proj-name">Jason-Leg Self-Driving Robot</div>
           <p class="proj-desc">A legged self-driving robot exploring autonomous navigation through biomimetic mechanical design and intelligent locomotion control.</p>
-        </div>
-        <div class="proj-foot">
-          <span class="proj-tag">Robotics · Mechanism</span>
-          <span class="proj-arrow">→</span>
-        </div>
-      </div>
+        </div></div>
     </a></div>
 
   </div>
@@ -725,7 +600,7 @@ function splitAndAnimateH1() {
     text.split('').forEach((ch, i) => {
       const span = document.createElement('span');
       span.className = 'split-char';
-      span.textContent = ch === ' ' ? ' ' : ch;
+      span.textContent = ch === ' ' ? ' ' : ch;
       span.style.animationDelay = (baseDelay + i * 0.04) + 's';
       container.appendChild(span);
     });
@@ -781,11 +656,6 @@ window.addEventListener('scroll', () => {
   document.getElementById('prog').style.width =
     (s.scrollTop / (s.scrollHeight - s.clientHeight) * 100) + '%';
 }, { passive: true });
-
-/* ═══════════════════════════════════════════
-   MARQUEE DUPLICATE
-═══════════════════════════════════════════ */
-const mq = document.getElementById('mq'); mq.innerHTML += mq.innerHTML;
 
 /* ═══════════════════════════════════════════
    SCROLL REVEAL
@@ -880,153 +750,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     ov.className = 'out';
     setTimeout(() => { ov.className = ''; }, 700);
   });
-})();
-
-/* ═══════════════════════════════════════════
-   CLICK SPARKS
-═══════════════════════════════════════════ */
-(function initSparks() {
-  if (reduced) return;
-  document.addEventListener('click', e => {
-    for (let i = 0; i < 8; i++) {
-      const el = document.createElement('div');
-      el.className = 'spark';
-      const angle = (i / 8) * Math.PI * 2 + Math.random() * 0.4;
-      const dist  = 30 + Math.random() * 40;
-      const size  = 3 + Math.random() * 4;
-      el.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;--sx:${Math.cos(angle)*dist}px;--sy:${Math.sin(angle)*dist}px`;
-      document.body.appendChild(el);
-      el.addEventListener('animationend', () => el.remove());
-    }
-  });
-})();
-
-
-/* ═══════════════════════════════════════════
-   THREE.JS HERO — particle network
-═══════════════════════════════════════════ */
-(function initHero3D() {
-  if (reduced || !window.THREE) return;
-  const canvas = document.getElementById('hero-gl');
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
-
-  const scene  = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
-  camera.position.set(0, 0, 28);
-
-  // Particles
-  const N    = 140;
-  const data = [];
-  const pos  = new Float32Array(N * 3);
-  const col  = new Float32Array(N * 3);
-  const ACC  = new THREE.Color(0xC4511A);
-  const ACC2 = new THREE.Color(0x4A7066);
-  const DIM  = new THREE.Color(0.22, 0.20, 0.18);
-
-  for (let i = 0; i < N; i++) {
-    const r = 13 + Math.random() * 8;
-    const theta = Math.random() * Math.PI * 2;
-    const phi   = Math.acos(2 * Math.random() - 1);
-    const x = r * Math.sin(phi) * Math.cos(theta);
-    const y = r * Math.sin(phi) * Math.sin(theta) * 0.6;
-    const z = r * Math.cos(phi) * 0.32;
-    pos[i*3]=x; pos[i*3+1]=y; pos[i*3+2]=z;
-    data.push({ ox:x, oy:y, oz:z, vx:0, vy:0, vz:0,
-      phase: Math.random()*Math.PI*2, spd: 0.35+Math.random()*0.55 });
-    const rnd = Math.random();
-    const c = rnd < 0.22 ? ACC : rnd < 0.38 ? ACC2 : DIM;
-    col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
-  }
-
-  const ptGeo = new THREE.BufferGeometry();
-  ptGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  ptGeo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
-  const ptMat = new THREE.PointsMaterial({ size:0.32, vertexColors:true, transparent:true, opacity:0.9, sizeAttenuation:true });
-  const points = new THREE.Points(ptGeo, ptMat);
-  scene.add(points);
-
-  // Line segments — pre-allocate
-  const MAX_SEGS = N * 5;
-  const lPos = new Float32Array(MAX_SEGS * 2 * 3);
-  const lGeo = new THREE.BufferGeometry();
-  lGeo.setAttribute('position', new THREE.BufferAttribute(lPos, 3));
-  lGeo.setDrawRange(0, 0);
-  const lMat = new THREE.LineBasicMaterial({ color: 0xC4511A, transparent: true, opacity: 0.13 });
-  const lines = new THREE.LineSegments(lGeo, lMat);
-  scene.add(lines);
-
-  let mouseX = 0, mouseY = 0, camX = 0, camY = 0;
-  const hero = canvas.parentElement;
-  hero.addEventListener('pointermove', e => {
-    const r = hero.getBoundingClientRect();
-    mouseX = ((e.clientX - r.left) / r.width  - 0.5) * 2;
-    mouseY = ((e.clientY - r.top)  / r.height - 0.5) * 2;
-  }, { passive: true });
-
-  let t = 0;
-  function tick() {
-    t += 0.008;
-
-    // Camera drift
-    camX += (mouseX * 4 - camX) * 0.025;
-    camY += (-mouseY * 2.5 - camY) * 0.025;
-    camera.position.x = camX;
-    camera.position.y = camY;
-    camera.lookAt(scene.position);
-
-    // Update particle positions
-    const mx3d = mouseX * 12, my3d = -mouseY * 8;
-    for (let i = 0; i < N; i++) {
-      const d = data[i];
-      const nx = d.ox + Math.sin(t * d.spd + d.phase) * 1.4;
-      const ny = d.oy + Math.cos(t * d.spd * 0.72 + d.phase + 1) * 0.9;
-      const nz = d.oz + Math.sin(t * d.spd * 0.5  + d.phase + 2) * 0.6;
-
-      // Mouse repulsion in world space
-      const rx = nx - mx3d, ry = ny - my3d;
-      const rd = Math.sqrt(rx*rx + ry*ry);
-      const repel = rd < 5 ? (1 - rd/5) * 1.8 : 0;
-
-      pos[i*3]   = nx - (repel > 0 ? rx/rd*repel : 0);
-      pos[i*3+1] = ny - (repel > 0 ? ry/rd*repel : 0);
-      pos[i*3+2] = nz;
-    }
-    ptGeo.attributes.position.needsUpdate = true;
-
-    // Rebuild line segments
-    let segCount = 0;
-    const thresh = 7.5;
-    for (let i = 0; i < N && segCount < MAX_SEGS - 1; i++) {
-      for (let j = i + 1; j < N && segCount < MAX_SEGS - 1; j++) {
-        const dx = pos[i*3]  -pos[j*3];
-        const dy = pos[i*3+1]-pos[j*3+1];
-        const dz = pos[i*3+2]-pos[j*3+2];
-        const d2 = dx*dx+dy*dy+dz*dz;
-        if (d2 < thresh*thresh) {
-          const base = segCount * 6;
-          lPos[base]  =pos[i*3];   lPos[base+1]=pos[i*3+1]; lPos[base+2]=pos[i*3+2];
-          lPos[base+3]=pos[j*3];   lPos[base+4]=pos[j*3+1]; lPos[base+5]=pos[j*3+2];
-          segCount++;
-        }
-      }
-    }
-    lGeo.attributes.position.needsUpdate = true;
-    lGeo.setDrawRange(0, segCount * 2);
-
-    renderer.render(scene, camera);
-    requestAnimationFrame(tick);
-  }
-
-  function resize() {
-    const w = hero.offsetWidth, h = hero.offsetHeight;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  }
-  resize();
-  window.addEventListener('resize', resize);
-  tick();
 })();
 
 /* ═══════════════════════════════════════════
