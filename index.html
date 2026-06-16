@@ -200,7 +200,6 @@ section{padding:96px 0}
 .proj-body{padding:24px 22px 20px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
 .proj-name{font-size:20px;font-weight:700;letter-spacing:-.015em;margin-bottom:8px}
 .proj-desc{font-size:13px;line-height:1.7;color:var(--dim);flex:1}
-
 /* SPEC */
 .spec-wrap{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
 .spec-row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--line)}
@@ -327,10 +326,11 @@ footer{padding:26px 48px;border-top:1px solid var(--line);display:flex;justify-c
     <div class="eyebrow">Hardware Engineer × HCI Researcher · Seoul, KR</div>
     <h1>
       <span class="split-line" id="h1-line1" style="font-size:.42em;font-weight:300;letter-spacing:.01em;opacity:.6;display:block"></span>
-      <span class="split-line" id="h1-line2" style="display:block"></span><span class="acc-dot">.</span>
+      <span class="split-line" id="h1-line2" style="display:block"></span>
+      <span class="split-line" id="h1-line3" style="display:block"></span>
     </h1>
     <p class="hero-sub">
-      I design and build machines that understand people — <strong>robots, tangible interfaces, and ambient systems</strong> where mechanical engineering meets human experience.
+      I design and build machines that understand people — <strong>robots, tangible interfaces, and ambient systems</strong> where mechanical engineering meets human experience
     </p>
     <div class="hero-meta">
       <div class="meta-item"><span>Education</span>Yonsei ME → KAIST MS</div>
@@ -586,8 +586,9 @@ const reduced = matchMedia("(prefers-reduced-motion:reduce)").matches;
 ═══════════════════════════════════════════ */
 function splitAndAnimateH1() {
   const words = [
-    { el: 'h1-line1', text: "Hi, I'm",     baseDelay: 0 },
-    { el: 'h1-line2', text: 'Jeongmin Ryu', baseDelay: 0.12 }
+    { el: 'h1-line1', text: "Hi, I'm",  baseDelay: 0 },
+    { el: 'h1-line2', text: 'Jeongmin', baseDelay: 0.12 },
+    { el: 'h1-line3', text: 'Ryu',      baseDelay: 0.52 }
   ];
   words.forEach(({ el, text, baseDelay }) => {
     const container = document.getElementById(el);
@@ -630,6 +631,7 @@ function splitAndAnimateH1() {
     });
   }
   setupMagnetic();
+  // Re-run after cards animate in
   setTimeout(setupMagnetic, 2000);
 
   document.addEventListener('mousedown', () => { dot.style.transform='translate(-50%,-50%) scale(.5)'; });
@@ -675,6 +677,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   }, { threshold: 0.05 });
   cards.forEach(c => cardIo.observe(c));
 
+  // Spring physics tilt
   cards.forEach(card => {
     let sx = 0, sy = 0;
     card.addEventListener('mousemove', e => {
@@ -686,6 +689,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       card.style.transform = `perspective(1000px) rotateX(${-sy * 7}deg) rotateY(${sx * 8}deg) translateZ(4px)`;
     });
     card.addEventListener('mouseleave', () => {
+      // Spring back
       const spring = () => {
         sx *= 0.82; sy *= 0.82;
         card.style.transform = `perspective(1000px) rotateX(${-sy * 7}deg) rotateY(${sx * 8}deg)`;
@@ -737,6 +741,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       setTimeout(() => { window.location.href = href; }, 680);
     });
   });
+  // Wipe out on back-navigation
   window.addEventListener('pageshow', () => {
     ov.className = 'out';
     setTimeout(() => { ov.className = ''; }, 700);
