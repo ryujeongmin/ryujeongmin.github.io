@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Pet Farm - Ryu Jeongmin</title>
+<title>Smart Pet Farm - Jeongmin Ryu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 
 :root{
-  --bg:#EAE4D9;--bg2:#EAE8E2;--bg3:#E0DED8;
+  --bg:#FFFFFF;--bg2:#EAE8E2;--bg3:#E0DED8;
   --ink:#1C1A18;--dim:#8A8880;--line:rgba(28,26,24,.10);
   --acc:#C4511A;--acc2:#4A7066;
   --mono:'Inter',sans-serif;--sans:'Inter',sans-serif;
@@ -41,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @keyframes breathe{0%,100%{opacity:1}50%{opacity:.3;transform:scale(.6)}}
 .nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
 .nav-back:hover{color:var(--acc)}
-.nav-back::before{content:"←";transition:transform .2s}
+.nav-back::before{content:"â";transition:transform .2s}
 .nav-back:hover::before{transform:translateX(-3px)}
 
 /* HERO */
@@ -132,21 +132,21 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div id="prog"></div>
 
 <nav>
-  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">· RJM 2026</span></a>
+  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">Â· RJM 2026</span></a>
   <a href="./index.html" class="nav-back back-link">Back to work</a>
 </nav>
 
 <section class="proj-hero">
   <canvas id="hero-cv"></canvas>
   <div class="proj-hero-content">
-    <div class="proj-tag-line">03 &nbsp;·&nbsp; Living System</div>
+    <div class="proj-tag-line">09 &nbsp;Â·&nbsp; Smart System</div>
     <h1 class="proj-title">Smart Pet Farm</h1>
-    <p class="proj-subtitle">Automated aquaponic ecosystem that manages itself — fish feed plants, plants clean water.</p>
+    <p class="proj-subtitle">Automated plant care system addressing social isolation through shared living ecosystems.</p>
     <div class="proj-meta-bar">
-      <div class="proj-meta-item"><span>Type</span>IoT · Systems Design</div>
-<div class="proj-meta-item"><span>Role</span>Solo Design & Build</div>
+      <div class="proj-meta-item"><span>Type</span>IoT Â· Social Design</div>
+<div class="proj-meta-item"><span>Role</span>Team Project</div>
 <div class="proj-meta-item"><span>Year</span>2022</div>
-<div class="proj-meta-item"><span>Platform</span>Arduino</div>
+<div class="proj-meta-item"><span>Platform</span>Arduino Â· App</div>
     </div>
   </div>
 </section>
@@ -155,19 +155,26 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="proj-content">
 
 <div class="section-block">
-      <div class="block-label">Overview</div>
-      <h2 class='block-title'>A self-managing living system</h2>
-      <div class="block-body">Smart Pet Farm is an automated aquaponic ecosystem. Fish waste feeds the plants; the plants filter the water. Arduino sensors continuously monitor water quality, temperature, and light levels. When parameters drift outside healthy ranges, the system responds automatically — pumps adjust, lights shift, heaters compensate.</div>
+      <div class="block-label">Context</div>
+      <h2 class='block-title'>Loneliness, plants, and community</h2>
+      <div class="block-body">Research shows that many single-person households experience depression and social isolation. Smart Pet Farm addresses this through a system that both automates plant care and creates community connections. <strong>The farm becomes a shared object that links neighbors.</strong></div>
       
       <div class="block-img">
-          <img src="./resources/images/smart_pet_farm.jpg" alt="Smart Pet Farm" loading="lazy">
-          <div class='block-img-caption'>Smart Pet Farm — closed-loop aquaponic system</div>
+          <img src="./resources/images/Frame 396.png" alt="Smart Pet Farm" loading="lazy">
+          <div class='block-img-caption'>Smart Pet Farm â sensor-driven community plant care</div>
         </div>
     </div>
 <div class="section-block">
-      <div class="block-label">Automation</div>
-      <h2 class='block-title'>Sensing and response loops</h2>
-      <div class="block-body">The control logic runs on an Arduino. Sensors feed real-time data into threshold checks. When the system detects deviation, actuators (water pump, LED grow lights, heater) respond within seconds. The result is a closed feedback loop that maintains the aquaponic balance without human intervention.</div>
+      <div class="block-label">Hardware</div>
+      <h2 class='block-title'>Sensing & feedback</h2>
+      <div class="block-body">The device monitors soil humidity and ambient temperature, displaying readings on an onboard screen. Two LEDs serve dual functions: supporting plant photosynthesis and communicating plant health â turning red when humidity is too high, blue when too low. The system triggers alerts before plant health degrades, not after.</div>
+      
+      
+    </div>
+<div class="section-block">
+      <div class="block-label">App Layer</div>
+      <h2 class='block-title'>Community sharing</h2>
+      <div class="block-body">Through the companion app, users can <strong>share surplus vegetables with neighbors</strong>, turning individual plant care into a community ritual. The app creates hyperlocal food-sharing networks, reducing waste and providing a gentle, low-pressure channel for social interaction between otherwise isolated residents.</div>
       
       
     </div>
@@ -175,15 +182,15 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="proj-cta section-block">
   <h3>More work from RJM-001</h3>
   <p>Hardware engineer designing physical AI that lives in the world, not behind a screen.</p>
-  <a href="./index.html" class="btn-back back-link">← View all projects</a>
+  <a href="./index.html" class="btn-back back-link">â View all projects</a>
 </div>
 
 </div>
 </div>
 
 <footer>
-  <span class="f-txt">© 2026 Ryu Jeongmin · Smart Pet Farm</span>
-  <span class="f-txt">→ <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
+  <span class="f-txt">Â© 2026 Ryu Jeongmin Â· Smart Pet Farm</span>
+  <span class="f-txt">â <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
 </footer>
 
 <script>
@@ -218,7 +225,7 @@ window.addEventListener('scroll',()=>{
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.section-block').forEach(el=>io.observe(el));
 
-// PAGE TRANSITION — wipe out on load, wipe in on back link
+// PAGE TRANSITION â wipe out on load, wipe in on back link
 window.addEventListener('pageshow',()=>{
   const ov=document.getElementById('transition');
   ov.style.transform='scaleX(1)';ov.style.transformOrigin='left';
@@ -246,7 +253,7 @@ if(!reduced){
   });
 }
 
-// HERO CANVAS — dark particle field
+// HERO CANVAS â dark particle field
 (function(){
   if(reduced||!document.getElementById('hero-cv'))return;
   const cv=document.getElementById('hero-cv'),cx=cv.getContext('2d');
@@ -267,10 +274,12 @@ if(!reduced){
   },{passive:true});
   function draw(){
     cx.clearRect(0,0,W,H);t+=.006;
+    // Draw grid
     cx.strokeStyle='rgba(243,241,236,.03)';cx.lineWidth=.5;
     const gap=Math.max(42,W/18);
     for(let y=gap*.5;y<H;y+=gap){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
     for(let x=gap*.5;x<W;x+=gap){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}
+    // Draw particles
     for(const p of pts){
       const nx=p.ox+Math.sin(t*p.s+p.p)*1.8,ny=p.oy+Math.cos(t*p.s*.7+p.p+1)*1.2;
       const dx=nx-pmx,dy=ny-pmy,d=Math.sqrt(dx*dx+dy*dy),R=90;
