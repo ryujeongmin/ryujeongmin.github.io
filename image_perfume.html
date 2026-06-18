@@ -10,7 +10,7 @@
 <style>
 
 :root{
-  --bg:#EAE4D9;--bg2:#EAE8E2;--bg3:#E0DED8;
+  --bg:#FFFFFF;--bg2:#EAE8E2;--bg3:#E0DED8;
   --ink:#1C1A18;--dim:#8A8880;--line:rgba(28,26,24,.10);
   --acc:#C4511A;--acc2:#4A7066;
   --mono:'Inter',sans-serif;--sans:'Inter',sans-serif;
@@ -41,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @keyframes breathe{0%,100%{opacity:1}50%{opacity:.3;transform:scale(.6)}}
 .nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
 .nav-back:hover{color:var(--acc)}
-.nav-back::before{content:"←";transition:transform .2s}
+.nav-back::before{content:"â";transition:transform .2s}
 .nav-back:hover::before{transform:translateX(-3px)}
 
 /* HERO */
@@ -132,16 +132,16 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div id="prog"></div>
 
 <nav>
-  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">· RJM 2026</span></a>
+  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">Â· RJM 2026</span></a>
   <a href="./index.html" class="nav-back back-link">Back to work</a>
 </nav>
 
 <section class="proj-hero">
   <canvas id="hero-cv"></canvas>
   <div class="proj-hero-content">
-    <div class="proj-tag-line">04 &nbsp;·&nbsp; Scent Interface</div>
+    <div class="proj-tag-line">04 &nbsp;Â·&nbsp; Scent Interface</div>
     <h1 class="proj-title">Image Perfume</h1>
-    <p class="proj-subtitle">Translating photographs into fragrance — cross-modal memory made physically tangible.</p>
+    <p class="proj-subtitle">Translating photographs into fragrance â cross-modal memory made physically tangible.</p>
     <div class="proj-meta-bar">
       <div class="proj-meta-item"><span>Institution</span>KAIST</div>
 <div class="proj-meta-item"><span>Type</span>HCI Research</div>
@@ -156,20 +156,20 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 
 <div class="section-block">
       <div class="block-label">Overview</div>
-      <h2 class='block-title'>RGB → scent composition</h2>
+      <h2 class='block-title'>RGB â scent composition</h2>
       <div class="block-body">Image Perfume converts an image into a unique perfume. By analyzing the RGB composition of a photograph, the system creates a <strong>scent profile layered to match the visual memory</strong>. Each R, G, B channel corresponds to a specific base scent; the machine layers these according to the ratio of values found in the image.</div>
       
       <div class="block-img">
           <img src="./resources/images/Frame 397.png" alt="Image Perfume" loading="lazy">
-          <div class='block-img-caption'>Image Perfume — the scent extraction device</div>
+          <div class='block-img-caption'>Image Perfume â the scent extraction device</div>
         </div>
     </div>
 <div class="section-block">
       <div class="block-label">Process</div>
       <h2 class='block-title'>How it works</h2>
-      <div class="block-body">The interaction is designed to feel like a ritual — extracting the essence of a memory and making it breathable.</div>
+      <div class="block-body">The interaction is designed to feel like a ritual â extracting the essence of a memory and making it breathable.</div>
       <div class="steps"><div class="step"><div class="step-num">01</div><div class="step-body">Place the photograph in the designated slot.</div></div>
-<div class="step"><div class="step-num">02</div><div class="step-body">Press the button — the machine analyzes the image's color composition.</div></div>
+<div class="step"><div class="step-num">02</div><div class="step-body">Press the button â the machine analyzes the image's color composition.</div></div>
 <div class="step"><div class="step-num">03</div><div class="step-body">Wait for the RGB-to-scent mapping to complete.</div></div>
 <div class="step"><div class="step-num">04</div><div class="step-body">Receive the dispensed scent profile unique to that image.</div></div></div>
       
@@ -185,15 +185,15 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="proj-cta section-block">
   <h3>More work from RJM-001</h3>
   <p>Hardware engineer designing physical AI that lives in the world, not behind a screen.</p>
-  <a href="./index.html" class="btn-back back-link">← View all projects</a>
+  <a href="./index.html" class="btn-back back-link">â View all projects</a>
 </div>
 
 </div>
 </div>
 
 <footer>
-  <span class="f-txt">© 2026 Ryu Jeongmin · Image Perfume</span>
-  <span class="f-txt">→ <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
+  <span class="f-txt">Â© 2026 Ryu Jeongmin Â· Image Perfume</span>
+  <span class="f-txt">â <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
 </footer>
 
 <script>
@@ -228,7 +228,7 @@ window.addEventListener('scroll',()=>{
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.section-block').forEach(el=>io.observe(el));
 
-// PAGE TRANSITION — wipe out on load, wipe in on back link
+// PAGE TRANSITION â wipe out on load, wipe in on back link
 window.addEventListener('pageshow',()=>{
   const ov=document.getElementById('transition');
   ov.style.transform='scaleX(1)';ov.style.transformOrigin='left';
@@ -256,7 +256,7 @@ if(!reduced){
   });
 }
 
-// HERO CANVAS — dark particle field
+// HERO CANVAS â dark particle field
 (function(){
   if(reduced||!document.getElementById('hero-cv'))return;
   const cv=document.getElementById('hero-cv'),cx=cv.getContext('2d');
