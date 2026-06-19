@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Page Turner - Jeongmin Ryu</title>
+<title>Ballie - Jeongmin Ryu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+body{font-family:var(--sans);font-size:16px;line-height:1.55;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.032'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
 
@@ -39,7 +39,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-logo{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:10px;cursor:none}
 .nav-dot{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:breathe 4s ease-in-out infinite}
 @keyframes breathe{0%,100%{opacity:1}50%{opacity:.3;transform:scale(.6)}}
-.nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
+.nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:upperuppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
 .nav-back:hover{color:var(--acc)}
 .nav-back::before{content:"←";transition:transform .2s}
 .nav-back:hover::before{transform:translateX(-3px)}
@@ -136,7 +136,7 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
   <a href="./index.html" class="nav-back back-link">Back to work</a>
 </nav>
 
-<section claq�="proj-hero">
+<section class="proj-hero">
   <canvas id="hero-cv"></canvas>
   <div class="proj-hero-content">
     <div class="proj-tag-line">06 &nbsp;·&nbsp; Ambient Object</div>
