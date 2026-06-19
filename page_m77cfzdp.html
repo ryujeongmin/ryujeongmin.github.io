@@ -10,7 +10,7 @@
 <style>
 
 :root{
-  --bg:#EAE4D9;--bg2:#EAE8E2;--bg3:#E0DED8;
+  --bg:#FFFFFF;--bg2:#EAE8E2;--bg3:#E0DED8;
   --ink:#1C1A18;--dim:#8A8880;--line:rgba(28,26,24,.10);
   --acc:#C4511A;--acc2:#4A7066;
   --mono:'Inter',sans-serif;--sans:'Inter',sans-serif;
@@ -41,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @keyframes breathe{0%,100%{opacity:1}50%{opacity:.3;transform:scale(.6)}}
 .nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
 .nav-back:hover{color:var(--acc)}
-.nav-back::before{content:"←";transition:transform .2s}
+.nav-back::before{content:"â";transition:transform .2s}
 .nav-back:hover::before{transform:translateX(-3px)}
 
 /* HERO */
@@ -118,7 +118,7 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <svg style="position:fixed;width:0;height:0;overflow:hidden;pointer-events:none">
   <defs>
     <filter id="blob-filter" x="-50%" y="-50%" width="200%" height="200%">
-      <feTurbulence type="turbulence" baseFrequency="0.022 0.028" numOctaves="3" seed="7" result="noise">
+  2   <feTurbulence type="turbulence" baseFrequency="0.022 0.028" numOctaves="3" seed="7" result="noise">
         <animate attributeName="baseFrequency" dur="9s" values="0.022 0.028;0.038 0.052;0.022 0.028" repeatCount="indefinite"/>
       </feTurbulence>
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
@@ -132,21 +132,21 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div id="prog"></div>
 
 <nav>
-  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">· RJM 2026</span></a>
+  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">Â· RJM 2026</span></a>
   <a href="./index.html" class="nav-back back-link">Back to work</a>
 </nav>
 
 <section class="proj-hero">
   <canvas id="hero-cv"></canvas>
   <div class="proj-hero-content">
-    <div class="proj-tag-line">08 &nbsp;·&nbsp; Autonomous Robot</div>
+    <div class="proj-tag-line">08 &nbsp;Â·&nbsp; Autonomous Robot</div>
     <h1 class="proj-title">Self-Driving Mobility</h1>
-    <p class="proj-subtitle">Autonomous mobile base with robotic arm — inverse kinematics meets physical manipulation.</p>
+    <p class="proj-subtitle">Autonomous mobile base with robotic arm â inverse kinematics meets physical manipulation.</p>
     <div class="proj-meta-bar">
-      <div class="proj-meta-item"><span>Type</span>Robotics · Mechatronics</div>
-<div class="proj-meta-item"><span>Role</span>Team · Mechanism Lead</div>
+      <div class="proj-meta-item"><span>Type</span>Robotics Â· Mechatronics</div>
+<div class="proj-meta-item"><span>Role</span>Team Â· Mechanism Lead</div>
 <div class="proj-meta-item"><span>Year</span>2022</div>
-<div class="proj-meta-item"><span>Stack</span>Python · RPi</div>
+<div class="proj-meta-item"><span>Stack</span>Python Â· RPi</div>
     </div>
   </div>
 </section>
@@ -174,7 +174,7 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="section-block">
       <div class="block-label">Integration</div>
       <h2 class='block-title'>Navigation + arm coordination</h2>
-      <div class="block-body">The most technically challenging aspect was coordinating the autonomous navigation system with the arm controller — ensuring the mobile base could reposition to bring the arm within reach of a target while the arm simultaneously adjusted its posture for the approaching workspace. A shared state machine managed priority between the two subsystems.</div>
+      <div class="block-body">The most technically challenging aspect was coordinating the autonomous navigation system with the arm controller â ensuring the mobile base could reposition to bring the arm within reach of a target while the arm simultaneously adjusted its posture for the approaching workspace. A shared state machine managed priority between the two subsystems.</div>
       
       
     </div>
@@ -182,15 +182,15 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="proj-cta section-block">
   <h3>More work from RJM-001</h3>
   <p>Hardware engineer designing physical AI that lives in the world, not behind a screen.</p>
-  <a href="./index.html" class="btn-back back-link">← View all projects</a>
+  <a href="./index.html" class="btn-back back-link">â View all projects</a>
 </div>
 
 </div>
 </div>
 
 <footer>
-  <span class="f-txt">© 2026 Ryu Jeongmin · Self-Driving Mobility</span>
-  <span class="f-txt">→ <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
+  <span class="f-txt">Â© 2026 Ryu Jeongmin Â· Self-Driving Mobility</span>
+  <span class="f-txt">â <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
 </footer>
 
 <script>
@@ -225,7 +225,7 @@ window.addEventListener('scroll',()=>{
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.section-block').forEach(el=>io.observe(el));
 
-// PAGE TRANSITION — wipe out on load, wipe in on back link
+// PAGE TRANSITION â wipe out on load, wipe in on back link
 window.addEventListener('pageshow',()=>{
   const ov=document.getElementById('transition');
   ov.style.transform='scaleX(1)';ov.style.transformOrigin='left';
@@ -253,7 +253,7 @@ if(!reduced){
   });
 }
 
-// HERO CANVAS — dark particle field
+// HERO CANVAS â dark particle field
 (function(){
   if(reduced||!document.getElementById('hero-cv'))return;
   const cv=document.getElementById('hero-cv'),cx=cv.getContext('2d');
@@ -274,10 +274,12 @@ if(!reduced){
   },{passive:true});
   function draw(){
     cx.clearRect(0,0,W,H);t+=.006;
+    // Draw grid
     cx.strokeStyle='rgba(243,241,236,.03)';cx.lineWidth=.5;
     const gap=Math.max(42,W/18);
     for(let y=gap*.5;y<H;y+=gap){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
     for(let x=gap*.5;x<W;x+=gap){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}
+    // Draw particles
     for(const p of pts){
       const nx=p.ox+Math.sin(t*p.s+p.p)*1.8,ny=p.oy+Math.cos(t*p.s*.7+p.p+1)*1.2;
       const dx=nx-pmx,dy=ny-pmy,d=Math.sqrt(dx*dx+dy*dy),R=90;
