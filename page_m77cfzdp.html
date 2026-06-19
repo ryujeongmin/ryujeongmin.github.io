@@ -18,282 +18,30 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.032'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+body{font-family:var(--sans);font-size:16px;line-height:1.55;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.032'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
 
 /* CURSOR */
-#cur-dot{position:fixed;pointer-events:none;z-index:9999;width:6px;height:6px;background:var(--acc);border-radius:50%;transform:translate(-50%,-50%);mix-blend-mode:multiply}
-#cur-blob{position:fixed;pointer-events:none;z-index:9998;width:44px;height:44px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(196,81,26,.18) 30%,transparent 70%);filter:url(#blob-filter)}
-
-/* PROGRESS */
-#prog{position:fixed;top:0;left:0;z-index:200;height:2px;width:0%;background:var(--acc)}
-
-/* PAGE TRANSITION */
-#transition{position:fixed;inset:0;z-index:800;pointer-events:none;background:var(--ink);transform:scaleX(0);transform-origin:right}
-#transition.out{animation:wipe-out .2s cubic-bezier(.86,0,.07,1) forwards}
-@keyframes wipe-out{from{transform:scaleX(1);transform-origin:right}to{transform:scaleX(0);transform-origin:right}}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(243,241,236,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav-logo{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:10px;cursor:none}
-.nav-dot{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:breathe 4s ease-in-out infinite}
-@keyframes breathe{0%,100%{opacity:1}50%{opacity:.3;transform:scale(.6)}}
-.nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
-.nav-back:hover{color:var(--acc)}
-.nav-back::before{content:"â";transition:transform .2s}
-.nav-back:hover::before{transform:translateX(-3px)}
-
-/* HERO */
-.proj-hero{min-height:75svh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 48px 64px;position:relative;overflow:hidden;background:var(--ink)}
-#hero-cv{position:absolute;inset:0;width:100%;height:100%}
-.proj-hero-content{position:relative;z-index:2}
-.proj-tag-line{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(196,81,26,.8);margin-bottom:16px;display:flex;align-items:center;gap:12px;opacity:0;animation:fade-up .7s ease .3s forwards}
-.proj-tag-line::before{content:"";display:inline-block;width:24px;height:1px;background:var(--acc)}
-.proj-title{font-size:clamp(42px,8vw,100px);font-weight:700;line-height:.92;letter-spacing:-.04em;color:rgba(243,241,236,.9);overflow:hidden;opacity:0;animation:fade-up .8s cubic-bezier(.16,1,.3,1) .5s forwards}
-.proj-subtitle{margin-top:20px;max-width:560px;font-size:15px;line-height:1.8;color:rgba(243,241,236,.45);opacity:0;animation:fade-up .7s ease .8s forwards}
-.proj-meta-bar{display:flex;gap:32px;flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid rgba(243,241,236,.08);opacity:0;animation:fade-up .7s ease 1s forwards}
-.proj-meta-item{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(243,241,236,.35)}
-.proj-meta-item span{display:block;color:var(--acc);margin-bottom:3px;font-size:8px}
-@keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-
-/* CONTENT */
-.wrap{max-width:960px;margin:0 auto;padding:0 48px}
-.proj-content{padding:80px 0 120px}
-.section-block{margin-bottom:72px;opacity:0;transform:translateY(24px);transition:opacity .2s ease,transform .2s cubic-bezier(.2,.9,.2,1)}
-.section-block.vis{opacity:1;transform:none}
-.block-label{font-family:var(--mono);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);margin-bottom:16px;display:flex;align-items:center;gap:10px}
-.block-label::after{content:"";flex:1;height:1px;background:var(--line)}
-.block-title{font-size:clamp(22px,3.5vw,34px);font-weight:700;letter-spacing:-.025em;margin-bottom:16px;line-height:1.2}
-.block-body{font-size:15px;line-height:1.85;color:var(--dim);max-width:680px}
-.block-body p+p{margin-top:12px}
-.block-body strong{color:var(--ink);font-weight:500}
-.block-img{margin-top:32px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
-.block-img img{width:100%;height:auto;display:block}
-.block-img-caption{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);padding:12px 16px;background:var(--bg2);border-top:1px solid var(--line)}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
-.two-col .block-img{margin-top:0}
-.steps{counter-reset:step;margin-top:24px;display:flex;flex-direction:column;gap:12px}
-.step{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start;padding:16px;background:var(--bg2);border:1px solid var(--line);border-radius:8px}
-.step-num{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--acc);padding-top:2px}
-.step-body{font-size:14px;line-height:1.7;color:var(--dim)}
-
-/* CTA */
-.proj-cta{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:48px;text-align:center;margin-top:80px}
-.proj-cta h3{font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
-.proj-cta p{font-size:14px;color:var(--dim);margin-bottom:28px}
-.btn-back{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-  background:var(--acc);color:var(--bg);padding:12px 28px;border-radius:40px;
-  cursor:none;transition:transform .2s,box-shadow .2s;
-}
-.btn-back:hover{transform:scale(1.04);box-shadow:0 8px 32px rgba(196,81,26,.4)}
-
-/* FOOTER */
-footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.f-txt{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
-
-/* CLICK SPARKS */
-.spark{position:fixed;pointer-events:none;z-index:9990;border-radius:50%;transform:translate(-50%,-50%);background:var(--acc);animation:spark-out .6s ease forwards}
-@keyframes spark-out{0%{transform:translate(-50%,-50%) scale(1);opacity:.9}100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(0)}}
-
-@media(max-width:768px){
-  nav,footer{padding:14px 22px}
-  .proj-hero{padding:110px 22px 52px;min-height:65svh}
-  .wrap{padding:0 22px}
-  .two-col{grid-template-columns:1fr}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-  #cur-dot,#cur-blob{display:none}
-  body{cursor:auto}
-  .section-block{opacity:1;transform:none}
-}
-
-</style>
-</head>
-<body>
-
-<svg style="position:fixed;width:0;height:0;overflow:hidden;pointer-events:none">
-  <defs>
-    <filter id="blob-filter" x="-50%" y="-50%" width="200%" height="200%">
-  2   <feTurbulence type="turbulence" baseFrequency="0.022 0.028" numOctaves="3" seed="7" result="noise">
-        <animate attributeName="baseFrequency" dur="9s" values="0.022 0.028;0.038 0.052;0.022 0.028" repeatCount="indefinite"/>
-      </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs>
-</svg>
-
-<div id="cur-dot"></div>
-<div id="cur-blob"></div>
-<div id="transition"></div>
-<div id="prog"></div>
-
-<nav>
-  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">Â· RJM 2026</span></a>
-  <a href="./index.html" class="nav-back back-link">Back to work</a>
-</nav>
-
-<section class="proj-hero">
-  <canvas id="hero-cv"></canvas>
-  <div class="proj-hero-content">
-    <div class="proj-tag-line">08 &nbsp;Â·&nbsp; Autonomous Robot</div>
-    <h1 class="proj-title">Self-Driving Mobility</h1>
-    <p class="proj-subtitle">Autonomous mobile base with robotic arm â inverse kinematics meets physical manipulation.</p>
-    <div class="proj-meta-bar">
-      <div class="proj-meta-item"><span>Type</span>Robotics Â· Mechatronics</div>
-<div class="proj-meta-item"><span>Role</span>Team Â· Mechanism Lead</div>
-<div class="proj-meta-item"><span>Year</span>2022</div>
-<div class="proj-meta-item"><span>Stack</span>Python Â· RPi</div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-<div class="proj-content">
-
-<div class="section-block">
-      <div class="block-label">Overview</div>
-      <h2 class='block-title'>Mobility + manipulation</h2>
-      <div class="block-body">This project combined a self-driving mobile base with a robotic arm, integrating <strong>autonomous navigation with physical manipulation capabilities</strong>. The goal was to explore how a mobile platform can coordinate locomotion and arm movement to accomplish tasks in unstructured environments.</div>
-      
-      <div class="block-img">
-          <img src="./resources/images/Frame 393.png" alt="Self-Driving Mobility" loading="lazy">
-          <div class='block-img-caption'>Robot Arm with Self-Driving Mobility Platform</div>
-        </div>
-    </div>
-<div class="section-block">
-      <div class="block-label">Mechanism</div>
-      <h2 class='block-title'>Kinematics & DH parameters</h2>
-      <div class="block-body">Based on the robot arm's kinematic structure, we derived DH (Denavit-Hartenberg) parameters and computed transformation matrices for each joint. We then implemented <strong>inverse kinematics in Python</strong>, allowing precise control of end-effector position from a high-level target coordinate. This enabled smooth, goal-directed arm movement regardless of starting configuration.</div>
-      
-      
-    </div>
-<div class="section-block">
-      <div class="block-label">Integration</div>
-      <h2 class='block-title'>Navigation + arm coordination</h2>
-      <div class="block-body">The most technically challenging aspect was coordinating the autonomous navigation system with the arm controller â ensuring the mobile base could reposition to bring the arm within reach of a target while the arm simultaneously adjusted its posture for the approaching workspace. A shared state machine managed priority between the two subsystems.</div>
-      
-      
-    </div>
-
-<div class="proj-cta section-block">
-  <h3>More work from RJM-001</h3>
-  <p>Hardware engineer designing physical AI that lives in the world, not behind a screen.</p>
-  <a href="./index.html" class="btn-back back-link">â View all projects</a>
-</div>
-
-</div>
-</div>
-
-<footer>
-  <span class="f-txt">Â© 2026 Ryu Jeongmin Â· Self-Driving Mobility</span>
-  <span class="f-txt">â <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
-</footer>
-
-<script>
-
-const reduced = matchMedia("(prefers-reduced-motion:reduce)").matches;
-
-// CURSOR
-(function(){
-  if(reduced)return;
-  const dot=document.getElementById('cur-dot'),blob=document.getElementById('cur-blob');
-  let mx=0,my=0,bx=0,by=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-  document.querySelectorAll('a,button,.btn-back').forEach(el=>{
-    el.addEventListener('mouseenter',()=>blob.style.cssText+='width:72px;height:72px');
-    el.addEventListener('mouseleave',()=>blob.style.cssText=blob.style.cssText.replace(/width:[^;]+;height:[^;]+;/g,''));
-  });
-  (function loop(){
-    bx+=(mx-bx)*.1;by+=(my-by)*.1;
-    dot.style.left=mx+'px';dot.style.top=my+'px';
-    blob.style.left=bx+'px';blob.style.top=by+'px';
-    requestAnimationFrame(loop);
-  })();
-})();
-
-// SCROLL PROGRESS
-window.addEventListener('scroll',()=>{
-  const s=document.documentElement;
-  document.getElementById('prog').style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%';
-},{passive:true});
-
-// REVEAL
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.08});
-document.querySelectorAll('.section-block').forEach(el=>io.observe(el));
-
-// PAGE TRANSITION â wipe out on load, wipe in on back link
-window.addEventListener('pageshow',()=>{
-  const ov=document.getElementById('transition');
-  ov.style.transform='scaleX(1)';ov.style.transformOrigin='left';
-  requestAnimationFrame(()=>{ov.classList.add('out');setTimeout(()=>{ov.classList.remove('out');ov.style.transform='';},700)});
-});
-document.querySelectorAll('.back-link').forEach(link=>{
-  link.addEventListener('click',e=>{
-    e.preventDefault();
-    const ov=document.getElementById('transition');
-    ov.style.cssText='position:fixed;inset:0;z-index:800;background:var(--ink);transform:scaleX(0);transform-origin:left;pointer-events:all;animation:wipe-in .2s cubic-bezier(.86,0,.07,1) forwards';
-    setTimeout(()=>{ window.location.href=link.getAttribute('href'); },680);
-  });
-});
-
-// CLICK SPARKS
-if(!reduced){
-  document.addEventListener('click',e=>{
-    for(let i=0;i<7;i++){
-      const el=document.createElement('div');el.className='spark';
-      const a=(i/7)*Math.PI*2+Math.random()*.4,d=25+Math.random()*35,s=3+Math.random()*4;
-      el.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;width:${s}px;height:${s}px;--sx:${Math.cos(a)*d}px;--sy:${Math.sin(a)*d}px`;
-      document.body.appendChild(el);
-      el.addEventListener('animationend',()=>el.remove());
-    }
-  });
-}
-
-// HERO CANVAS â dark particle field
-(function(){
-  if(reduced||!document.getElementById('hero-cv'))return;
-  const cv=document.getElementById('hero-cv'),cx=cv.getContext('2d');
-  let W,H,pts=[];
-  function init(){
-    const dpr=Math.min(devicePixelRatio||1,2);
-    W=cv.parentElement.offsetWidth;H=cv.parentElement.offsetHeight;
-    cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
-    pts=[];const gap=Math.max(42,W/18);
-    for(let y=gap*.5;y<H;y+=gap)for(let x=gap*.5;x<W;x+=gap)
-      pts.push({x,y,ox:x,oy:y,p:Math.random()*Math.PI*2,s:.3+Math.random()*.7,r:.6+Math.random()*1.4,isAcc:Math.random()<.06});
-  }
-  init();
-  window.addEventListener('resize',()=>{clearTimeout(init._t);init._t=setTimeout(init,100)});
-  let t=0,pmx=W/2,pmy=H/2;
-  document.getElementById('hero-cv').parentElement.addEventListener('pointermove',e=>{
-    const r=cv.getBoundingClientRect();pmx=e.clientX-r.left;pmy=e.clientY-r.top;
-  },{passive:true});
-  function draw(){
-    cx.clearRect(0,0,W,H);t+=.006;
-    // Draw grid
-    cx.strokeStyle='rgba(243,241,236,.03)';cx.lineWidth=.5;
-    const gap=Math.max(42,W/18);
-    for(let y=gap*.5;y<H;y+=gap){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
-    for(let x=gap*.5;x<W;x+=gap){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}
-    // Draw particles
-    for(const p of pts){
-      const nx=p.ox+Math.sin(t*p.s+p.p)*1.8,ny=p.oy+Math.cos(t*p.s*.7+p.p+1)*1.2;
-      const dx=nx-pmx,dy=ny-pmy,d=Math.sqrt(dx*dx+dy*dy),R=90;
-      const lit=d<R?(1-d/R)*.6:0;
-      cx.globalAlpha=(.06+lit)*(p.isAcc?.9:1);
-      cx.fillStyle=p.isAcc?'#C4511A':'rgba(243,241,236,1)';
-      cx.beginPath();cx.arc(nx,ny,p.r+lit*2.5,0,Math.PI*2);cx.fill();
-    }
-    cx.globalAlpha=1;
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
-</script>
-</body>
-</html>
+#cur-dot{position:fixed;pointer-events:nonNދZ[�^�NNNN��Y���ZY���ؘX��ܛ�[���\�KXX��N؛ܙ\�\�Y]\΍L	N��[�ٛܛN��[��]JML	KML	JN�Z^X�[�[[�N�][\_B���\�X�؞���][ێ��^Y��[�\�Y]�[�Λ�ۙNދZ[�^�NNN��Y�
+�ZY��
+؛ܙ\�\�Y]\΍L	N��[�ٛܛN��[��]JML	KML	JNؘX��ܛ�[���YX[YܘYY[�
+�\��K�ؘJNM�K���N
+H�	K�[��\�[�
+�	JNٚ[\��\�
+؛؋Y�[\�_B��ʈ��ԑT��
+��������][ێ��^Y����Y��ދZ[�^���ZY�����Y�	NؘX��ܛ�[���\�KXX��_B��ʈQ�H�S��USӈ
+���[��][۞���][ێ��^Y�[��]�ދZ[�^���[�\�Y]�[�Λ�ۙNؘX��ܛ�[���\�KZ[��N��[�ٛܛN���[V
+
+N��[�ٛܛK[ܚY�[���Y�B���[��][ۋ��]�[�[X][ێ��\K[�]����X�X�X�^�Y\��
+��
+�JH�ܝ�\��B��^Y��[Y\��\K[�]ٜ��^��[�ٛܛN���[V
+JN��[�ٛܛK[ܚY�[���Y�]���[�ٛܛN���[V
+
+N��[�ٛܛK[ܚY�[���Y�_B��ʈ�U�
+��]����][ێ��^Y����Y��ܚY��ދZ[�^�L�\�^N��^�[YۋZ][\Θ�[�\�ڝ\�Y�KX�۝[���X�KX�]�Y[��Y[�ΌM�
+ؘX��ܛ�[���ؘJ���K�͋�
+JNؘX����Y�[\���\�M
+N�]�X��]X�X����Y�[\���\�M
+N؛ܙ\�X���N�\��Y�\�K[[�J_B���]�[���ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�L��]\�\�X�[�΋��[N�^]�[�ٛܛN�\\��\�N�\�^N��^�[YۋZ][\Θ�[�\���\�L��\��܎��ۙ_B���]�Y���Y���ZY���؛ܙ\�\�Y]\΍L	NؘX��ܛ�[���\�KXX��N�[�[X][ێ���X]H
+�X\�KZ[�[�][��[�]_B��^Y��[Y\���X]^�	KL	^��X�]N�_ML	^��X�]N����[�ٛܛN���[J��__B���]�X�X��ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�L�]\�\�X�[�΋�N[N�^GG&�6f�&ӧWW&66S�6���#�f"���F�ғ�F�7���f�W��Ɩv�֗FV�3�6V�FW#�v����G&�6�F���6���"�'3�7W'6�#����WТ��b�&6����fW'�6���#�f"���62�Т��b�&6���&Vf�&W�6��FV�C�.(i#�G&�6�F���G&�6f�&��'7Т��b�&6����fW#��&Vf�&W�G&�6f�&ӧG&�6�FU���7��Р���U$����&��ֆW&��֖�ֆV�v�C�sW7f��F�7���f�W��f�W��F�&V7F���6��V�㶧W7F�g��6��FV�C�f�W��V�C�FF��s�C�C��cG���6�F���&V�F�fS��fW&f��s���FFV�&6�w&�V�C�f"��֖沗Т6�W&��7g��6�F���'6��WFS���6WC��v�GF��S��V�v�C�WТ�&��ֆW&��6��FV�G��6�F���&V�F�fS��֖�FW��'Т�&���Fr�Ɩ�W�f��B�f֖Ǔ�f"�������f��B�6��S����WGFW"�76��s��6VӷFW�B�G&�6f�&ӧWW&66S�6���#�&v&��bÃ�#b�ん��&v���&�GF�ӣg��F�7���f�W��Ɩv�֗FV�3�6V�FW#�v�'���6�G�����F���fFR�W�w2V6R�72f�'v&G7Т�&���Fr�Ɩ�S��&Vf�&W�6��FV�C�"#�F�7�����Ɩ�R�&��6��v�GF��#G���V�v�C���&6�w&�V�C�f"���62�Т�&���F�F�W�f��B�6��S�6���C'�Çgr����f��B�vV�v�C�s�Ɩ�RֆV�v�C��#��WGFW"�76��s���FVӶ6���#�&v&�#C2�#C�#3b�㒓��fW&f��s���FFV��6�G�����F���fFR�W�27V&�2�&W��W"��b���2���W2f�'v&G7Т�&���7V'F�F�W��&v���F��#�����v�GF��Sc��f��B�6��S�W��Ɩ�RֆV�v�C�ヶ6���#�&v&�#C2�#C�#3b��CR���6�G�����F���fFR�W�w2V6R�2f�'v&G7Т�&����WF�&'�F�7���f�W��v�3'��f�W��w&�w&��&v���F��3g��FF��r�F��#G��&�&FW"�F���6�ƖB&v&�#C2�#C�#3b������6�G�����F���fFR�W�w2V6R2f�'v&G7Т�&����WF֗FV׶f��B�f֖Ǔ�f"�������f��B�6��S�����WGFW"�76��s��&VӷFW�B�G&�6f�&ӧWW&66S�6���#�&v&�#C2�#C�#3b��3R�Т�&����WF֗FV�7�F�7���&��6��6���#�f"���62���&v���&�GF�ӣ7��f��B�6��S���Ф�W�g&�W2fFR�W�g&�׶�6�G���G&�6f�&ӧG&�6�FU������F���6�G���G&�6f�&Ӧ���W�Р��4��DT�B���w&����v�GF���c���&v��WF�FF��s�C��Т�&���6��FV�G�FF��s���#�Т�6V7F����&��6���&v���&�GF�ӣs'���6�G���G&�6f�&ӧG&�6�FU��#G���G&�6�F����6�G��'2V6R�G&�6f�&��'27V&�2�&W��W"��"����"��Т�6V7F����&��6��f�7��6�G���G&�6f�&Ӧ���WТ�&��6���&VǶf��B�f֖Ǔ�f"�������f��B�6��S�����WGFW"�76��s��6VӷFW�B�G&�6f�&ӧWW&66S�6���#�f"���62���&v���&�GF�ӣg��F�7���f�W��Ɩv�֗FV�3�6V�FW#�v��Т�&��6���&Vã�gFW'�6��FV�C�"#�f�W����V�v�C���&6�w&�V�C�f"���Ɩ�R�Т�&��6��F�F�W�f��B�6��S�6���#'��2�Wgr�3G���f��B�vV�v�C�s��WGFW"�76��s���#VVӶ�&v���&�GF�ӣg��Ɩ�RֆV�v�C��'Т�&��6��&�G��f��B�6��S�W��Ɩ�RֆV�v�C��S�6���#�f"���F�ғ����v�GF��c��Т�&��6��&�G����&v���F��'�Т�&��6��&�G�7G&��w�6���#�f"��֖沓�f��B�vV�v�C�SТ�&��6�֖�w��&v���F��3'��&�&FW"�&F�W3�f"���"���fW&f��s���FFV�&�&FW#��6�ƖBf"���Ɩ�R�Т�&��6�֖�r��w�v�GF��S��V�v�C�WF�F�7���&��6�Т�&��6�֖�r�6F���f��B�f֖Ǔ�f"�������f��B�6��S�����WGFW"�76��s��fVӷFW�B�G&�6f�&ӧWW&66S�6���#�f"���F�ғ�FF��s�'�g��&6�w&�V�C�f"���&s"��&�&FW"�F���6�ƖBf"���Ɩ�R�Т�Gv��6�ǶF�7���w&�C�w&�B�FV��FR�6��V��3�g"g#�v�#G���&v���F��3'�Т�Gv��6���&��6�֖�w��&v���F��Т�7FW7�6�V�FW"�&W6WC�7FW��&v���F��#G��F�7���f�W��f�W��F�&V7F���6��V��v�'�Т�7FW�F�7���w&�C�w&�B�FV��FR�6��V��3�C�g#�v�g��Ɩv�֗FV�3�7F'C�FF��s�g��&6�w&�V�C�f"���&s"��&�&FW#��6�ƖBf"���Ɩ�R��&�&FW"�&F�W3���Т�7FW��V׶f��B�f֖Ǔ�f"�������f��B�6��S�'��f��B�vV�v�C�S�6���#�f"���62��FF��r�F��'�Т�7FW�&�G��f��B�6��S�G��Ɩ�RֆV�v�C��s�6���#�f"���F�җР��5D���&���7F�&6�w&�V�C�f"���&s"��&�&FW#��6�ƖBf"���Ɩ�R��&�&FW"�&F�W3�f"���"��FF��s�C���FW�B�Ɩv�6V�FW#��&v���F����Т�&���7F�7�f��B�6��S�6���#'��7gr�3'���f��B�vV�v�C�s��WGFW"�76��s���&VӶ�&v���&�GF�ӣ'�Т�&���7F�f��B�6��S�G��6���#�f"���F�ғ��&v���&�GF�ӣ#��Т�'F��&6���F�7�����Ɩ�R�f�W��Ɩv�֗FV�3�6V�FW#�v�����f��B�f֖Ǔ�f"�������f��B�6��S����WGFW"�76��s��&VӷFW�B�G&�6f�&ӧWW&66S��&6�w&�V�C�f"���62��6���#�f"���&r��FF��s�'�#���&�&FW"�&F�W3�C���7W'6�#����S�G&�6�F���G&�6f�&��'2�&���6�F�r�'3��Т�'F��&6����fW'�G&�6f�&ӧ66�R��B��&���6�F�s���3'�&v&��bÃ�#b��B�Р��d��DU"��f��FW'�FF��s�#G�C���&�&FW"�F���6�ƖBf"���Ɩ�R��F�7���f�W���W7F�g��6��FV�C�76R�&WGvVV�Ɩv�֗FV�3�6V�FW#�f�W��w&�w&�v�'�Т�b�G�G�f��B�f֖Ǔ�f"�������f��B�6��S�����WGFW"�76��s���VӷFW�B�G&�6f�&ӧWW&66S�6���#�f"���F�җР��4Ĕ4�5$�2���7&���6�F���f��VC����FW"�WfV�G3����S��֖�FW������&�&FW"�&F�W3�SS�G&�6f�&ӧG&�6�FR��SR��SR��&6�w&�V�C�f"���62����F���7&���WB�g2V6Rf�'v&G7Ф�W�g&�W27&���WG�W�G&�6f�&ӧG&�6�FR��SR��SR�66�R����6�G����W��6�G���G&�6f�&ӧG&�6�FR�f"���7���f"���7���66�R���Р��VF�����v�GF��sc������b�f��FW'�FF��s�G�#'�Т�&��ֆW&��FF��s��#'�S'��֖�ֆV�v�C�cW7f�Т�w&�FF��s�#'�Т�Gv��6�Ƕw&�B�FV��FR�6��V��3�g'ЧФ�VF��&VfW'2�&VGV6VB���F���&VGV6R����£��&Vf�&R£��gFW'���F����GW&F�����2���'F�C�G&�6�F����GW&F�����2���'F�GТ67W"�F�B�67W"�&��'�F�7������WТ&�G��7W'6�#�WF�Т�6V7F����&��6���6�G���G&�6f�&Ӧ���WЧР���7G��S����VC��&�G�ࠣ�7fr7G��S�'�6�F���f��VC�v�GF����V�v�C���fW&f��s���FFV����FW"�WfV�G3����R#��FVg3��f��FW"�C�&&��"�f��FW""��"�SR"��"�SR"v�GF��##R"�V�v�C�##R#��fUGW&'V�V�6RG�S�'GW&'V�V�6R"&6Tg&WVV�7��#�#"�#�"�V��7FfW3�#2"6VVC�#r"&W7V�C�&���6R#����FRGG&�'WFT��S�&&6Tg&WVV�7�"GW#�#�2"f�VW3�#�#"�#���3��S#��#"�#�"&WVD6�V�C�&��FVf��FR"����fUGW&'V�V�6S��fTF�7�6V�V�D����%6�W&6Tw&��2"��#�&���6R"66�S�#B"�6���V�6V�V7F�#�%""�6���V�6V�V7F�#�$r"����f��FW#���FVg3���7fsࠣ�F�b�C�&7W"�F�B#���F�c��F�b�C�&7W"�&��"#���F�c��F�b�C�'G&�6�F���#���F�c��F�b�C�'&�r#���F�cࠣ��c���&Vc�"����FW��F��"6�73�&�b���v�#��F�b6�73�&�b�F�B#���F�c�%�R�T��tԔ��7�7G��S�&f��B�6��S�����WGFW"�76��s��&VӶ6���#�f"���F�Ғ#�+r$��##c��7�������&Vc�"����FW��F��"6�73�&�b�&6�&6��Ɩ�#�&6�F�v�&�������cࠣ�6V7F���6�73�'&��ֆW&�#��6�f2�C�&�W&��7b#���6�f3��F�b6�73�'&��ֆW&��6��FV�B#��F�b6�73�'&���Fr�Ɩ�R#��f�'7�+rf�'7�WF�����W2&�&�C��F�c�ƃ6�73�'&���F�F�R#�6V�b�G&�f��r��&�ƗG������6�73�'&���7V'F�F�R#�WF�����W2��&��R&6Rv�F�&�&�F�2&�(	B��fW'6R���V�F�72�VWG2��6�6���V�F��������F�b6�73�'&����WF�&"#��F�b6�73�'&����WF֗FV�#��7��G�S��7��&�&�F�72+r�V6�G&��73��F�c��F�b6�73�'&����WF֗FV�#��7��&��S��7��FV�+r�V6��6��VC��F�c��F�b6�73�'&����WF֗FV�#��7��V#��7��###��F�c��F�b6�73�'&����WF֗FV�#��7��7F6���7���F���+r%���F�c���F�c���F�c���6V7F���ࠣ�F�b6�73�'w&#��F�b6�73�'&���6��FV�B#ࠣ�F�b6�73�'6V7F����&��6�#��F�b6�73�&&��6���&V�#��fW'f�Ws��F�c�ƃ"6�73�v&��6��F�F�Rs���&�ƗG����V�F������#��F�b6�73�&&��6��&�G�#�F��2&��V7B6��&��VB6V�b�G&�f��r��&��R&6Rv�F�&�&�F�2&����FVw&F��r�7G&��s�WF�����W2�f�vF���v�F���6�6���V�F���6&�ƗF�W3��7G&��s��F�Rv��v2F�W���&R��r��&��R�Ff�&�6�6��&F��FR��6���F����B&���fV�V�BF�66��Ɨ6�F6�2��V�7G'V7GW&VBV�f�&���V�G2���F�c� ��F�b6�73�&&��6�֖�r#�Ɩ�r7&3�"��&W6�W&6W2���vW2�g&�R3�2��r"�C�%6V�b�G&�f��r��&�ƗG�"��F��s�&���#��F�b6�73�v&��6�֖�r�6F���s�&�&�B&�v�F�6V�b�G&�f��r��&�ƗG��Ff�&���F�c���F�c���F�c��F�b6�73�'6V7F����&��6�#��F�b6�73�&&��6���&V�#��V6��6���F�c�ƃ"6�73�v&��6��F�F�Rs䶖�V�F�72bD�&�WFW'3���#��F�b6�73�&&��6��&�G�#�&6VB��F�R&�&�B&�w2���V�F�27G'V7GW&R�vRFW&�fVBD��FV�f�BԆ'FV�&W&r�&�WFW'2�B6��WFVBG&�6f�&�F����G&�6W2f�"V6�����B�vRF�V����V�V�FVB�7G&��s��fW'6R���V�F�72���F�����7G&��s�����v��r&V6�6R6��G&���bV�B�VffV7F�"�6�F���g&����v���WfV�F&vWB6��&F��FR�F��2V�&�VB6���F��v���F�&V7FVB&���fV�V�B&Vv&F�W72�b7F'F��r6��f�wW&F������F�c� � ���F�c��F�b6�73�'6V7F����&��6�#��F�b6�73�&&��6���&V�#��FVw&F�����F�c�ƃ"6�73�v&��6��F�F�Rs��f�vF����&�6��&F��F������#��F�b6�73�&&��6��&�G�#�F�R��7BFV6��6�ǒ6���V�v��r7V7Bv26��&F��F��rF�RWF�����W2�f�vF���7�7FV�v�F�F�R&�6��G&���W"(	BV�7W&��rF�R��&��R&6R6�V�B&W�6�F���F�'&��rF�R&�v�F���&V6��bF&vWBv���RF�R&�6��V�F�V�W6ǒF�W7FVB�G2�7GW&Rf�"F�R&�6���rv�&�76R�6�&VB7FFR�6���R��vVB&��&�G�&WGvVV�F�RGv�7V'7�7FV�2���F�c� � ���F�cࠣ�F�b6�73�'&���7F6V7F����&��6�#�ƃ3���&Rv�&�g&��$������3���&Gv&RV�v��VW"FW6�v��r��6�6��F�BƗfW2��F�Rv�&�B���B&V���B67&VV�������&Vc�"����FW��F��"6�73�&'F��&6�&6��Ɩ�#�(if�Wr��&��V7G3�����F�cࠣ��F�c���F�cࠣ�f��FW#��7�6�73�&b�G�B#�*�##b'�R�V��v֖�+r6V�b�G&�f��r��&�ƗG���7���7�6�73�&b�G�B#�(i"��&Vc�"����FW��F��"6�73�&&6��Ɩ�"7G��S�&6���#�f"���62�#�'�V�V��v֖��v�F�V"�������7����f��FW#ࠣ�67&�Cࠦ6��7B&VGV6VB��F6��VF��"�&VfW'2�&VGV6VB���F���&VGV6R�"���F6�W3�����5U%4� ��gV�7F��ₗ���b�&VGV6VB�&WGW&㰢6��7BF�C�F�7V�V�B�vWDV�V�V�D'��B�v7W"�F�Br��&��#�F�7V�V�B�vWDV�V�V�D'��B�v7W"�&��"r����WB׃��ד��'���'����F�7V�V�B�FDWfV�DƗ7FV�W"�v��W6V��fRr�S��׃�R�6ƖV�E��ד�R�6ƖV�E�ғ��F�7V�V�B�VW'�6V�V7F�$�v�'WGF����'F��&6�r��f�$V6��V��簢V��FDWfV�DƗ7FV�W"�v��W6VV�FW"r���&��"�7G��R�775FW�B��wv�GF��s'���V�v�C�s'�r���V��FDWfV�DƗ7FV�W"�v��W6V�VfRr���&��"�7G��R�775FW�C�&��"�7G��R�775FW�B�&W�6R��v�GF����ҳ��V�v�C���ҳ��r�rr����ғ���gV�7F����������'��ׂ҆�'�����'��҆ג�'������F�B�7G��R��VgC�ׂ�w�s�F�B�7G��R�F��ג�w�s��&��"�7G��R��VgC�'��w�s�&��"�7G��R�F��'��w�s��&WVW7D��F���g&�R�������Ғ����Ғ�������45$���$�u$U50�v��F�r�FDWfV�DƗ7FV�W"�w67&���r��簢6��7B3�F�7V�V�B�F�7V�V�DV�V�V�C��F�7V�V�B�vWDV�V�V�D'��B�w&�rr��7G��R�v�GF�҇2�67&���F��2�67&��ĆV�v�B�2�6ƖV�D�V�v�B����rRs���Ƿ76�fS�G'VWғ�����$UdT��6��7B����Wr��FW'6V7F����'6W'fW"�W3��W2�f�$V6��S�綖b�R�4��FW'6V7F��r��R�F&vWB�6�74Ɨ7B�FB�wf�2r�����V��'6W'fR�R�F&vWB��ҒǷF�&W6���C���ғ��F�7V�V�B�VW'�6V�V7F�$�r�6V7F����&��6�r��f�$V6��V������'6W'fR�V������tRE$�4�D���(	Bv�R�WB����B�v�R����&6�Ɩ氧v��F�r�FDWfV�DƗ7FV�W"�wvW6��rr��簢6��7B�c�F�7V�V�B�vWDV�V�V�D'��B�wG&�6�F���r����b�7G��R�G&�6f�&��w66�U���s��b�7G��R�G&�6f�&��&�v���v�VgBs��&WVW7D��F���g&�R������b�6�74Ɨ7B�FB�v�WBr��6WEF��V�WB������b�6�74Ɨ7B�&V��fR�v�WBr���b�7G��R�G&�6f�&��rs���s�ғ��ғ��F�7V�V�B�VW'�6V�V7F�$�r�&6��Ɩ�r��f�$V6��Ɩ��簢Ɩ��FDWfV�DƗ7FV�W"�v6Ɩ6�r�S�簢R�&WfV�DFVfV�B����6��7B�c�F�7V�V�B�vWDV�V�V�D'��B�wG&�6�F���r����b�7G��R�775FW�C�w�6�F���f��VC���6WC���֖�FW����&6�w&�V�C�f"��֖沓�G&�6f�&ӧ66�U����G&�6f�&���&�v���VgC����FW"�WfV�G3��ö��F���v�R֖��'27V&�2�&W��W"��b���r��f�'v&G2s��6WEF��V�WB�����v��F�r���6F����&Vc�Ɩ��vWDGG&�'WFR�v�&Vbr����c����ғ��ғ�����4Ĕ4�5$�0��b�&VGV6VB���F�7V�V�B�FDWfV�DƗ7FV�W"�v6Ɩ6�r�S�簢f�"��WB�����s�������6��7BV��F�7V�V�B�7&VFTV�V�V�B�vF�br��V��6�74��S�w7&�s��6��7B҆��r���F����"��F��&�F�҂���B�C�#R��F��&�F�҂��3R�3�2��F��&�F�҂��C��V��7G��R�775FW�C��VgC�G�R�6ƖV�E����F��G�R�6ƖV�E����v�GF��G�7����V�v�C�G�7�����7��G��F��6�2���G�����7��G��F��6����G����F�7V�V�B�&�G��V�D6���B�V��V��FDWfV�DƗ7FV�W"�v��F���V�Br���V��&V��fR�����Тғ��Р����U$�4�d2(	BF&�'F�6�Rf�V�@��gV�7F��ₗ���b�&VGV6VG��F�7V�V�B�vWDV�V�V�D'��B�v�W&��7br��&WGW&㰢6��7B7c�F�7V�V�B�vWDV�V�V�D'��B�v�W&��7br��7��7b�vWD6��FW�B�s&Br����WBrĂ�G3յӰ�gV�7F�����B����6��7BG#��F��֖�FWf�6U��V�&F�����"���s�7b�&V�DV�V�V�B��fg6WEv�GF����7b�&V�DV�V�V�B��fg6WD�V�v�C��7b�v�GF��r�G#�7b�V�v�CԂ�G#�7��6WEG&�6f�&҆G"���G"�����G3յӶ6��7Bv��F�����C"�r�����f�"��WB��v��S��ă����v�f�"��WB��v��S���s����v��G2�W6����ǒ�������������F��&�F�҂���F����"�3��2��F��&�F�҂���r�#��b��F��&�F�҂���BƗ463��F��&�F�҂���gғ��Т��B����v��F�r�FDWfV�DƗ7FV�W"�w&W6��Rr���6�V%F��V�WB���B��B����B��C�6WEF��V�WB���B��ғ���WBC��׃�r�"�דԂ�#��F�7V�V�B�vWDV�V�V�D'��B�v�W&��7br��&V�DV�V�V�B�FDWfV�DƗ7FV�W"�w���FW&��fRr�S�簢6��7B#�7b�vWD&�V�F��t6ƖV�E&V7B���׃�R�6ƖV�E��"��VgC�ד�R�6ƖV�E��"�F����Ƿ76�fS�G'VWғ��gV�7F���G&r����7��6�V%&V7B���rĂ��B���c����G&rw&�@�7��7G&��U7G��S�w&v&�#C2�#C�#3b��2�s�7��Ɩ�Uv�GF���S��6��7Bv��F�����C"�r�����f�"��WB��v��S��ă����v��7��&Vv��F����7����fUF�ǒ��7��Ɩ�UF�rǒ��7��7G&��R��Тf�"��WB��v��S���s����v��7��&Vv��F����7����fUF����7��Ɩ�UF�Ă��7��7G&��R��Т��G&r'F�6�W0�f�"�6��7B�bG2���6��7B�������F��6��B��2�������������F��6�2�B��2��r������#��6��7BG����ׂ�G����ג�C��F��7'B�G��G��G��G���#ӓ��6��7BƗC�C�#��B�"���c���7��v��&���҂�b�ƗB����463�㓣���7��f���7G��S��463�r43CSs�w&v&�#C2�#C�#3b��s��7��&Vv��F����7��&2������"�ƗB�"�R���F����"��7��f�����Т7��v��&������&WVW7D��F���g&�R�G&r���ТG&r����Ғ�������67&�C���&�G�����F��
