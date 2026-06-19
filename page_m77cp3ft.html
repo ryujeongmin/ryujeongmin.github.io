@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jason-Leg Self-Driving Robot - Jeongmin Ryu</title>
+<title>Jason-Leg Robot - Jeongmin Ryu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 
 :root{
-  --bg:#EAE4D9;--bg2:#EAE8E2;--bg3:#E0DED8;
+  --bg:#FFFFFF;--bg2:#EAE8E2;--bg3:#E0DED8;
   --ink:#1C1A18;--dim:#8A8880;--line:rgba(28,26,24,.10);
   --acc:#C4511A;--acc2:#4A7066;
   --mono:'Inter',sans-serif;--sans:'Inter',sans-serif;
@@ -41,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @keyframes breathe{0%,100%{opacity:1}50%{opacity:.3;transform:scale(.6)}}
 .nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
 .nav-back:hover{color:var(--acc)}
-.nav-back::before{content:"←";transition:transform .2s}
+.nav-back::before{content:"â";transition:transform .2s}
 .nav-back:hover::before{transform:translateX(-3px)}
 
 /* HERO */
@@ -132,21 +132,21 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div id="prog"></div>
 
 <nav>
-  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">· RJM 2026</span></a>
+  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">Â· RJM 2026</span></a>
   <a href="./index.html" class="nav-back back-link">Back to work</a>
 </nav>
 
 <section class="proj-hero">
   <canvas id="hero-cv"></canvas>
   <div class="proj-hero-content">
-    <div class="proj-tag-line">09 &nbsp;·&nbsp; Legged Robot</div>
-    <h1 class="proj-title">Jason-Leg</h1>
-    <p class="proj-subtitle">Bipedal self-driving robot with dynamic balance — locomotion through terrain-aware gait control.</p>
+    <div class="proj-tag-line">11 &nbsp;Â·&nbsp; Legged Robot</div>
+    <h1 class="proj-title">Jason-Leg Robot</h1>
+    <p class="proj-subtitle">8-legged self-driving robot using the Jason linkage mechanism with real-time obstacle detection.</p>
     <div class="proj-meta-bar">
-      <div class="proj-meta-item"><span>Type</span>Robotics · Legged</div>
-<div class="proj-meta-item"><span>Role</span>Team · Gait Engineer</div>
-<div class="proj-meta-item"><span>Year</span>2023</div>
-<div class="proj-meta-item"><span>Stack</span>Python · ROS</div>
+      <div class="proj-meta-item"><span>Type</span>Robotics Â· Mechanism</div>
+<div class="proj-meta-item"><span>Role</span>Team Â· Hardware Lead</div>
+<div class="proj-meta-item"><span>Year</span>2022</div>
+<div class="proj-meta-item"><span>Stack</span>RPi Â· Cascade CV</div>
     </div>
   </div>
 </section>
@@ -156,25 +156,25 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 
 <div class="section-block">
       <div class="block-label">Overview</div>
-      <h2 class='block-title'>Walking through the world</h2>
-      <div class="block-body">Jason-Leg is a bipedal robot designed for autonomous navigation in unstructured environments. Unlike wheeled robots, legged platforms can traverse stairs, gaps, and irregular terrain — but require significantly more complex control to maintain dynamic stability while moving.</div>
+      <h2 class='block-title'>Biomimetic locomotion via Jason linkage</h2>
+      <div class="block-body">Through Raspberry Pi, we built a self-driving robot with 8 legs based on the <strong>Jason linkage mechanism</strong>. Using a camera and ultrasonic sensors, the robot detects obstacles and navigates autonomously. The 8-legged design provides exceptional stability on uneven terrain compared to wheeled alternatives.</div>
       
       <div class="block-img">
-          <img src="./resources/images/jason_leg.jpg" alt="Jason-Leg Robot" loading="lazy">
-          <div class='block-img-caption'>Jason-Leg — bipedal self-driving platform</div>
+          <img src="./resources/images/Frame 392.png" alt="Jason-Leg Robot" loading="lazy">
+          <div class='block-img-caption'>Walking Robot â Jason Leg mechanism</div>
         </div>
     </div>
 <div class="section-block">
-      <div class="block-label">Gait Control</div>
-      <h2 class='block-title'>Dynamic balance & terrain adaptation</h2>
-      <div class="block-body">The gait controller uses a <strong>zero-moment point (ZMP) stability criterion</strong> to maintain balance during locomotion. Step timing and foot placement adapt in real-time based on IMU feedback and terrain estimation from the forward-facing depth sensor. This allows the robot to maintain stable walking even on surfaces with up to 8° of pitch variation.</div>
+    0 <div class="block-label">Mechanism</div>
+      <h2 class='block-title'>Jason leg â stable walking motion</h2>
+      <div class="block-body">The Jason linkage is a specific 4-bar linkage that produces a foot trajectory with a flat, near-horizontal phase at ground contact. This minimizes vertical oscillation and maximizes stability per stride. Eight legs arranged in two offset groups of four allows continuous ground contact on at least four legs at all times, enabling stable locomotion at walking speed.</div>
       
       
     </div>
 <div class="section-block">
-      <div class="block-label">Navigation</div>
-      <h2 class='block-title'>Autonomous path planning</h2>
-      <div class="block-body">Path planning runs on a ROS-based navigation stack with a custom footstep planner layered on top. The planner evaluates candidate footstep positions for stability, reachability, and terrain clearance before committing to a step sequence. The result is smooth, purposeful movement through environments that would stop a wheeled robot.</div>
+      <div class="block-label">Software</div>
+      <h2 class='block-title'>Cascade object detection</h2>
+      <div class="block-body">Obstacle detection uses <strong>cascade training</strong> â a classical computer vision technique that identifies objects in real-time from a camera feed. The trained classifier runs on the Raspberry Pi, triggering path-planning routines when obstacles enter the detection zone. Ultrasonic sensors provide additional proximity data for last-meter collision avoidance.</div>
       
       
     </div>
@@ -182,15 +182,15 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="proj-cta section-block">
   <h3>More work from RJM-001</h3>
   <p>Hardware engineer designing physical AI that lives in the world, not behind a screen.</p>
-  <a href="./index.html" class="btn-back back-link">← View all projects</a>
+  <a href="./index.html" class="btn-back back-link">â View all projects</a>
 </div>
 
 </div>
 </div>
 
 <footer>
-  <span class="f-txt">© 2026 Ryu Jeongmin · Jason-Leg</span>
-  <span class="f-txt">→ <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
+  <span class="f-txt">Â© 2026 Ryu Jeongmin Â· Jason-Leg Robot</span>
+  <span class="f-txt">â <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
 </footer>
 
 <script>
@@ -225,7 +225,7 @@ window.addEventListener('scroll',()=>{
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.section-block').forEach(el=>io.observe(el));
 
-// PAGE TRANSITION — wipe out on load, wipe in on back link
+// PAGE TRANSITION â wipe out on load, wipe in on back link
 window.addEventListener('pageshow',()=>{
   const ov=document.getElementById('transition');
   ov.style.transform='scaleX(1)';ov.style.transformOrigin='left';
@@ -253,7 +253,7 @@ if(!reduced){
   });
 }
 
-// HERO CANVAS — dark particle field
+// HERO CANVAS â dark particle field
 (function(){
   if(reduced||!document.getElementById('hero-cv'))return;
   const cv=document.getElementById('hero-cv'),cx=cv.getContext('2d');
@@ -274,10 +274,12 @@ if(!reduced){
   },{passive:true});
   function draw(){
     cx.clearRect(0,0,W,H);t+=.006;
+    // Draw grid
     cx.strokeStyle='rgba(243,241,236,.03)';cx.lineWidth=.5;
     const gap=Math.max(42,W/18);
     for(let y=gap*.5;y<H;y+=gap){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
     for(let x=gap*.5;x<W;x+=gap){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}
+    // Draw particles
     for(const p of pts){
       const nx=p.ox+Math.sin(t*p.s+p.p)*1.8,ny=p.oy+Math.cos(t*p.s*.7+p.p+1)*1.2;
       const dx=nx-pmx,dy=ny-pmy,d=Math.sqrt(dx*dx+dy*dy),R=90;
