@@ -41,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @keyframes breathe{0%,100%{opacity:1}50%{opacity:.3;transform:scale(.6)}}
 .nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
 .nav-back:hover{color:var(--acc)}
-.nav-back::before{content:"â";transition:transform .2s}
+.nav-back::before{content:"←";transition:transform .2s}
 .nav-back:hover::before{transform:translateX(-3px)}
 
 /* HERO */
@@ -132,18 +132,18 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div id="prog"></div>
 
 <nav>
-  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">Â· RJM 2026</span></a>
+  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">· RJM 2026</span></a>
   <a href="./index.html" class="nav-back back-link">Back to work</a>
 </nav>
 
 <section class="proj-hero">
   <canvas id="hero-cv"></canvas>
   <div class="proj-hero-content">
-    <div class="proj-tag-line">03 &nbsp;Â·&nbsp; Playful Device</div>
+    <div class="proj-tag-line">03 &nbsp;·&nbsp; Playful Device</div>
     <h1 class="proj-title">Bubble Maker</h1>
     <p class="proj-subtitle">A playful physical device that transforms an ordinary interaction into joyful sensory experience.</p>
     <div class="proj-meta-bar">
-      <div class="proj-meta-item"><span>Type</span>Concept Â· Prototype</div>
+      <div class="proj-meta-item"><span>Type</span>Concept · Prototype</div>
 <div class="proj-meta-item"><span>Role</span>Solo Design</div>
 <div class="proj-meta-item"><span>Year</span>2022</div>
 <div class="proj-meta-item"><span>Method</span>Mechanical Design</div>
@@ -157,17 +157,17 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="section-block">
       <div class="block-label">Concept</div>
       <h2 class='block-title'>When the physical world delights</h2>
-      <div class="block-body">Bubble Maker explores how mechanical ingenuity can turn a mundane moment into a joyful, tactile experience. The device transforms a simple input â a button press, a breath, a gesture â into an unexpected burst of bubbles, creating delight through the gap between expectation and sensation.</div>
+      <div class="block-body">Bubble Maker explores how mechanical ingenuity can turn a mundane moment into a joyful, tactile experience. The device transforms a simple input — a button press, a breath, a gesture — into an unexpected burst of bubbles, creating delight through the gap between expectation and sensation.</div>
       
       <div class="block-img">
           <img src="./resources/images/bubble_maker.png" alt="Bubble Maker" loading="lazy">
-          <div class='block-img-caption'>Bubble Maker â physical delight device</div>
+          <div class='block-img-caption'>Bubble Maker — physical delight device</div>
         </div>
     </div>
 <div class="section-block">
       <div class="block-label">Design Process</div>
       <h2 class='block-title'>Prototyping physical joy</h2>
-      <div class="block-body">The project went through multiple iterations of mechanism design, each exploring different input/output relationships. The goal was to make the <strong>mechanical choreography itself feel satisfying</strong> â clicks, whirrs, and the final burst of bubbles as a complete haptic narrative.</div>
+      <div class="block-body">The project went through multiple iterations of mechanism design, each exploring different input/output relationships. The goal was to make the <strong>mechanical choreography itself feel satisfying</strong> — clicks, whirrs, and the final burst of bubbles as a complete haptic narrative.</div>
       
       
     </div>
@@ -175,15 +175,15 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="proj-cta section-block">
   <h3>More work from RJM-001</h3>
   <p>Hardware engineer designing physical AI that lives in the world, not behind a screen.</p>
-  <a href="./index.html" class="btn-back back-link">â View all projects</a>
+  <a href="./index.html" class="btn-back back-link">← View all projects</a>
 </div>
 
 </div>
 </div>
 
 <footer>
-  <span class="f-txt">Â© 2026 Ryu Jeongmin Â· Bubble Maker</span>
-  <span class="f-txt">â <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
+  <span class="f-txt">© 2026 Ryu Jeongmin · Bubble Maker</span>
+  <span class="f-txt">→ <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
 </footer>
 
 <script>
@@ -218,7 +218,7 @@ window.addEventListener('scroll',()=>{
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.section-block').forEach(el=>io.observe(el));
 
-// PAGE TRANSITION â wipe out on load, wipe in on back link
+// PAGE TRANSITION — wipe out on load, wipe in on back link
 window.addEventListener('pageshow',()=>{
   const ov=document.getElementById('transition');
   ov.style.transform='scaleX(1)';ov.style.transformOrigin='left';
@@ -246,7 +246,7 @@ if(!reduced){
   });
 }
 
-// HERO CANVAS â dark particle field
+// HERO CANVAS — dark particle field
 (function(){
   if(reduced||!document.getElementById('hero-cv'))return;
   const cv=document.getElementById('hero-cv'),cx=cv.getContext('2d');
