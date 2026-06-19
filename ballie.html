@@ -41,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @keyframes breathe{0%,100%{opacity:1}50%{opacity:.3;transform:scale(.6)}}
 .nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
 .nav-back:hover{color:var(--acc)}
-.nav-back::before{content:"â";transition:transform .2s}
+.nav-back::before{content:"←";transition:transform .2s}
 .nav-back:hover::before{transform:translateX(-3px)}
 
 /* HERO */
@@ -71,7 +71,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .block-img{margin-top:32px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
 .block-img img{width:100%;height:auto;display:block}
 .block-img-caption{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);padding:12px 16px;background:var(--bg2);border-top:1px solid var(--line)}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32py}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
 .two-col .block-img{margin-top:0}
 .steps{counter-reset:step;margin-top:24px;display:flex;flex-direction:column;gap:12px}
 .step{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start;padding:16px;background:var(--bg2);border:1px solid var(--line);border-radius:8px}
@@ -132,21 +132,21 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div id="prog"></div>
 
 <nav>
-  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">Â· RJM 2026</span></a>
+  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">· RJM 2026</span></a>
   <a href="./index.html" class="nav-back back-link">Back to work</a>
 </nav>
 
 <section class="proj-hero">
   <canvas id="hero-cv"></canvas>
   <div class="proj-hero-content">
-    <div class="proj-tag-line">01 &nbsp;Â·&nbsp; Home Robot</div>
+    <div class="proj-tag-line">01 &nbsp;·&nbsp; Home Robot</div>
     <h1 class="proj-title">Ballie</h1>
-    <p class="proj-subtitle">Samsung's AI-powered rolling home companion â where movement itself becomes the interface.</p>
+    <p class="proj-subtitle">Samsung's AI-powered rolling home companion — where movement itself becomes the interface.</p>
     <div class="proj-meta-bar">
       <div class="proj-meta-item"><span>Company</span>Samsung Electronics</div>
 <div class="proj-meta-item"><span>Role</span>Mechanical R&D</div>
-<div class="proj-meta-item"><span>Year</span>2024â2025</div>
-<div class="proj-meta-item"><span>Status</span>Shipped Â· CES 2024</div>
+<div class="proj-meta-item"><span>Year</span>2024–2025</div>
+<div class="proj-meta-item"><span>Status</span>Shipped · CES 2024</div>
     </div>
   </div>
 </section>
@@ -161,7 +161,7 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
       
       <div class="block-img">
           <img src="./resources/images/ballie.jpg" alt="Ballie" loading="lazy">
-          <div class='block-img-caption'>Ballie â CES 2024 showcase</div>
+          <div class='block-img-caption'>Ballie — CES 2024 showcase</div>
         </div>
     </div>
 <div class="section-block">
@@ -174,7 +174,7 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="section-block">
       <div class="block-label">Key Outcomes</div>
       <h2 class='block-title'>Making movement the interface</h2>
-      <div class="block-body">The project demonstrated how a rolling robot's physical behavior â the speed of approach, direction of gaze, subtle bounces â can communicate intent and emotion without a screen. This informed my broader research interest in <strong>Physical AI: machines whose bodies are the primary communication medium</strong>.</div>
+      <div class="block-body">The project demonstrated how a rolling robot's physical behavior — the speed of approach, direction of gaze, subtle bounces — can communicate intent and emotion without a screen. This informed my broader research interest in <strong>Physical AI: machines whose bodies are the primary communication medium</strong>.</div>
       
       
     </div>
@@ -182,15 +182,15 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="proj-cta section-block">
   <h3>More work from RJM-001</h3>
   <p>Hardware engineer designing physical AI that lives in the world, not behind a screen.</p>
-  <a href="./index.html" class="btn-back back-link">â View all projects</a>
+  <a href="./index.html" class="btn-back back-link">← View all projects</a>
 </div>
 
 </div>
 </div>
 
 <footer>
-  <span class="f-txt">Â© 2026 Ryu Jeongmin Â· Ballie</span>
-  <span class="f-txt">â <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
+  <span class="f-txt">© 2026 Ryu Jeongmin · Ballie</span>
+  <span class="f-txt">→ <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
 </footer>
 
 <script>
@@ -225,7 +225,7 @@ window.addEventListener('scroll',()=>{
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.section-block').forEach(el=>io.observe(el));
 
-// PAGE TRANSITION â wipe out on load, wipe in on back link
+// PAGE TRANSITION — wipe out on load, wipe in on back link
 window.addEventListener('pageshow',()=>{
   const ov=document.getElementById('transition');
   ov.style.transform='scaleX(1)';ov.style.transformOrigin='left';
@@ -253,7 +253,7 @@ if(!reduced){
   });
 }
 
-// HERO CANVAS â dark particle field
+// HERO CANVAS — dark particle field
 (function(){
   if(reduced||!document.getElementById('hero-cv'))return;
   const cv=document.getElementById('hero-cv'),cx=cv.getContext('2d');
