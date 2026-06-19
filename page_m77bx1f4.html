@@ -41,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @keyframes breathe{0%,100%{opacity:1}50%{opacity:.3;transform:scale(.6)}}
 .nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
 .nav-back:hover{color:var(--acc)}
-.nav-back::before{content:"â";transition:transform .2s}
+.nav-back::before{content:"←";transition:transform .2s}
 .nav-back:hover::before{transform:translateX(-3px)}
 
 /* HERO */
@@ -132,21 +132,21 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div id="prog"></div>
 
 <nav>
-  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">Â· RJM 2026</span></a>
+  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">· RJM 2026</span></a>
   <a href="./index.html" class="nav-back back-link">Back to work</a>
 </nav>
 
 <section class="proj-hero">
   <canvas id="hero-cv"></canvas>
   <div class="proj-hero-content">
-    <div class="proj-tag-line">09 &nbsp;Â·&nbsp; Smart System</div>
+    <div class="proj-tag-line">09 &nbsp;·&nbsp; Smart System</div>
     <h1 class="proj-title">Smart Pet Farm</h1>
     <p class="proj-subtitle">Automated plant care system addressing social isolation through shared living ecosystems.</p>
     <div class="proj-meta-bar">
-      <div class="proj-meta-item"><span>Type</span>IoT Â· Social Design</div>
+      <div class="proj-meta-item"><span>Type</span>IoT · Social Design</div>
 <div class="proj-meta-item"><span>Role</span>Team Project</div>
 <div class="proj-meta-item"><span>Year</span>2022</div>
-<div class="proj-meta-item"><span>Platform</span>Arduino Â· App</div>
+<div class="proj-meta-item"><span>Platform</span>Arduino · App</div>
     </div>
   </div>
 </section>
@@ -161,13 +161,13 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
       
       <div class="block-img">
           <img src="./resources/images/Frame 396.png" alt="Smart Pet Farm" loading="lazy">
-          <div class='block-img-caption'>Smart Pet Farm â sensor-driven community plant care</div>
+          <div class='block-img-caption'>Smart Pet Farm — sensor-driven community plant care</div>
         </div>
     </div>
 <div class="section-block">
       <div class="block-label">Hardware</div>
       <h2 class='block-title'>Sensing & feedback</h2>
-      <div class="block-body">The device monitors soil humidity and ambient temperature, displaying readings on an onboard screen. Two LEDs serve dual functions: supporting plant photosynthesis and communicating plant health â turning red when humidity is too high, blue when too low. The system triggers alerts before plant health degrades, not after.</div>
+      <div class="block-body">The device monitors soil humidity and ambient temperature, displaying readings on an onboard screen. Two LEDs serve dual functions: supporting plant photosynthesis and communicating plant health — turning red when humidity is too high, blue when too low. The system triggers alerts before plant health degrades, not after.</div>
       
       
     </div>
@@ -182,15 +182,15 @@ footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-c
 <div class="proj-cta section-block">
   <h3>More work from RJM-001</h3>
   <p>Hardware engineer designing physical AI that lives in the world, not behind a screen.</p>
-  <a href="./index.html" class="btn-back back-link">â View all projects</a>
+  <a href="./index.html" class="btn-back back-link">← View all projects</a>
 </div>
 
 </div>
 </div>
 
 <footer>
-  <span class="f-txt">Â© 2026 Ryu Jeongmin Â· Smart Pet Farm</span>
-  <span class="f-txt">â <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
+  <span class="f-txt">© 2026 Ryu Jeongmin · Smart Pet Farm</span>
+  <span class="f-txt">→ <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
 </footer>
 
 <script>
@@ -225,7 +225,7 @@ window.addEventListener('scroll',()=>{
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.section-block').forEach(el=>io.observe(el));
 
-// PAGE TRANSITION â wipe out on load, wipe in on back link
+// PAGE TRANSITION — wipe out on load, wipe in on back link
 window.addEventListener('pageshow',()=>{
   const ov=document.getElementById('transition');
   ov.style.transform='scaleX(1)';ov.style.transformOrigin='left';
@@ -253,7 +253,7 @@ if(!reduced){
   });
 }
 
-// HERO CANVAS â dark particle field
+// HERO CANVAS — dark particle field
 (function(){
   if(reduced||!document.getElementById('hero-cv'))return;
   const cv=document.getElementById('hero-cv'),cx=cv.getContext('2d');
