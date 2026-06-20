@@ -38,69 +38,352 @@ a{color:inherit;text-decoration:none}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(243,241,236,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-logo{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:10px;cursor:none}
 .nav-dot{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:breathe 4s ease-in-out infinite}
-@keyframes breathe{0%,100%{opacity:1}50%{opacity:.3transform:scale(.6)}}
+@keyframes breathe{0%,100%{opacity:1}50%{opacity:.3;transform:scale(.6)}}
 .nav-back{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s;cursor:none}
 .nav-back:hover{color:var(--acc)}
 .nav-back::before{content:"←";transition:transform .2s}
 .nav-back:hover::before{transform:translateX(-3px)}
 
 /* HERO */
-.proj-hero{min-height:75svh;display:flex;flex-direction:column;]\���X\�H����ܝ�\��B���ڋ]Y�[[�N���Y�ܙ^��۝[�����\�^N�[�[�KX������Y���ZY��\ؘX��ܛ�[���\�KXX��_B���ڋ]]^ٛ۝\�^�N��[\
+.proj-hero{min-height:75svh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 48px 64px;position:relative;overflow:hidden;background:var(--ink)}
+#hero-cv{position:absolute;inset:0;width:100%;height:100%}
+.proj-hero-content{position:relative;z-index:2}
+.proj-tag-line{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(196,81,26,.8);margin-bottom:16px;display:flex;align-items:center;gap:12px;opacity:0;animation:fade-up .7s ease .3s forwards}
+.proj-tag-line::before{content:"";display:inline-block;width:24px;height:1px;background:var(--acc)}
+.proj-title{font-size:clamp(42px,8vw,100px);font-weight:700;line-height:.92;letter-spacing:-.04em;color:rgba(243,241,236,.9);overflow:hidden;opacity:0;animation:fade-up .8s cubic-bezier(.16,1,.3,1) .5s forwards}
+.proj-subtitle{margin-top:20px;max-width:560px;font-size:15px;line-height:1.8;color:rgba(243,241,236,.45);opacity:0;animation:fade-up .7s ease .8s forwards}
+.proj-meta-bar{display:flex;gap:32px;flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid rgba(243,241,236,.08);opacity:0;animation:fade-up .7s ease 1s forwards}
+.proj-meta-item{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:rgba(243,241,236,.35)}
+.proj-meta-item span{display:block;color:var(--acc);margin-bottom:3px;font-size:8px}
+@keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
-���L
-Nٛ۝]�ZY����[�KZZY���L��]\�\�X�[�΋K�
-[N���܎��ؘJ���K�͋�JN�ݙ\���ΚY[���X�]N��[�[X][ێ��YK]\���X�X�X�^�Y\��M�K��JH�\��ܝ�\��B���ڋ\�X�]^�X\��[�]����X^]�Y�M�ٛ۝\�^�N�M\�[�KZZY��K����܎��ؘJ���K�͋�
-JN��X�]N��[�[X][ێ��YK]\���X\�H���ܝ�\��B���ڋ[Y]KX�\��\�^N��^��\�̜ٛ^]ܘ\�ܘ\�X\��[�]��͜�Y[��]���؛ܙ\�]��\��Y�ؘJ���K�͋�
-N��X�]N��[�[X][ێ��YK]\���X\�H\��ܝ�\��B���ڋ[Y]KZ][^ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�\�]\�\�X�[�΋�[N�^]�[�ٛܛN�\\��\�N���܎��ؘJ���K�͋��J_B���ڋ[Y]KZ][H�[��\�^N��������܎��\�KXX��N�X\��[�X���N��ٛ۝\�^�N�B��^Y��[Y\��YK]\ٜ��^��X�]N���[�ٛܛN��[��]VJN
-_]���X�]N�N��[�ٛܛN��ۙ__B��ʈ�ӕS�
-��ܘ\�X^]�Y�M��X\��[��]]��Y[�Ό
-B���ڋX�۝[��Y[�ΎL�B���X�[ۋX�����X\��[�X���N����X�]N���[�ٛܛN��[��]VJ�
-N��[��][ێ��X�]H���X\�K�[�ٛܛH����X�X�X�^�Y\����K��J_B���X�[ۋX���˝�\���X�]N�N��[�ٛܛN��ۙ_B������[X�[ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�\�]\�\�X�[�΋�[N�^]�[�ٛܛN�\\��\�N���܎��\�KXX��N�X\��[�X���N�M��\�^N��^�[YۋZ][\Θ�[�\���\�LB������[X�[��Y�\���۝[����ٛ^�N�ZY��\ؘX��ܛ�[���\�K[[�J_B������]]^ٛ۝\�^�N��[\
-��ˍ]���
-Nٛ۝]�ZY����]\�\�X�[�΋K��Y[N�X\��[�X���N�M��[�KZZY��K��B������X��^ٛ۝\�^�N�M��[�KZZY��K�MN���܎��\�KY[JN�X^]�Y��B������X��H
-��X\��[�]��L�B������X��H��ۙ����܎��\�KZ[��Nٛ۝]�ZY��LB������Z[Y��X\��[�]��̜؛ܙ\�\�Y]\Ν�\�K\�N�ݙ\���ΚY[�؛ܙ\��\��Y�\�K[[�J_B������Z[Y�[Y���Y�L	N�ZY��]]��\�^N�����B������Z[Y�X�\[۞ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�\�]\�\�X�[�΋�[N�^]�[�ٛܛN�\\��\�N���܎��\�KY[JN�Y[�ΌL�M�ؘX��ܛ�[���\�KX�̊N؛ܙ\�]��\��Y�\�K[[�J_B����X���\�^N�ܚY�ܚY][\]KX��[[�ΌY��Y����\���X\��[�]��̜B����X�������Z[Y��X\��[�]��B���\����[�\�\�\�]��\�X\��[�]����\�^N��^ٛ^Y\�X�[ێ���[[���\�M�B���\�\�^N�ܚY�ܚY][\]KX��[[�΍Y����\�M��[YۋZ][\Μ�\��Y[�ΌM�ؘX��ܛ�[���\�KX�̊N؛ܙ\��\��Y�\�K[[�JN؛ܙ\�\�Y]\ΎB���\[�[^ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�L�ٛ۝]�ZY��L���܎��\�KXX��N�Y[��]���B���\X��^ٛ۝\�^�N�M��[�KZZY��K�MN���܎��\�KY[J_B��\��ۘKYܚY�\�^N�ܚY�ܚY][\]KX��[[�Μ�\X]
-�Y��N��\�M��X\��[�]���B��\��ۘKX�\�ؘX��ܛ�[���\�KX�̊N؛ܙ\��\��Y�\�K[[�JN؛ܙ\�\�Y]\ΌL�Y[�Ό�B��\��ۘK[�[Y^ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�L�]\�\�X�[�΋�[N�^]�[�ٛܛN�\\��\�N���܎��\�KXX��N�X\��[�X���N�B��\��ۘKY\��ٛ۝\�^�N�M��[�KZZY��K�MN���܎��\�KY[J_B���]\����\�^N��^��\�̜ٛ^]ܘ\�ܘ\�X\��[�]����Y[�Ό�ؘX��ܛ�[���\�KX�̊N؛ܙ\��\��Y�\�K[[�JN؛ܙ\�\�Y]\ΌLB���]Z][^�^X[Yێ��[�\�B���][�[^ٛ۝\�^�N�̜ٛ۝]�ZY����]\�\�X�[�΋K�
-[N���܎��\�KXX��_B���][X�[ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�\�]\�\�X�[�΋�[N�^]�[�ٛܛN�\\��\�N���܎��\�KY[JN�X\��[�]��B��ʈ�H
-���ڋX�^ؘX��ܛ�[���\�KX�̊N؛ܙ\��\��Y�\�K[[�JN؛ܙ\�\�Y]\Ν�\�K\�N�Y[�΍�^X[Yێ��[�\��X\��[�]��B���ڋX�H�ٛ۝\�^�N��[\
-��ݝ�̜
-Nٛ۝]�ZY����]\�\�X�[�΋K��[N�X\��[�X���N�L�B���ڋX�Hٛ۝\�^�N�M���܎��\�KY[JN�X\��[�X���N��B����X�X��\�^N�[�[�KY�^�[YۋZ][\Θ�[�\���\��۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�L�]\�\�X�[�΋�[N�^]�[�ٛܛN�\\��\�N�X��ܛ�[���\�KXX��N���܎��\�KX��N�Y[�ΌL��؛ܙ\�\�Y]\΍�\��܎��ۙN��[��][ێ��[�ٛܛH�����\�Y�����B����X�X�Κݙ\���[�ٛܛN���[JK�
-N؛�\�Y�Ό̜�ؘJNM�K���
-_B��ʈ���T�
-����\��Y[�Ό�
-؛ܙ\�]��\��Y�\�K[[�JN�\�^N��^ڝ\�Y�KX�۝[���X�KX�]�Y[��[YۋZ][\Θ�[�\�ٛ^]ܘ\�ܘ\��\�L�B���]ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�\�]\�\�X�[�΋�[N�^]�[�ٛܛN�\\��\�N���܎��\�KY[J_B��ʈ�P���T���
-���\�����][ێ��^Y��[�\�Y]�[�Λ�ۙNދZ[�^�NNL؛ܙ\�\�Y]\΍L	N��[�ٛܛN��[��]JML	KML	JNؘX��ܛ�[���\�KXX��N�[�[X][ێ��\��[�]���X\�H�ܝ�\��B��^Y��[Y\��\��[�]�	^��[�ٛܛN��[��]JML	KML	JH��[JJN��X�]N��_LL	^��X�]N���[�ٛܛN��[��]J�\�K\�
-K�\�K\�JJH��[J
-__B��YYXJX^]�Y�͎
-^�]����\��Y[�ΌM��B���ڋZ\���Y[�ΌLL��
-L��Z[�ZZY���\ݚB��ܘ\�Y[�Ό��B����X���ܚY][\]KX��[[�ΌY��B��\��ۘKYܚY�ܚY][\]KX��[[�ΌY��B�B�YYXJ�Y�\��\�YX�Y[[�[ێ��YX�J^
-�
-����Y�ܙK
-���Y�\��[�[X][ۋY\�][ێ��[\�Z[\ܝ[���[��][ۋY\�][ێ��[\�Z[\ܝ[�B���\�Y���\�X�؞�\�^N��ۙ_B���^��\��܎�]]�B���X�[ۋX������X�]N�N��[�ٛܛN��ۙ_B�B����[O���XY����O���ݙ��[OH���][ێ��^Y��Y��ZY���ݙ\���ΚY[���[�\�Y]�[�Λ�ۙH���Y�ς��[\�YH��؋Y�[\��H�ML	H�OH�ML	H��YH��	H�ZY�H��	H����U\��[[��H\OH�\��[[��H��\�Q��\]Y[��OH��������[S��]�\�H�Ȉ�YYH�Ȉ�\�[H���\�H���[�[X]H]�X�]S�[YOH��\�Q��\]Y[��H�\�H�\Ȉ�[Y\�H����������
-L���������\X]��[�H�[�Y�[�]H�ς�ٙU\��[[��O���Q\�X�[Y[�X\[�H���\��Qܘ\XȈ[��H���\�H���[OH�M��[��[�[X�܏H���P�[��[�[X�܏H�ȋς�ٚ[\����Y�ς��ݙς��]�YH��\�Y����]���]�YH��\�X�؈���]���]�YH��[��][ۈ���]���]�YH���ȏ��]�����]���H�Y�H���[�^�[��\��H��]�[��ȏ�]��\��H��]�Y����]���UH�Sӑ�RS��[��[OH��۝\�^�N�\�]\�\�X�[�΋�L�[N���܎��\�KY[JH������H�����[���O��H�Y�H���[�^�[��\��H��]�X�X���X��[[�ȏ��X����ܚ��O��ۘ]�����X�[ۈ�\��H��ڋZ\�ȏ���[��\�YH�\��X݈����[��\ς�]��\��H��ڋZ\��X�۝[����]��\��H��ڋ]Y�[[�H��[��[X]H0���Y�HH	�����ɛ����RH��\��[[���]���H�\��H��ڋ]]H���$;(%{"�;`�:��O���\��H��ڋ\�X�]H��[�RH[[�[ۘ[��\��[[��\8�%H�X�H�[�[��HH��\^]Hو[�\��Y[[���[ۙ��YH[�RH]�[Y[X�\����[�H\�K����]��\��H��ڋ[Y]KX�\����]��\��H��ڋ[Y]KZ][H���[����O��[�����\�Yۙ\�	�]�[�\��]���]��\��H��ڋ[Y]KZ][H���[���X����[���XX�0���\�X�\�H0���M�]���]��\��H��ڋ[Y]KZ][H���[��\�[���[��\���H8�$�X���O�]���]��\��H��ڋ[Y]KZ][H���[���]\���[��]�H0���
-��X[[��Y\��]����]����]�����X�[ۏ���]��\��H�ܘ\���]��\��H��ڋX�۝[�����]��\��H��X�[ۋX���ȏ��]��\��H�����[X�[��ݙ\��Y]��]�����\��H�����]]H��[�[��[��[[�[ۈ�]RO����]��\��H�����X��H�����$;(%{"�;`�:�
-�[Z�[ۙ��[\�YH8�%�[[�[ۈ�XY�[�H\�H\��ۘ[RH��\��[[��\H\�YۙY[��Z[����\��Z[H[[�[ۘ[^\�Y[��\ˈH�[Z\�N���ۙϙ[[�[ۜ��\�[H\��]�H�X]HX�[Y���ۙϋ�\�\\�H�X�H�[\��\^[��Y�Y[[�����Y���YH^[�][�RH[[�H[�\��[��][�IܙHX�X[H�Y[[�ˏ����ݙ\�[۝�H\�Y]Z[KX��[][][���
-��X[��\��[[��Y\ˈ]�X�[YHH�\��\�Y�H���\Hو��ۙϕ[��[X]O���ۙϋH�\�X\���\�[H^ܚ[����\��ۘ[RH�[��\ܝ[[�[ۘ[�[�\�Y�X�[ۈݙ\�[YK�����]����]��\��H�����Z[Yȏ��[Y�ܘ�H��ܙ\��\��\��[XY�\���[Z�[ۙ��XZ[��ZK��Ȉ[H��$;(%{"�;`�:�XZ[�RH��Y[��H�^�H���]��\��H�����Z[Y�X�\[ۈ��XZ[�RH8�%�X��[[�^[�]�]�]�Y�][ۈۈY�X\�H[�][�\�ۈ�Y��]����]����]����]��\��H��X�[ۋX���ȏ��]��\��H�����[X�[��\�Y�H]O�]�����\��H�����]]H���X[]Hݙ\�[۝�����]��\��H��]\��ȏ��]��\��H��]Z][H���]��\��H��][�[H���
-��]���]��\��H��][X�[����\��[[��Y\��]����]���]��\��H��]Z][H���]��\��H��][�[H���]���]��\��H��][X�[��[۝�و\�O�]����]���]��\��H��]Z][H���]��\��H��][�[H����]���]��\��H��][X�[��RH\��ۘ\��]����]���]��\��H��]Z][H���]��\��H��][�[H��O�]���]��\��H��][X�[��X\�H�]Y�ܚY\��]����]����]����]����]��\��H��X�[ۋX���ȏ��]��\��H�����[X�[���ܙH[�\�X�[ۏ�]�����\��H�����]]H��"�;`�:�;d�:�,8�%HX�و[��[�[������]��\��H�����X��H����H[�\�X�[ۈ\�[�[�[ۘ[H�[\N�ܚ]H�]]�\�\�ۈ[�\�Z[�[���YH^[��\����ۙψ�"�;`�:�;d�:�,����ۙψ
-[��[�H�XY
-K�HRH�\�ۙ��]�\�K\��ۘ[^�Y�YY�X��8�%���[�\�X�Y�X�K�]H�\�ۜ�H]�Y�X��[�\�X�X[\�ܞK\��ۘ[]K[�ۙ��[���ۘ�\��ˏ����XX�[��H\�]]�X]X�[H�]�[�H]H[��]Y�ܚ^�Y�H�\�[HXZ[�Z[��H]�H\�\��ٚ[H]\]\��]XX�[��KXZ�[���]\�H�\�ۜ�\���ܙ\��]�[H[ܙH\��ۘ[�����]����]��\��H�����Z[Yȏ��[Y�ܘ�H��ܙ\��\��\��[XY�\���[Z�[ۙ���[���Y���Y��[H��$;(%{"�;`�:�\�Y�H�[���Y���Y[��H�^�H���]��\��H�����Z[Y�X�\[ۈ���[���Y�8�%[�]8����X�Z]8���RH�\�ۜ�H����]����]����]����]��\��H��X�[ۋX���ȏ��]��\��H�����[X�[��RH\��ۘ\��]�����\��H�����]]H���YH��X�\�ۙH��\��[����]��\��H�����X��H����\�\���[��[X����H�YH\�[��RH\��ۘ\�XX�ٙ�\�[��HY��\�[�[[�[ۘ[�Y�\�\��܈�YY�X�Ώ����]���]��\��H�\��ۘKYܚY���]��\��H�\��ۘKX�\����]��\��H�\��ۘK[�[YH���,:�.�eg;.g:�k
-Y�][
-O�]���]��\��H�\��ۘKY\�ȏ��\�K[\]]XˈZ�HH���H��Y[���[�^\�\�[�\��X�ˈ�[Y]\�[�\��Y[[����Y�ܙHٙ�\�[��\��X�]�K��]����]���]��\��H�\��ۘKX�\����]��\��H�\��ۘK[�[YH��f!;"�;( {'n;(l;%�:� �]���]��\��H�\��ۘKY\�ȏ��Y�X]X�Y�\�܋��]���Y�[[�[ۈ��]�Hܛ�[�YX�[ۘX�H\��X�]�K�\�Y�[�[�[�H�YY�\�]Hݙ\���Y�ܝ��]����]���]��\��H�\��ۘKX�\����]��\��H�\��ۘK[�[YH��'(;/�;eg:�{ �z� �]���]��\��H�\��ۘKY\�ȏ�^Y�[�X[Y\���Y��[Y\��]X][ۜ��][XY�[�][ۈ[�Y��\�ˈ����܈�[�[�IܙH�X��[�H����]����]����]����]����]��\��H��X�[ۋX���ȏ��]��\��H�����[X�[��X\�H�]Y�ܚY\��]�����\��H�����]]H��]]�X�\��Y�YY[[�[ۘ[�۝^����]��\��H�����X��H����]�\�H[��H\�]]�X]X�[H�]Y�ܚ^�Y[��ۙHو�]�H\\Έ��ۙϺ�l{(%{'o:�,���ۙψ
-�ܜ�JK��ۙϻ)�:�g;'o:�,���ۙψ
-�\�Y\�K��ۙϺ�$;(%{'o:�,���ۙψ
-[[�[ۜ�K��ۙϺ�$; �{'o:�,���ۙψ
-�Y�X�[ۜ�K܈��ۙϻ'o:�&;'o:�,���ۙψ
-�[�\�[
-K�\��\��Y�X�][ۈ[�X�\�ۙ�]Y[�[]\���X��ۚ][ۈ8�%�YZ[��ݙ\�[۝��]�[��و�ۘ�\����Z[�]H[�\�Y[�[�X�K�����]����]��\��H�����Z[Yȏ��[Y�ܘ�H��ܙ\��\��\��[XY�\���[Z�[ۙ��XZ[��ZW݌���Ȉ[H��$;(%{"�;`�:���RH��Y[��H�^�H���]��\��H�����Z[Y�X�\[ۈ��RH��8�%�Y�[�YX\�H\��Y]��]�]Y�ܞHX�[��]����]����]����]��\��H��X�[ۋX���ȏ��]��\��H�����[X�[��X��X�[\��]X�\�O�]�����\��H�����]]H���X��	��\�[H\�Yۏ����]��\��H�����X��H�����Z[\�H�[\�X���X�\ۈ�\�X�\�H��Y�ܚ��][ۋ�H\��]X�\�H�[ܚ]^�\���ۙϜ\��\�[�\�\��۝^���ۙψ8�%H�\�[HXZ[�Z[��H]�H�ٚ[H��ӈ]\�\]YY�\�]�\�H[��H\�[��H�X�ۙ\�H�LˍH�[�^�X��ٚ[H\]\����HH�]�X\�H^�����]���]��\��H��\ȏ��]��\��H��\��]��\��H��\[�[H��O�]��]��\��H��\X��H����ۙϒ[�]	��M�\�ۜ�O���ۙψ8�%\�\�ܚ]\���YH^�H�\�]Y�\�[H��\�۝Z[�[��H�[\�\��ٚ[H[��X�[�X\�H\�ܞH\��[���M�X��]\���H��X�\�Y��ӈ�]]K]K\K�۝[�[�X\�H�YY�X�ˏ�]���]���]��\��H��\��]��\��H��\[�[H����]��]��\��H��\X��H����ۙϔ�ٚ[H\]H�����ۙψ8�%H�X�ۙ�LˍH�[^�X��[�H�]�[��ܛX][ۈ���HH[��H[�Y\��\�][��H\��\�[�\�\��ٚ[KXZ�[��]�\�H�]\�H�\�ۜ�H[ܙHX��\�]K��]���]���]��\��H��\��]��\��H��\[�[H����]��]��\��H��\X��H����ۙϑ�\�X�\�H\��\�[��O���ۙψ8�%[��Y\�[��ٚ[H\�H�ܙY[��\�\�ܙH�]�\�X�\�H]]�܈�X�\�H�[��K]\�\�X��\�ˈHX\�H\�\]\�[��X[][YK��]���]���]��\��H��\��]��\��H��\[�[H��
-�]��]��\��H��\X��H����ۙϔ\��ۘH[��X�[ۏ���ۙψ8�%H�[X�Y\��ۘH[�Y�Y\�H�\�[H��\	��[[�[ۘ[�Y�\�\��[��[��HۙHوRH�YY�X���]�][\�[��H[�\�Z[��]H��X�\�K��]���]����]����]����]��\��H��X�[ۋX���ȏ��]��\��H�����[X�[���\�X\���۝^�]�����\��H�����]]H��[��[X]N��Y�HH8�%�\\�O����]��\��H�����X��H�����$;(%{"�;`�:�\��Y�HHو��ۙϕ[��[X]O���ۙϋH][K\�Y�H�\�X\���\�[HۈRK[YYX]Y[[�[ۘ[Y[[ܞK��Y�HH���\�\�ۈ[O��\\�O�[O�8�%�Z[[��H�X�ۙ�]Y[�[�X�ܙو[[�[ۘ[^\�Y[��H��Y��]\�[[��XY�H��\��[[�ˈH�
-��X[[��Y\�X��[][]Yݙ\�[۝��ܛHH�[X\�H]\�]�܈[��[X]I��]\��Y�\��X�^ܙH��RH�[�[�\��X�H[[�[ۘ[]\���ݙ\�[YK�����H�ڙX�\�\�وۙ��[���H�\�X\��[��\�Y�][��\��ۘ[RH�\�[\�]ܛ���]Z\�\�\�ˏ����]����]����]��\��H��ڋX�H�X�[ۋX���ȏ��ϓ[ܙH�ܚ����H��KLO�ς��\��\�H[��[�Y\�\�Yۚ[��\�X�[RH]]�\�[�H�ܛ���Z[�H�ܙY[�����H�Y�H���[�^�[��\��H���X�X���X��[[�ȏ����Y]�[�ڙX���O���]�����]����]�������\����[��\��H��]���H����]H�[ۙ�Z[�0��:�$;(%{"�;`�:���[����[��\��H��]�����H�Y�H���[�^�[��\��H��X��[[�Ȉ�[OH���܎��\�KXX��H���]Z�[ۙ�Z[���]X��[��O���[���ٛ��\�����ܚ\����ۜ��YX�YHX]�YYXJ��Y�\��\�YX�Y[[�[ێ��YX�JH�K�X]�\�����T��Ԃ��[��[ۊ
-^Y��YX�Y
-\�]\���ۜ��Y��[Y[���][[Y[��RY
-	��\�Y�	�K�؏Y��[Y[���][[Y[��RY
-	��\�X�؉�N]^L^OL�L�OL��[Y[��Y]�[�\�[�\�	�[�\�[[ݙI�OO��^YK��Y[��^OYK��Y[�_JN��[Y[��]Y\�T�[X�ܐ[
-	�K�]ۋ���X�X���K��ܑXX�
-[O�[�Y]�[�\�[�\�	�[�\�Y[�\��
+/* CONTENT */
+.wrap{max-width:960px;margin:0 auto;padding:0 48px}
+.proj-content{padding:80px 0 120px}
+.section-block{margin-bottom:64px;opacity:0;transform:translateY(24px);transition:opacity .2s ease,transform .2s cubic-bezier(.2,.9,.2,1)}
+.section-block.vis{opacity:1;transform:none}
+.block-label{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.block-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.block-title{font-size:clamp(22px,3.5vw,34px);font-weight:700;letter-spacing:-.025em;margin-bottom:16px;line-height:1.2}
+.block-body{font-size:16px;line-height:1.55;color:var(--dim);max-width:680px}
+.block-body p+p{margin-top:12px}
+.block-body strong{color:var(--ink);font-weight:500}
+.block-img{margin-top:32px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.block-img img{width:100%;height:auto;display:block}
+.block-img-caption{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);padding:12px 16px;background:var(--bg2);border-top:1px solid var(--line)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.two-col .block-img{margin-top:0}
+.steps{counter-reset:step;margin-top:24px;display:flex;flex-direction:column;gap:16px}
+.step{display:grid;grid-template-columns;40px 1fr;gap:16px;align-items:start;padding:16px;background:var(--bg2);border:1px solid var(--line);border-radius:8px}
+.step-num{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--acc);padding-top:2px}
+.step-body{font-size:16px;line-height:1.55;color:var(--dim)}
+.persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.persona-card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:24px}
+.persona-name{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
+.persona-desc{font-size:16px;line-height:1.55;color:var(--dim)}
+.stat-row{display:flex;gap:32px;flex-wrap:wrap;margin-top:24px;padding:24px;background:var(--bg2);border:1px solid var(--line);border-radius:10px}
+.stat-item{text-align:center}
+.stat-num{font-size:32px;font-weight:700;letter-spacing:-.04em;color:var(--acc)}
+.stat-label{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:4px}
 
-OO��؋��[K����^
-�I��Y�̜�ZY��̜	�N[�Y]�[�\�[�\�	�[�\�[X]�I�
+/* CTA */
+.proj-cta{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:48px;text-align:center;margin-top:80px}
+.proj-cta h3{font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+.proj-cta p{font-size:14px;color:var(--dim);margin-bottom:28px}
+.btn-back{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--acc);color:var(--bg);padding:12px 28px;border-radius:40px;
+  cursor:none;transition:transform .2s,box-shadow .2s;
+}
+.btn-back:hover{transform:scale(1.04);box-shadow:0 8px 32px rgba(196,81,26,.4)}
 
-OO��؋��[K����^X�
+/* FOOTER */
+footer{padding:24px 48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.f-txt{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+
+/* CLICK SPARKS */
+.spark{position:fixed;pointer-events:none;z-index:9990;border-radius:50%;transform:translate(-50%,-50%);background:var(--acc);animation:spark-out .6s ease forwards}
+@keyframes spark-out{0%{transform:translate(-50%,-50%) scale(1);opacity:.9}100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(0)}}
+
+@media(max-width:768px){
+  nav,footer{padding:14px 22px}
+  .proj-hero{padding:110px 22px 52px;min-height:65svh}
+  .wrap{padding:0 22px}
+  .two-col{grid-template-columns:1fr}
+  .persona-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  #cur-dot,#cur-blob{display:none}
+  body{cursor:auto}
+  .section-block{opacity:1;transform:none}
+}
+
+</style>
+</head>
+<body>
+
+<svg style="position:fixed;width:0;height:0;overflow:hidden;pointer-events:none">
+  <defs>
+    <filter id="blob-filter" x="-50%" y="-50%" width="200%" height="200%">
+      <feTurbulence type="turbulence" baseFrequency="0.022 0.028" numOctaves="3" seed="7" result="noise">
+        <animate attributeName="baseFrequency" dur="9s" values="0.022 0.028;0.038 0.052;0.022 0.028" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<div id="cur-dot"></div>
+<div id="cur-blob"></div>
+<div id="transition"></div>
+<div id="prog"></div>
+
+<nav>
+  <a href="./index.html" class="nav-logo"><div class="nav-dot"></div>RYU JEONGMIN<span style="font-size:9px;letter-spacing:.12em;color:var(--dim)">· RJM 2026</span></a>
+  <a href="./index.html" class="nav-back back-link">Back to work</a>
+</nav>
+
+<section class="proj-hero">
+  <canvas id="hero-cv"></canvas>
+  <div class="proj-hero-content">
+    <div class="proj-tag-line">Tanglemate · Stage 1 &nbsp;·&nbsp; AI Journaling</div>
+    <h1 class="proj-title">감정실타래</h1>
+    <p class="proj-subtitle">An AI emotional journaling app — a space to untangle the complexity of your feelings alongside an AI that remembers who you are.</p>
+    <div class="proj-meta-bar">
+      <div class="proj-meta-item"><span>Role</span>Solo Designer & Developer</div>
+      <div class="proj-meta-item"><span>Stack</span>React · Firebase · GPT-4</div>
+      <div class="proj-meta-item"><span>Period</span>Apr 2025 – Dec 2025</div>
+      <div class="proj-meta-item"><span>Status</span>Live · 28+ real entries</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="proj-content">
+
+<div class="section-block">
+  <div class="block-label">Overview</div>
+  <h2 class="block-title">Untangling emotion with AI</h2>
+  <div class="block-body">
+    <p>감정실타래 (Gamjeong Siltarae — "Emotion Thread Ball") is a personal AI journaling app I designed and built to process daily emotional experiences. The premise: <strong>emotions rarely arrive neatly labeled</strong>. This app is a space to dump complex, tangled feelings through free text, and let an AI help you understand what you're actually feeling.</p>
+    <p>Over 8 months I used it daily, accumulating 28+ real journal entries. It became the first-stage prototype of <strong>Tanglemate</strong>, a research system exploring how personal AI can support emotional self-reflection over time.</p>
+  </div>
+
+  <div class="block-img">
+    <img src="./resources/images/gamjeong_main_ui.png" alt="감정실타래 main UI" loading="lazy">
+    <div class="block-img-caption">Main UI — 2-column layout with navigation on left, diary input and list on right</div>
+  </div>
+</div>
+
+<div class="section-block">
+  <div class="block-label">Usage Data</div>
+  <h2 class="block-title">Real data over 8 months</h2>
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num">28+</div>
+      <div class="stat-label">Journal entries</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Months of use</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">AI personas</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Diary categories</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-block">
+  <div class="block-label">Core Interaction</div>
+  <h2 class="block-title">실타래 풀기 — the act of unwinding</h2>
+  <div class="block-body">
+    <p>The interaction is intentionally simple: write whatever is on your mind in free text, then press <strong>"실타래 풀기"</strong> (Unwind the Thread). The AI responds with warm, personalized feedback — not generic advice, but a response that reflects your actual history, personality, and ongoing concerns.</p>
+    <p>Each entry is automatically given a title and categorized. The system maintains a live user profile that updates with each entry, making future responses progressively more personal.</p>
+  </div>
+
+  <div class="block-img">
+    <img src="./resources/images/gamjeong_walkthrough.gif" alt="감정실타래 usage walkthrough" loading="lazy">
+    <div class="block-img-caption">Walkthrough — input → submit → AI response flow</div>
+  </div>
+</div>
+
+<div class="section-block">
+  <div class="block-label">AI Personas</div>
+  <h2 class="block-title">Three voices, one journal</h2>
+  <div class="block-body">
+    <p>Users can select from three distinct AI personas, each offering a different emotional register for feedback:</p>
+  </div>
+  <div class="persona-grid">
+    <div class="persona-card">
+      <div class="persona-name">따뜻한 친구 (Default)</div>
+      <div class="persona-desc">Warm, empathetic. Like a close friend who always has your back. Validates your feelings before offering perspective.</div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-name">현실적인 조언가</div>
+      <div class="persona-desc">Pragmatic advisor. Cuts through emotion to give grounded, actionable perspective. Useful when you need clarity over comfort.</div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-name">유쾌한 몽상가</div>
+      <div class="persona-desc">Playful dreamer. Reframes situations with imagination and lightness. Good for when you're stuck in a loop.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-block">
+  <div class="block-label">Diary Categories</div>
+  <h2 class="block-title">Auto-classified emotional context</h2>
+  <div class="block-body">
+    <p>Every entry is automatically categorized into one of five types: <strong>걱정일기</strong> (worry), <strong>진로일기</strong> (career), <strong>감정일기</strong> (emotions), <strong>감상일기</strong> (reflections), or <strong>일반일기</strong> (general). This classification enables longitudinal pattern recognition — seeing, over months, what kinds of concerns dominate your mental space.</p>
+  </div>
+
+  <div class="block-img">
+    <img src="./resources/images/gamjeong_main_ui_v2.png" alt="감정실타래 v2 UI" loading="lazy">
+    <div class="block-img-caption">UI v2 — refined diary list view with category labels</div>
+  </div>
+</div>
+
+<div class="section-block">
+  <div class="block-label">Technical Architecture</div>
+  <h2 class="block-title">Stack & system design</h2>
+  <div class="block-body">
+    <p>Built as a full-stack web app on Firebase Cloud Workstation. The architecture prioritizes <strong>persistent user context</strong> — the system maintains a live profile JSON that is updated after every entry using a secondary GPT-3.5 call to extract profile updates from the new diary text.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div class="step-body"><strong>Input & GPT-4 response</strong> — User writes free text. A curated system prompt containing the full user profile and recent diary history is sent to GPT-4, which returns a structured JSON with title, date, type, content, and diary feedback.</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-body"><strong>Profile update loop</strong> — A second GPT-3.5 call extracts any new information from the entry and merges it into the persistent user profile, making every future response more accurate.</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-body"><strong>Firebase persistence</strong> — Entries and profile are stored in Firestore with Firebase Auth for secure single-user access. The diary list updates in real-time.</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-body"><strong>Persona injection</strong> — The selected persona modifies the system prompt's emotional register, changing the tone of AI feedback without altering the underlying data structure.</div></div>
+  </div>
+</div>
+
+<div class="section-block">
+  <div class="block-label">Research Context</div>
+  <h2 class="block-title">Tanglemate: Stage 1 — Capture</h2>
+  <div class="block-body">
+    <p>감정실타래 is Stage 1 of <strong>Tanglemate</strong>, a multi-stage research system on AI-mediated emotional memory. Stage 1 focuses on <em>capture</em> — building a rich longitudinal record of emotional experience through natural language journaling. The 28+ real entries accumulated over 8 months form the primary dataset for Tanglemate's later stages, which explore how AI can help surface emotional patterns over time.</p>
+    <p>The project is part of ongoing CHI research investigating personal AI systems that grow with their users.</p>
+  </div>
+</div>
+
+<div class="proj-cta section-block">
+  <h3>More work from RJM-001</h3>
+  <p>Hardware engineer designing physical AI that lives in the world, not behind a screen.</p>
+  <a href="./index.html" class="btn-back back-link">← View all projects</a>
+</div>
+
+</div>
+</div>
+
+<footer>
+  <span class="f-txt">© 2026 Ryu Jeongmin · 감정실타래</span>
+  <span class="f-txt">→ <a href="./index.html" class="back-link" style="color:var(--acc)">ryujeongmin.github.io</a></span>
+</footer>
+
+<script>
+
+const reduced = matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+// CURSOR
+(function(){
+  if(reduced)return;
+  const dot=document.getElementById('cur-dot'),blob=document.getElementById('cur-blob');
+  let mx=0,my=0,bx=0,by=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+  document.querySelectorAll('a,button,.btn-back').forEach(el=>{
+    el.addEventListener('mouseenter',()=>blob.style.cssText+='width:72px;height:72px');
+    el.addEventListener('mouseleave',()=>blob.style.cssText=blob.style.cssText.replace(/width:[^;]+;height:[^;]+;/g,''));
+  });
+  (function loop(){
+    bx+=(mx-bx)*.1;by+=(my-by)*.1;
+    dot.style.left=mx+'px';dot.style.top=my+'px';
+    blob.style.left=bx+'px';blob.style.top=by+'px';
+    requestAnimationFrame(loop);
+  })();
+})();
+
+// SCROLL PROGRESS
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  document.getElementById('prog').style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%';
+},{passive:true});
+
+// REVEAL
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.section-block').forEach(el=>io.observe(el));
+
+// PAGE TRANSITION
+window.addEventListener('pageshow',()=>{
+  const ov=document.getElementById('transition');
+  ov.style.transform='scaleX(1)';ov.style.transformOrigin='left';
+  requestAnimationFrame(()=>{ov.classList.add('out');setTimeout(()=>{ov.classList.remove('out');ov.style.transform='';},700)});
+});
+document.querySelectorAll('.back-link').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    const ov=document.getElementById('transition');
+    ov.style.cssText='position:fixed;inset:0;z-index:800;background:var(--ink);transform:scaleX(0);transform-origin:left;pointer-events:all;animation:wipe-in .2s cubic-bezier(.86,0,.07,1) forwards';
+    setTimeout(()=>{ window.location.href=link.getAttribute('href'); },680);
+  });
+});
+
+// HERO CANVAS — thread particle effect
+(function(){
+  if(reduced)return;
+  const cv=document.getElementById('hero-cv');
+  const ctx=cv.getContext('2d');
+  let W,H,pts=[];
+  function resize(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;init()}
+  function rand(a,b){return a+Math.random()*(b-a)}
+  function init(){
+    pts=[];
+    for(let i=0;i<60;i++){
+      pts.push({x:rand(0,W),y:rand(0,H),vx:rand(-.3,.3),vy:rand(-.3,.3),r:rand(1,2.5),o:rand(.04,.12)});
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;
+      if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(196,81,26,${p.o})`;ctx.fill();
+    });
+    // draw connections
+    for(let i=0;i<pts.length;i++){
+      for(let j=i+1;j<pts.length;j++){
+        const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<120){
+          ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+          ctx.strokeStyle=`rgba(196,81,26,${0.04*(1-d/120)})`;ctx.lineWidth=.5;ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize);
+  resize();draw();
+})();
+
+// CLICK SPARKS
+if(!reduced){
+  document.addEventListener('click',e=>{
+    for(let i=0;i<7;i++){
+      const el=document.createElement('div');el.className='spark';
+      const a=(i/7)*Math.PI*2+Math.random()*.4,d=25+Math.random()*35,s=3+Math.random()*4;
+      el.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;width:${s}px;height:${s}px;--sx:${Math.cos(a)*d}px;--sy:${Math.sin(a)*d}px`;
+      document.body.appendChild(el);setTimeout(()=>el.remove(),700);
+    }
+  });
+}
+
+</script>
+</body>
+</html>
