@@ -1,47 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Self-Driving Mobility - Jeongmin Ryu</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>Robot Arm with Self Driving Mobility - Jeongmin Ryu</title>
+  <link rel="stylesheet" href="./resources/css/setting.css" />
+  <link rel="stylesheet" href="./resources/css/plugin.css" />
+  <link rel="stylesheet" href="./resources/css/templatehouse.css" />
+  <link rel="stylesheet" href="./resources/css/style.css" />
+</head>
 
-:root{
-  --bg:#FFFFFF;--bg2:#EAE8E2;--bg3:#E0DED8;
-  --ink:#1C1A18;--dim:#8A8880;--line:rgba(28,26,24,.10);
-  --acc:#C4511A;--acc2:#4A7066;
-  --mono:'Inter',sans-serif;--sans:'Inter',sans-serif;
-  --r:14px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);font-size:16px;line-height:1.55;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.032'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
-a{color:inherit;text-decoration:none}
+<body>
+  <header class="th-layout-header header-divider-line">
+    <div class="header-container container-lg">
+      <h1 class="header-title">
+        <a href="./index.html">
+          <img src="./resources/icons/Jeongmin Ryu.svg" alt="Jeongmin Ryu" />
+        </a>
+      </h1>
+      <div class="header-right">
+        <div class="header-gnb">
+          <ul class="header-gnblist">
+                    <li class="header-gnbitem">
+                        <a class="header-gnblink" href="./about.html">ABOUT</a>
+                    </li>
+                    <li class="header-gnbitem">
+                        <a class="header-gnblink" href="./index.html#PkM75YP0Bf">PROJECTS</a>
+                    </li>
+                    <li class="header-gnbitem">
+                        <a class="header-gnblink" href="./ai_projects.html">PROJECT WITH AI</a>
+                    </li>
+                </ul>
+        </div>
+      </div>
+  </header>
 
-/* CURSOR */
-#cur-dot{position:fixed;pointer-events:nonNދZ[�^�NNNN��Y���ZY���ؘX��ܛ�[���\�KXX��N؛ܙ\�\�Y]\΍L	N��[�ٛܛN��[��]JML	KML	JN�Z^X�[�[[�N�][\_B���\�X�؞���][ێ��^Y��[�\�Y]�[�Λ�ۙNދZ[�^�NNN��Y�
-�ZY��
-؛ܙ\�\�Y]\΍L	N��[�ٛܛN��[��]JML	KML	JNؘX��ܛ�[���YX[YܘYY[�
-�\��K�ؘJNM�K���N
-H�	K�[��\�[�
-�	JNٚ[\��\�
-؛؋Y�[\�_B��ʈ��ԑT��
-��������][ێ��^Y����Y��ދZ[�^���ZY�����Y�	NؘX��ܛ�[���\�KXX��_B��ʈQ�H�S��USӈ
-���[��][۞���][ێ��^Y�[��]�ދZ[�^���[�\�Y]�[�Λ�ۙNؘX��ܛ�[���\�KZ[��N��[�ٛܛN���[V
-
-N��[�ٛܛK[ܚY�[���Y�B���[��][ۋ��]�[�[X][ێ��\K[�]����X�X�X�^�Y\��
-��
-�JH�ܝ�\��B��^Y��[Y\��\K[�]ٜ��^��[�ٛܛN���[V
-JN��[�ٛܛK[ܚY�[���Y�]���[�ٛܛN���[V
-
-N��[�ٛܛK[ܚY�[���Y�_B��ʈ�U�
-��]����][ێ��^Y����Y��ܚY��ދZ[�^�L�\�^N��^�[YۋZ][\Θ�[�\�ڝ\�Y�KX�۝[���X�KX�]�Y[��Y[�ΌM�
-ؘX��ܛ�[���ؘJ���K�͋�
-JNؘX����Y�[\���\�M
-N�]�X��]X�X����Y�[\���\�M
-N؛ܙ\�X���N�\��Y�\�K[[�J_B���]�[���ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�L��]\�\�X�[�΋��[N�^]�[�ٛܛN�\\��\�N�\�^N��^�[YۋZ][\Θ�[�\���\�L��\��܎��ۙ_B���]�Y���Y���ZY���؛ܙ\�\�Y]\΍L	NؘX��ܛ�[���\�KXX��N�[�[X][ێ���X]H
-�X\�KZ[�[�][��[�]_B��^Y��[Y\���X]^�	KL	^��X�]N�_ML	^��X�]N����[�ٛܛN���[J��__B���]�X�X��ٛ۝Y�[Z[N��\�K[[ۛ�Nٛ۝\�^�N�L�]\�\�X�[�΋�N[N�^GG&�6f�&ӧWW&66S�6���#�f"���F�ғ�F�7���f�W��Ɩv�֗FV�3�6V�FW#�v����G&�6�F���6���"�'3�7W'6�#����WТ��b�&6����fW'�6���#�f"���62�Т��b�&6���&Vf�&W�6��FV�C�.(i#�G&�6�F���G&�6f�&��'7Т��b�&6����fW#��&Vf�&W�G&�6f�&ӧG&�6�FU���7��Р���U$����&��ֆW&��֖�ֆV�v�C�sW7f��F�7���f�W��f�W��F�&V7F���6��V�㶧W7F�g��6��FV�C�f�W��V�C�FF��s�C�C��cG���6�F���&V�F�fS��fW&f��s���FFV�&6�w&�V�C�f"��֖沗Т6�W&��7g��6�F���'6��WFS���6WC��v�GF��S��V�v�C�WТ�&��ֆW&��6��FV�G��6�F���&V�F�fS��֖�FW��'Т�&���Fr�Ɩ�W�f��B�f֖Ǔ�f"�������f��B�6��S����WGFW"�76��s��6VӷFW�B�G&�6f�&ӧWW&66S�6���#�&v&��bÃ�#b�ん��&v���&�GF�ӣg��F�7���f�W��Ɩv�֗FV�3�6V�FW#�v�'���6�G�����F���fFR�W�w2V6R�72f�'v&G7Т�&���Fr�Ɩ�S��&Vf�&W�6��FV�C�"#�F�7�����Ɩ�R�&��6��v�GF��#G���V�v�C���&6�w&�V�C�f"���62�Т�&���F�F�W�f��B�6��S�6���C'�Çgr����f��B�vV�v�C�s�Ɩ�RֆV�v�C��#��WGFW"�76��s���FVӶ6���#�&v&�#C2�#C�#3b�㒓��fW&f��s���FFV��6�G�����F���fFR�W�27V&�2�&W��W"��b���2���W2f�'v&G7Т�&���7V'F�F�W��&v���F��#�����v�GF��Sc��f��B�6��S�W��Ɩ�RֆV�v�C�ヶ6���#�&v&�#C2�#C�#3b��CR���6�G�����F���fFR�W�w2V6R�2f�'v&G7Т�&����WF�&'�F�7���f�W��v�3'��f�W��w&�w&��&v���F��3g��FF��r�F��#G��&�&FW"�F���6�ƖB&v&�#C2�#C�#3b������6�G�����F���fFR�W�w2V6R2f�'v&G7Т�&����WF֗FV׶f��B�f֖Ǔ�f"�������f��B�6��S�����WGFW"�76��s��&VӷFW�B�G&�6f�&ӧWW&66S�6���#�&v&�#C2�#C�#3b��3R�Т�&����WF֗FV�7�F�7���&��6��6���#�f"���62���&v���&�GF�ӣ7��f��B�6��S���Ф�W�g&�W2fFR�W�g&�׶�6�G���G&�6f�&ӧG&�6�FU������F���6�G���G&�6f�&Ӧ���W�Р��4��DT�B���w&����v�GF���c���&v��WF�FF��s�C��Т�&���6��FV�G�FF��s���#�Т�6V7F����&��6���&v���&�GF�ӣs'���6�G���G&�6f�&ӧG&�6�FU��#G���G&�6�F����6�G��'2V6R�G&�6f�&��'27V&�2�&W��W"��"����"��Т�6V7F����&��6��f�7��6�G���G&�6f�&Ӧ���WТ�&��6���&VǶf��B�f֖Ǔ�f"�������f��B�6��S�����WGFW"�76��s��6VӷFW�B�G&�6f�&ӧWW&66S�6���#�f"���62���&v���&�GF�ӣg��F�7���f�W��Ɩv�֗FV�3�6V�FW#�v��Т�&��6���&Vã�gFW'�6��FV�C�"#�f�W����V�v�C���&6�w&�V�C�f"���Ɩ�R�Т�&��6��F�F�W�f��B�6��S�6���#'��2�Wgr�3G���f��B�vV�v�C�s��WGFW"�76��s���#VVӶ�&v���&�GF�ӣg��Ɩ�RֆV�v�C��'Т�&��6��&�G��f��B�6��S�W��Ɩ�RֆV�v�C��S�6���#�f"���F�ғ����v�GF��c��Т�&��6��&�G����&v���F��'�Т�&��6��&�G�7G&��w�6���#�f"��֖沓�f��B�vV�v�C�SТ�&��6�֖�w��&v���F��3'��&�&FW"�&F�W3�f"���"���fW&f��s���FFV�&�&FW#��6�ƖBf"���Ɩ�R�Т�&��6�֖�r��w�v�GF��S��V�v�C�WF�F�7���&��6�Т�&��6�֖�r�6F���f��B�f֖Ǔ�f"�������f��B�6��S�����WGFW"�76��s��fVӷFW�B�G&�6f�&ӧWW&66S�6���#�f"���F�ғ�FF��s�'�g��&6�w&�V�C�f"���&s"��&�&FW"�F���6�ƖBf"���Ɩ�R�Т�Gv��6�ǶF�7���w&�C�w&�B�FV��FR�6��V��3�g"g#�v�#G���&v���F��3'�Т�Gv��6���&��6�֖�w��&v���F��Т�7FW7�6�V�FW"�&W6WC�7FW��&v���F��#G��F�7���f�W��f�W��F�&V7F���6��V��v�'�Т�7FW�F�7���w&�C�w&�B�FV��FR�6��V��3�C�g#�v�g��Ɩv�֗FV�3�7F'C�FF��s�g��&6�w&�V�C�f"���&s"��&�&FW#��6�ƖBf"���Ɩ�R��&�&FW"�&F�W3���Т�7FW��V׶f��B�f֖Ǔ�f"�������f��B�6��S�'��f��B�vV�v�C�S�6���#�f"���62��FF��r�F��'�Т�7FW�&�G��f��B�6��S�G��Ɩ�RֆV�v�C��s�6���#�f"���F�җР��5D���&���7F�&6�w&�V�C�f"���&s"��&�&FW#��6�ƖBf"���Ɩ�R��&�&FW"�&F�W3�f"���"��FF��s�C���FW�B�Ɩv�6V�FW#��&v���F����Т�&���7F�7�f��B�6��S�6���#'��7gr�3'���f��B�vV�v�C�s��WGFW"�76��s���&VӶ�&v���&�GF�ӣ'�Т�&���7F�f��B�6��S�G��6���#�f"���F�ғ��&v���&�GF�ӣ#��Т�'F��&6���F�7�����Ɩ�R�f�W��Ɩv�֗FV�3�6V�FW#�v�����f��B�f֖Ǔ�f"�������f��B�6��S����WGFW"�76��s��&VӷFW�B�G&�6f�&ӧWW&66S��&6�w&�V�C�f"���62��6���#�f"���&r��FF��s�'�#���&�&FW"�&F�W3�C���7W'6�#����S�G&�6�F���G&�6f�&��'2�&���6�F�r�'3��Т�'F��&6����fW'�G&�6f�&ӧ66�R��B��&���6�F�s���3'�&v&��bÃ�#b��B�Р��d��DU"��f��FW'�FF��s�#G�C���&�&FW"�F���6�ƖBf"���Ɩ�R��F�7���f�W���W7F�g��6��FV�C�76R�&WGvVV�Ɩv�֗FV�3�6V�FW#�f�W��w&�w&�v�'�Т�b�G�G�f��B�f֖Ǔ�f"�������f��B�6��S�����WGFW"�76��s���VӷFW�B�G&�6f�&ӧWW&66S�6���#�f"���F�җР��4Ĕ4�5$�2���7&���6�F���f��VC����FW"�WfV�G3����S��֖�FW������&�&FW"�&F�W3�SS�G&�6f�&ӧG&�6�FR��SR��SR��&6�w&�V�C�f"���62����F���7&���WB�g2V6Rf�'v&G7Ф�W�g&�W27&���WG�W�G&�6f�&ӧG&�6�FR��SR��SR�66�R����6�G����W��6�G���G&�6f�&ӧG&�6�FR�f"���7���f"���7���66�R���Р��VF�����v�GF��sc������b�f��FW'�FF��s�G�#'�Т�&��ֆW&��FF��s��#'�S'��֖�ֆV�v�C�cW7f�Т�w&�FF��s�#'�Т�Gv��6�Ƕw&�B�FV��FR�6��V��3�g'ЧФ�VF��&VfW'2�&VGV6VB���F���&VGV6R����£��&Vf�&R£��gFW'���F����GW&F�����2���'F�C�G&�6�F����GW&F�����2���'F�GТ67W"�F�B�67W"�&��'�F�7������WТ&�G��7W'6�#�WF�Т�6V7F����&��6���6�G���G&�6f�&Ӧ���WЧР���7G��S����VC��&�G�ࠣ�7fr7G��S�'�6�F���f��VC�v�GF����V�v�C���fW&f��s���FFV����FW"�WfV�G3����R#��FVg3��f��FW"�C�&&��"�f��FW""��"�SR"��"�SR"v�GF��##R"�V�v�C�##R#��fUGW&'V�V�6RG�S�'GW&'V�V�6R"&6Tg&WVV�7��#�#"�#�"�V��7FfW3�#2"6VVC�#r"&W7V�C�&���6R#����FRGG&�'WFT��S�&&6Tg&WVV�7�"GW#�#�2"f�VW3�#�#"�#���3��S#��#"�#�"&WVD6�V�C�&��FVf��FR"����fUGW&'V�V�6S��fTF�7�6V�V�D����%6�W&6Tw&��2"��#�&���6R"66�S�#B"�6���V�6V�V7F�#�%""�6���V�6V�V7F�#�$r"����f��FW#���FVg3���7fsࠣ�F�b�C�&7W"�F�B#���F�c��F�b�C�&7W"�&��"#���F�c��F�b�C�'G&�6�F���#���F�c��F�b�C�'&�r#���F�cࠣ��c���&Vc�"����FW��F��"6�73�&�b���v�#��F�b6�73�&�b�F�B#���F�c�%�R�T��tԔ��7�7G��S�&f��B�6��S�����WGFW"�76��s��&VӶ6���#�f"���F�Ғ#�+r$��##c��7�������&Vc�"����FW��F��"6�73�&�b�&6�&6��Ɩ�#�&6�F�v�&�������cࠣ�6V7F���6�73�'&��ֆW&�#��6�f2�C�&�W&��7b#���6�f3��F�b6�73�'&��ֆW&��6��FV�B#��F�b6�73�'&���Fr�Ɩ�R#��f�'7�+rf�'7�WF�����W2&�&�C��F�c�ƃ6�73�'&���F�F�R#�6V�b�G&�f��r��&�ƗG������6�73�'&���7V'F�F�R#�WF�����W2��&��R&6Rv�F�&�&�F�2&�(	B��fW'6R���V�F�72�VWG2��6�6���V�F��������F�b6�73�'&����WF�&"#��F�b6�73�'&����WF֗FV�#��7��G�S��7��&�&�F�72+r�V6�G&��73��F�c��F�b6�73�'&����WF֗FV�#��7��&��S��7��FV�+r�V6��6��VC��F�c��F�b6�73�'&����WF֗FV�#��7��V#��7��###��F�c��F�b6�73�'&����WF֗FV�#��7��7F6���7���F���+r%���F�c���F�c���F�c���6V7F���ࠣ�F�b6�73�'w&#��F�b6�73�'&���6��FV�B#ࠣ�F�b6�73�'6V7F����&��6�#��F�b6�73�&&��6���&V�#��fW'f�Ws��F�c�ƃ"6�73�v&��6��F�F�Rs���&�ƗG����V�F������#��F�b6�73�&&��6��&�G�#�F��2&��V7B6��&��VB6V�b�G&�f��r��&��R&6Rv�F�&�&�F�2&����FVw&F��r�7G&��s�WF�����W2�f�vF���v�F���6�6���V�F���6&�ƗF�W3��7G&��s��F�Rv��v2F�W���&R��r��&��R�Ff�&�6�6��&F��FR��6���F����B&���fV�V�BF�66��Ɨ6�F6�2��V�7G'V7GW&VBV�f�&���V�G2���F�c� ��F�b6�73�&&��6�֖�r#�Ɩ�r7&3�"��&W6�W&6W2���vW2�g&�R3�2��r"�C�%6V�b�G&�f��r��&�ƗG�"��F��s�&���#��F�b6�73�v&��6�֖�r�6F���s�&�&�B&�v�F�6V�b�G&�f��r��&�ƗG��Ff�&���F�c���F�c���F�c��F�b6�73�'6V7F����&��6�#��F�b6�73�&&��6���&V�#��V6��6���F�c�ƃ"6�73�v&��6��F�F�Rs䶖�V�F�72bD�&�WFW'3���#��F�b6�73�&&��6��&�G�#�&6VB��F�R&�&�B&�w2���V�F�27G'V7GW&R�vRFW&�fVBD��FV�f�BԆ'FV�&W&r�&�WFW'2�B6��WFVBG&�6f�&�F����G&�6W2f�"V6�����B�vRF�V����V�V�FVB�7G&��s��fW'6R���V�F�72���F�����7G&��s�����v��r&V6�6R6��G&���bV�B�VffV7F�"�6�F���g&����v���WfV�F&vWB6��&F��FR�F��2V�&�VB6���F��v���F�&V7FVB&���fV�V�B&Vv&F�W72�b7F'F��r6��f�wW&F������F�c� � ���F�c��F�b6�73�'6V7F����&��6�#��F�b6�73�&&��6���&V�#��FVw&F�����F�c�ƃ"6�73�v&��6��F�F�Rs��f�vF����&�6��&F��F������#��F�b6�73�&&��6��&�G�#�F�R��7BFV6��6�ǒ6���V�v��r7V7Bv26��&F��F��rF�RWF�����W2�f�vF���7�7FV�v�F�F�R&�6��G&���W"(	BV�7W&��rF�R��&��R&6R6�V�B&W�6�F���F�'&��rF�R&�v�F���&V6��bF&vWBv���RF�R&�6��V�F�V�W6ǒF�W7FVB�G2�7GW&Rf�"F�R&�6���rv�&�76R�6�&VB7FFR�6���R��vVB&��&�G�&WGvVV�F�RGv�7V'7�7FV�2���F�c� � ���F�cࠣ�F�b6�73�'&���7F6V7F����&��6�#�ƃ3���&Rv�&�g&��$������3���&Gv&RV�v��VW"FW6�v��r��6�6��F�BƗfW2��F�Rv�&�B���B&V���B67&VV�������&Vc�"����FW��F��"6�73�&'F��&6�&6��Ɩ�#�(if�Wr��&��V7G3�����F�cࠣ��F�c���F�cࠣ�f��FW#��7�6�73�&b�G�B#�*�##b'�R�V��v֖�+r6V�b�G&�f��r��&�ƗG���7���7�6�73�&b�G�B#�(i"��&Vc�"����FW��F��"6�73�&&6��Ɩ�"7G��S�&6���#�f"���62�#�'�V�V��v֖��v�F�V"�������7����f��FW#ࠣ�67&�Cࠦ6��7B&VGV6VB��F6��VF��"�&VfW'2�&VGV6VB���F���&VGV6R�"���F6�W3�����5U%4� ��gV�7F��ₗ���b�&VGV6VB�&WGW&㰢6��7BF�C�F�7V�V�B�vWDV�V�V�D'��B�v7W"�F�Br��&��#�F�7V�V�B�vWDV�V�V�D'��B�v7W"�&��"r����WB׃��ד��'���'����F�7V�V�B�FDWfV�DƗ7FV�W"�v��W6V��fRr�S��׃�R�6ƖV�E��ד�R�6ƖV�E�ғ��F�7V�V�B�VW'�6V�V7F�$�v�'WGF����'F��&6�r��f�$V6��V��簢V��FDWfV�DƗ7FV�W"�v��W6VV�FW"r���&��"�7G��R�775FW�B��wv�GF��s'���V�v�C�s'�r���V��FDWfV�DƗ7FV�W"�v��W6V�VfRr���&��"�7G��R�775FW�C�&��"�7G��R�775FW�B�&W�6R��v�GF����ҳ��V�v�C���ҳ��r�rr����ғ���gV�7F����������'��ׂ҆�'�����'��҆ג�'������F�B�7G��R��VgC�ׂ�w�s�F�B�7G��R�F��ג�w�s��&��"�7G��R��VgC�'��w�s�&��"�7G��R�F��'��w�s��&WVW7D��F���g&�R�������Ғ����Ғ�������45$���$�u$U50�v��F�r�FDWfV�DƗ7FV�W"�w67&���r��簢6��7B3�F�7V�V�B�F�7V�V�DV�V�V�C��F�7V�V�B�vWDV�V�V�D'��B�w&�rr��7G��R�v�GF�҇2�67&���F��2�67&��ĆV�v�B�2�6ƖV�D�V�v�B����rRs���Ƿ76�fS�G'VWғ�����$UdT��6��7B����Wr��FW'6V7F����'6W'fW"�W3��W2�f�$V6��S�綖b�R�4��FW'6V7F��r��R�F&vWB�6�74Ɨ7B�FB�wf�2r�����V��'6W'fR�R�F&vWB��ҒǷF�&W6���C���ғ��F�7V�V�B�VW'�6V�V7F�$�r�6V7F����&��6�r��f�$V6��V������'6W'fR�V������tRE$�4�D���(	Bv�R�WB����B�v�R����&6�Ɩ氧v��F�r�FDWfV�DƗ7FV�W"�wvW6��rr��簢6��7B�c�F�7V�V�B�vWDV�V�V�D'��B�wG&�6�F���r����b�7G��R�G&�6f�&��w66�U���s��b�7G��R�G&�6f�&��&�v���v�VgBs��&WVW7D��F���g&�R������b�6�74Ɨ7B�FB�v�WBr��6WEF��V�WB������b�6�74Ɨ7B�&V��fR�v�WBr���b�7G��R�G&�6f�&��rs���s�ғ��ғ��F�7V�V�B�VW'�6V�V7F�$�r�&6��Ɩ�r��f�$V6��Ɩ��簢Ɩ��FDWfV�DƗ7FV�W"�v6Ɩ6�r�S�簢R�&WfV�DFVfV�B����6��7B�c�F�7V�V�B�vWDV�V�V�D'��B�wG&�6�F���r����b�7G��R�775FW�C�w�6�F���f��VC���6WC���֖�FW����&6�w&�V�C�f"��֖沓�G&�6f�&ӧ66�U����G&�6f�&���&�v���VgC����FW"�WfV�G3��ö��F���v�R֖��'27V&�2�&W��W"��b���r��f�'v&G2s��6WEF��V�WB�����v��F�r���6F����&Vc�Ɩ��vWDGG&�'WFR�v�&Vbr����c����ғ��ғ�����4Ĕ4�5$�0��b�&VGV6VB���F�7V�V�B�FDWfV�DƗ7FV�W"�v6Ɩ6�r�S�簢f�"��WB�����s�������6��7BV��F�7V�V�B�7&VFTV�V�V�B�vF�br��V��6�74��S�w7&�s��6��7B҆��r���F����"��F��&�F�҂���B�C�#R��F��&�F�҂��3R�3�2��F��&�F�҂��C��V��7G��R�775FW�C��VgC�G�R�6ƖV�E����F��G�R�6ƖV�E����v�GF��G�7����V�v�C�G�7�����7��G��F��6�2���G�����7��G��F��6����G����F�7V�V�B�&�G��V�D6���B�V��V��FDWfV�DƗ7FV�W"�v��F���V�Br���V��&V��fR�����Тғ��Р����U$�4�d2(	BF&�'F�6�Rf�V�@��gV�7F��ₗ���b�&VGV6VG��F�7V�V�B�vWDV�V�V�D'��B�v�W&��7br��&WGW&㰢6��7B7c�F�7V�V�B�vWDV�V�V�D'��B�v�W&��7br��7��7b�vWD6��FW�B�s&Br����WBrĂ�G3յӰ�gV�7F�����B����6��7BG#��F��֖�FWf�6U��V�&F�����"���s�7b�&V�DV�V�V�B��fg6WEv�GF����7b�&V�DV�V�V�B��fg6WD�V�v�C��7b�v�GF��r�G#�7b�V�v�CԂ�G#�7��6WEG&�6f�&҆G"���G"�����G3յӶ6��7Bv��F�����C"�r�����f�"��WB��v��S��ă����v�f�"��WB��v��S���s����v��G2�W6����ǒ�������������F��&�F�҂���F����"�3��2��F��&�F�҂���r�#��b��F��&�F�҂���BƗ463��F��&�F�҂���gғ��Т��B����v��F�r�FDWfV�DƗ7FV�W"�w&W6��Rr���6�V%F��V�WB���B��B����B��C�6WEF��V�WB���B��ғ���WBC��׃�r�"�דԂ�#��F�7V�V�B�vWDV�V�V�D'��B�v�W&��7br��&V�DV�V�V�B�FDWfV�DƗ7FV�W"�w���FW&��fRr�S�簢6��7B#�7b�vWD&�V�F��t6ƖV�E&V7B���׃�R�6ƖV�E��"��VgC�ד�R�6ƖV�E��"�F����Ƿ76�fS�G'VWғ��gV�7F���G&r����7��6�V%&V7B���rĂ��B���c����G&rw&�@�7��7G&��U7G��S�w&v&�#C2�#C�#3b��2�s�7��Ɩ�Uv�GF���S��6��7Bv��F�����C"�r�����f�"��WB��v��S��ă����v��7��&Vv��F����7����fUF�ǒ��7��Ɩ�UF�rǒ��7��7G&��R��Тf�"��WB��v��S���s����v��7��&Vv��F����7����fUF����7��Ɩ�UF�Ă��7��7G&��R��Т��G&r'F�6�W0�f�"�6��7B�bG2���6��7B�������F��6��B��2�������������F��6�2�B��2��r������#��6��7BG����ׂ�G����ג�C��F��7'B�G��G��G��G���#ӓ��6��7BƗC�C�#��B�"���c���7��v��&���҂�b�ƗB����463�㓣���7��f���7G��S��463�r43CSs�w&v&�#C2�#C�#3b��s��7��&Vv��F����7��&2������"�ƗB�"�R���F����"��7��f�����Т7��v��&������&WVW7D��F���g&�R�G&r���ТG&r����Ғ�������67&�C���&�G�����F��
+  <main class="th-layout-main">
+    <div class="th-layout-content">
+
+      <!-- Hero Section -->
+      <div class="basic-N34 spacer-top-lg" id="RobotArmHero">
+        <div class="contents-container container-md">
+          <div class="contents-inner">
+            <div class="textset">
+              <span class="project-label">PROJECT</span>
+              <h2 class="textset-tit-sm">Robot Arm with Self Driving Mobility</h2>
+              <img src="./resources/images/Frame 393.png" alt="Robot Arm with Self Driving Mobility"
+                style="width: 100%; max-width: 800px; margin: 2rem 0; border-radius: var(--radius-md);" />
+              <p class="h6 textset-desc">
+                Combined a self-driving mobile base with a robotic arm.<br />
+                The system integrates autonomous navigation with manipulation capabilities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Content (Zig-Zag) -->
+      <div class="basic-N35" id="RobotArmContent">
+        <div class="contents-container container-md">
+          <div class="contents-inner">
+
+            <div class="detail-section">
+
+              <!-- Feature 1: Mechanism -->
+              <div class="feature-item">
+                <div class="feature-text">
+                  <h3 class="feature-tit">Mechanism</h3>
+                  <p class="feature-desc">
+                    Based on the kinematics of the robot arm, we derived the DH parameters and found the transformation
+                    matrix.
+                    We utilized Python libraries to implement the inverse kinematics code, allowing precise control of
+                    the arm's movement.
+                  </p>
+                </div>
+                <div class="feature-media">
+                  <img src="./resources/images/robot arm(AIM project)-1.png" alt="Robot Arm Kinematics" />
+                </div>
+              </div>
+
+              <!-- Feature 2: Test Video -->
+              <div class="feature-item">
+                <div class="feature-text">
+                  <h3 class="feature-tit">Test Video</h3>
+                  <p class="feature-desc">
+                    Demonstration of the robot arm operating in conjunction with the mobility platform.
+                  </p>
+                </div>
+                <div class="feature-media">
+                  <iframe src="https://www.youtube.com/embed/Di7K1RFhCig" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="th-layout-footer">
+    <div class="footer-container container-md">
+      <div class="footer-top">
+        <ul class="footer-snslist">
+          <li class="footer-snsitem">
+            <a class="footer-snslink" href="https://www.instagram.com/ryujeongmin3812" target="_blank">
+              <img src="./resources/images/instagram_new.png" alt="Instagram" />
+            </a>
+          </li>
+          <li class="footer-snsitem">
+            <a class="footer-snslink" href="https://www.linkedin.com/in/%EC%A0%95%EB%AF%BC-%EB%A5%98-4656252a9/"
+              target="_blank">
+              <img src="./resources/images/linkedin.png" alt="LinkedIn" />
+            </a>
+          </li>
+          <li class="footer-snsitem">
+            <a class="footer-snslink" href="https://github.com/ryujeongmin" target="_blank">
+              <img src="./resources/images/git.png" alt="GitHub" />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <address class="footer-txt">
+          <p>r10010jm@gmail.com</p>
+        </address>
+        <div class="footer-txt">
+          <p>Dec 2025 Jeongmin Ryu</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./resources/js/setting.js"></script>
+  <script src="./resources/js/plugin.js"></script>
+  <script src="./resources/js/templatehouse.js"></script>
+  <script src="./resources/js/style.js"></script>
+</body>
+
+</html>
