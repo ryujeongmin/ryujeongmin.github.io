@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<!-- CSS -->
+<link rel="stylesheet" href="./resources/css/setting.css" />
+<link rel="stylesheet" href="./resources/css/plugin.css" />
+<link rel="stylesheet" href="./resources/css/templatehouse.css" />
+<link rel="stylesheet" href="./resources/css/style.css" />
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wall | Jeongmin Ryu</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ── Wall-page styles ── */
+  .wall-page-header {
+    padding: 80px 0 28px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .wall-page-title {
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+    color: var(--text-main, #f8fafc);
+  }
+  .wall-page-desc {
+    margin: 0;
+    color: var(--text-sub, #94a3b8);
+    max-width: 46ch;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* Add button */
+  .wall-add-btn {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-main, #f8fafc);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 4px;
+    padding: 11px 22px;
+    cursor: pointer;
+    transition: background .18s ease, border-color .18s ease;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+  }
+  .wall-add-btn:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  /* ── Wall canvas ── */
+  .wall {
+    position: relative;
+    min-height: 72vh;
+    margin-bottom: 60px;
+    background-color: rgba(15, 23, 42, 0.45);
+    background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: crosshair;
+    touch-action: manipulation;
+  }
+  .wall-hint {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    color: rgba(255,255,255,0.18);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .04em;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  /* ── Notes ── */
+  .note {
+    position: absolute;
+    width: 168px;
+    padding: 14px 15px 13px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+    cursor: default;
+    transition: transform .16s ease, box-shadow .16s ease;
+    animation: noteIn .28s cubic-bezier(.2,.8,.2,1) both;
+    will-change: transform;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+  @keyframes noteIn {
+    from { opacity: 0; transform: translateY(-10px) scale(.93) rotate(var(--rot)); }
+    to   { opacity: 1; transform: translateY(0) scale(1) rotate(var(--rot)); }
+  }
+  .note:hover {
+    transform: rotate(0deg) scale(1.04);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.28);
+    z-index: 50;
+  }
+  .note .text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #111;
+    word-break: break-word;
+    white-space: pre-wrap;
+    margin: 0 0 10px;
+  }
+  .note .by {
+    font-size: 11px;
+    letter-spacing: .02em;
+    color: #999;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .note .by .nm { font-weight: 600; color: #444; }
+  .note .by .dt { font-size: 10px; color: #bbb; flex-shrink: 0; }
+
+  /* dark note */
+  .note.dark {
+    background: #0f172a;
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  }
+  .note.dark .text  { color: #f1f5f9; }
+  .note.dark .by    { color: #64748b; }
+  .note.dark .by .nm { color: #cbd5e1; }
+  .note.dark .by .dt { color: #475569; }
+
+  /* slate note */
+  .note.slate {
+    background: #1e293b;
+    border-color: rgba(255,255,255,0.06);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .note.slate .text  { color: #e2e8f0; }
+  .note.slate .by    { color: #64748b; }
+  .note.slate .by .nm { color: #94a3b8; }
+  .note.slate .by .dt { color: #475569; }
+
+  /* ── Composer popover ── */
+  .composer {
+    position: absolute;
+    z-index: 200;
+    width: 234px;
+    background: rgba(15, 23, 42, 0.94);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    box-shadow: 0 16px 52px rgba(0,0,0,0.55);
+    padding: 14px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    font-family: "Inter", system-ui, sans-serif;
+  }
+  .composer textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #f1f5f9;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 9px 10px;
+    resize: none;
+    min-height: 68px;
+    background: rgba(255,255,255,0.05);
+  }
+  .composer textarea::placeholder { color: rgba(255,255,255,0.24); }
+  .composer input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 13px;
+    color: #f1f5f9;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 8px 10px;
+    margin-top: 8px;
+    background: rgba(255,255,255,0.05);
+  }
+  .composer input::placeholder { color: rgba(255,255,255,0.24); }
+  .composer textarea:focus,
+  .composer input:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.08);
+  }
+  .swatches { display: flex; gap: 8px; margin: 11px 0 2px; }
+  .swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0;
+    flex-shrink: 0;
+  }
+  .swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px #fff; }
+  .composer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 11px;
+  }
+  .composer .pin {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .06em;
+    color: #0f172a;
+    background: #f8fafc;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: opacity .15s;
+  }
+  .composer .pin:hover { opacity: .88; }
+  .composer .pin:disabled { opacity: .35; cursor: default; }
+  .composer .cancel {
+    font-family: inherit;
+    font-size: 12px;
+    color: rgba(255,255,255,0.38);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .composer .cancel:hover { color: rgba(255,255,255,0.65); }
+
+  @media (max-width: 560px) {
+    .wall-page-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .note { width: 148px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .note { animation: none; }
+    .note, .note:hover { transition: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="th-layout-header glass-panel"
+  style="background: rgba(15, 23, 42, 0.6); border: none; border-radius: 0;">
+<div class="header-container container-lg">
+  <h1 class="header-title">
+    <a href="/">
+      <img src="./resources/icons/Jeongmin%20Ryu.svg" alt="Jeongmin Ryu Logo" />
+    </a>
+  </h1>
+  <nav class="header-gnb">
+    <ul class="header-gnblist">
+      <li>
+        <a class="header-gnblink" href="https://docs.google.com/document/d/1dFPphN8YDAgrIJ7M-_t_tnREyvMzVLjDkitQs4s90V0/edit?usp=drivesdk" target="_blank">CV</a>
+      </li>
+      <li>
+        <a class="header-gnblink" href="./index.html#PkM75YP0Bf">PROJECTS</a>
+      </li>
+      <li>
+        <a class="header-gnblink" href="./ai_projects.html">PROJECT WITH AI</a>
+      </li>
+      <li>
+        <a class="header-gnblink" href="./wall.html" style="color: var(--text-main, #f8fafc); opacity: 1;">WALL</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Mobile Menu Button -->
+  <button class="btn-momenu">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
+</header>
+
+<main>
+  <div class="container-lg">
+    <div class="wall-page-header">
+      <div>
+        <h2 class="wall-page-title">Wall</h2>
+        <p class="wall-page-desc">Click anywhere and leave a note — a hello, a thought, or a way to reach me. No rules.</p>
+      </div>
+      <button class="wall-add-btn" id="add-btn">+ Leave a note</button>
+    </div>
+    <div class="wall" id="wall">
+      <div class="wall-hint" id="hint">click anywhere to leave a note</div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="th-layout-footer">
+  <div class="container-md">
+    <div class="footer-top">
+      <h2 class="footer-logo" style="margin: 0 auto;">
+        <a href="/">
+          <img src="./resources/images/white.png" alt="Logo" style="height: 30px;" />
+        </a>
+      </h2>
+      <ul class="footer-snslist">
+        <li class="footer-snsitem">
+          <a href="https://www.instagram.com/ryujeongmin3812?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+            <img src="./resources/images/instagram_new.png" alt="Instagram" />
+          </a>
+        </li>
+        <li class="footer-snsitem">
+          <a href="https://www.linkedin.com/in/%EC%A0%95%EB%AF%BC-%EB%A5%98-4656252a9/" target="_blank">
+            <img src="./resources/images/linkedin.png" alt="LinkedIn" />
+          </a>
+        </li>
+        <li class="footer-snsitem">
+          <a href="https://github.com/ryujeongmin" target="_blank">
+            <img src="./resources/images/git.png" alt="GitHub" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <address class="footer-txt">
+        <p class="p2">r10010jm@gmail.com</p>
+      </address>
+      <div class="footer-txt">
+        <p class="p2">Dec 2025 Jeongmin Ryu</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./resources/js/style.js"></script>
+
+<script type="module">
+  /* ─────────────────────────────────────────────────────────────
+     Supabase config
+     Create a project at https://supabase.com, then:
+       1. Create a table called "wall" with columns:
+          id (uuid, default uuid_generate_v4()), name (text, nullable),
+          message (text), color (text), x (float8), y (float8),
+          rot (float8), created_at (timestamptz, default now())
+       2. Enable Row Level Security and add a policy allowing
+          anonymous INSERT and SELECT.
+       3. Paste your project URL and anon key below.
+     Until then, the wall runs in local demo mode (resets on refresh).
+  ───────────────────────────────────────────────────────────── */
+  const SUPABASE_URL      = "YOUR_SUPABASE_URL";
+  const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+
+  const configured =
+    !SUPABASE_URL.startsWith("YOUR_") &&
+    !SUPABASE_ANON_KEY.startsWith("YOUR_");
+
+  /* Note color options: white / slate / dark */
+  const COLORS  = ["#ffffff", "#1e293b", "#0f172a"];
+  const isDark  = (c) => c === "#0f172a";
+  const isSlate = (c) => c === "#1e293b";
+
+  const wall   = document.getElementById("wall");
+  const hint   = document.getElementById("hint");
+  const addBtn = document.getElementById("add-btn");
+
+  let supabase = null;
+  if (configured) {
+    const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2");
+    supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+
+  /* Demo notes shown until Supabase is set up */
+  let demo = [
+    { name: "Hyunmin",  message: "다음 여행 언제 감?",          color: "#ffffff", x: 12, y: 14, rot: -2.5, created_at: "2026-05-28T09:00:00Z" },
+    { name: "",          message: "love the conveyor-belt city.", color: "#0f172a", x: 54, y: 26, rot:  2,   created_at: "2026-06-10T09:00:00Z" },
+    { name: "Minhyuk",  message: "잘 봤다 인마",               color: "#1e293b", x: 32, y: 52, rot: -1.8, created_at: "2026-06-15T09:00:00Z" },
+  ];
+
+  const esc = (s) =>
+    String(s).replace(/[&<>"']/g,
+      (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+  const fmtDate = (iso) =>
+    new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+
+  let topZ = 60;
+
+  function makeNote(n) {
+    const el  = document.createElement("div");
+    let   cls = "note";
+    if (isDark(n.color))  cls += " dark";
+    if (isSlate(n.color)) cls += " slate";
+    el.className = cls;
+    el.style.setProperty("--rot", (n.rot || 0) + "deg");
+    el.style.transform = `rotate(${n.rot || 0}deg)`;
+    el.style.left = n.x + "%";
+    el.style.top  = n.y + "%";
+    if (!isDark(n.color) && !isSlate(n.color)) el.style.background = n.color;
+
+    const by = (n.name && n.name.trim())
+      ? `<span class="nm">${esc(n.name)}</span>`
+      : `<span class="nm" style="opacity:.4">anon</span>`;
+
+    el.innerHTML = `
+      <p class="text">${esc(n.message)}</p>
+      <div class="by">${by}<span class="dt">${fmtDate(n.created_at)}</span></div>`;
+
+    el.addEventListener("pointerdown", (e) => {
+      e.stopPropagation();
+      el.style.zIndex = ++topZ;
+    });
+    wall.appendChild(el);
+    return el;
+  }
+
+  function render(notes) {
+    wall.querySelectorAll(".note").forEach((n) => n.remove());
+    notes.forEach(makeNote);
+    hint.style.display = notes.length ? "none" : "flex";
+  }
+
+  async function load() {
+    if (configured) {
+      const { data, error } = await supabase
+        .from("wall")
+        .select("name, message, color, x, y, rot, created_at")
+        .order("created_at", { ascending: true });
+      if (error) {
+        hint.textContent = "couldn't load the wall right now";
+        return;
+      }
+      render(data);
+    } else {
+      render(demo);
+    }
+  }
+
+  /* ── Composer ── */
+  let composer = null;
+  function closeComposer() { if (composer) { composer.remove(); composer = null; } }
+
+  function openComposer(xPct, yPct) {
+    closeComposer();
+    let chosen = "#ffffff";
+
+    const c = document.createElement("div");
+    c.className = "composer";
+    c.innerHTML = `
+      <textarea maxlength="180" placeholder="write something…" aria-label="Your note"></textarea>
+      <input type="text" maxlength="40" placeholder="name (optional)" aria-label="Your name" />
+      <div class="swatches">${COLORS.map((col) =>
+        `<button class="swatch" style="background:${col}" data-c="${col}"
+          aria-pressed="${col === chosen}" aria-label="note color"></button>`
+      ).join("")}</div>
+      <div class="composer-row">
+        <button class="cancel" type="button">cancel</button>
+        <button class="pin"    type="button">Pin it</button>
+      </div>`;
+
+    /* position */
+    const wr = wall.getBoundingClientRect();
+    const cw = 234, ch = 215;
+    let left = (xPct / 100) * wr.width;
+    let top  = (yPct / 100) * wr.height;
+    left = Math.min(Math.max(left, 8), wr.width  - cw - 8);
+    top  = Math.min(Math.max(top,  8), wr.height - ch - 8);
+    c.style.left = left + "px";
+    c.style.top  = top  + "px";
+
+    wall.appendChild(c);
+    composer = c;
+
+    const ta  = c.querySelector("textarea");
+    const nm  = c.querySelector("input");
+    const pin = c.querySelector(".pin");
+    ta.focus();
+
+    c.querySelectorAll(".swatch").forEach((s) => {
+      s.addEventListener("pointerdown", (e) => {
+        e.stopPropagation();
+        chosen = s.dataset.c;
+        c.querySelectorAll(".swatch").forEach((x) =>
+          x.setAttribute("aria-pressed", x === s));
+      });
+    });
+
+    c.addEventListener("pointerdown", (e) => e.stopPropagation());
+    c.querySelector(".cancel").addEventListener("click", closeComposer);
+
+    pin.addEventListener("click", async () => {
+      const message = ta.value.trim();
+      if (!message) { ta.focus(); return; }
+
+      const entry = {
+        name:    nm.value.trim() || null,
+        message,
+        color:   chosen,
+        x:       Math.round(xPct * 10) / 10,
+        y:       Math.round(yPct * 10) / 10,
+        rot:     Math.round((Math.random() * 10 - 5) * 10) / 10,
+      };
+
+      pin.disabled = true;
+      pin.textContent = "…";
+
+      try {
+        if (configured) {
+          const { error } = await supabase.from("wall").insert(entry);
+          if (error) throw error;
+        } else {
+          demo.push({ ...entry, created_at: new Date().toISOString() });
+        }
+        closeComposer();
+        const el = makeNote({ ...entry, created_at: new Date().toISOString() });
+        el.style.zIndex = ++topZ;
+        hint.style.display = "none";
+      } catch {
+        pin.disabled = false;
+        pin.textContent = "Pin it";
+        ta.placeholder = "hmm, try again";
+      }
+    });
+
+    ta.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) pin.click();
+      if (e.key === "Escape") closeComposer();
+    });
+  }
+
+  wall.addEventListener("pointerdown", (e) => {
+    if (composer) { closeComposer(); return; }
+    const wr = wall.getBoundingClientRect();
+    let xPct = ((e.clientX - wr.left) / wr.width)  * 100;
+    let yPct = ((e.clientY - wr.top)  / wr.height) * 100;
+    xPct = Math.min(Math.max(xPct, 2), 80);
+    yPct = Math.min(Math.max(yPct, 2), 86);
+    openComposer(xPct, yPct);
+  });
+
+  addBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openComposer(8 + Math.random() * 60, 8 + Math.random() * 60);
+  });
+
+  document.addEventListener("pointerdown", () => closeComposer());
+
+  load();
+</script>
+
+</body>
+</html>
