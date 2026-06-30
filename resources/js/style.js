@@ -87,9 +87,7 @@ fullMenu.innerHTML = `
 <li class="fullmenu-gnbitem">
 <a class="fullmenu-gnblink" href="./ai_projects.html">PROJECT WITH AI</a>
 </li>
-<li class="fullmenu-gnbitem">
-<a class="fullmenu-gnblink" href="./wall.html">WALL</a>
-</li>
+
 </ul>
 </div>
 <button class="fullmenu-close" aria-label="Close Menu"></button>
